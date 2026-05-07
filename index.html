@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Ángel Huerta Vázquez — Desarrollador Web & Software</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-elevated: #111111;
+            --text: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #a78bfa;
+            --accent-glow: rgba(167, 139, 250, 0.15);
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== NOISE TEXTURE ========== */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ========== CURSOR GLOW ========== */
+        .cursor-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(167, 139, 250, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+        }
+
+        /* ========== NAVBAR ========== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .nav-logo {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.3px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            opacity: 1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 20px;
+            }
+            .nav-links {
+                gap: 18px;
+            }
+            .nav-links a {
+                font-size: 0.7rem;
+                letter-spacing: 1px;
+            }
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-inner {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-overline {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 32px;
+            opacity: 0.8;
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 900;
+            letter-spacing: -3px;
+            line-height: 0.95;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .hero-title .thin {
+            font-weight: 300;
+            display: block;
+            font-size: clamp(2rem, 5vw, 4rem);
+            letter-spacing: -1px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--text);
+            color: var(--bg);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            letter-spacing: -0.2px;
+            transition: all 0.35s ease;
+            border: 1px solid var(--text);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--text);
+            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            letter-spacing: -0.2px;
+            transition: all 0.35s ease;
+            border: 1px solid var(--border);
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 20px 60px;
+            }
+            .hero-title {
+                font-size: clamp(2.5rem, 10vw, 4rem);
+                letter-spacing: -1.5px;
+            }
+            .hero-title .thin {
+                font-size: clamp(1.5rem, 6vw, 2.5rem);
+            }
+            .hero-subtitle {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ========== SECTION STYLES ========== */
+        .section {
+            padding: 80px 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 48px;
+            opacity: 0.7;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 48px;
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 20px;
+            }
+        }
+
+        /* ========== PROJECTS ========== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .project-card {
+            background: var(--bg-elevated);
+            padding: 48px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.03) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            background: #141414;
+        }
+
+        .project-info h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .project-info .project-type {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .project-tech span {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        .project-arrow {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            transition: all 0.4s ease;
+            opacity: 0.4;
+        }
+
+        .project-card:hover .project-arrow {
+            opacity: 1;
+            transform: translateX(4px);
+            color: var(--text);
+        }
+
+        @media (max-width: 768px) {
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 32px 24px;
+            }
+            .project-arrow {
+                display: none;
+            }
+        }
+
+        /* ========== STACK ========== */
+        .stack-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .stack-tag {
+            padding: 10px 20px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: -0.2px;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+
+        .stack-tag:hover {
+            border-color: var(--border-hover);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text);
+        }
+
+        /* ========== ABOUT ========== */
+        .about-text {
+            max-width: 600px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .about-text .highlight {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* ========== CONTACT ========== */
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            letter-spacing: -0.2px;
+        }
+
+        .contact-link:hover {
+            color: var(--text);
+        }
+
+        .contact-link .icon {
+            font-size: 1.3rem;
+            opacity: 0.6;
+        }
+
+        .contact-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 32px;
+            font-weight: 300;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            position: relative;
+            z-index: 2;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.15s; opacity: 0; }
+        .delay-2 { animation-delay: 0.3s; opacity: 0; }
+        .delay-3 { animation-delay: 0.45s; opacity: 0; }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay" aria-hidden="true"></div>
+    <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav>
+        <a href="#" class="nav-logo">MAHV</a>
+        <ul class="nav-links">
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#stack">Stack</a></li>
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="hero-overline animate-in">Desarrollador Web & Software</p>
+            <h1 class="hero-title animate-in delay-1">
+                Miguel Ángel
+                <span class="thin">Huerta Vázquez</span>
+            </h1>
+            <p class="hero-subtitle animate-in delay-2">
+                Construyo soluciones digitales que transforman negocios.
+                Del código a la experiencia, cada proyecto es una historia de impacto.
+            </p>
+            <div class="hero-actions animate-in delay-3">
+                <a href="#proyectos" class="btn-primary">Ver proyectos</a>
+                <a href="#contacto" class="btn-ghost">Contactar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section class="section" id="proyectos">
+        <div class="section-inner">
+            <p class="section-tag">Proyectos</p>
+            <h2 class="section-title">Lo que he<br>construido</h2>
+
+            <div class="projects-grid">
+
+                <!-- Proyecto 1: Lumina -->
+                <a href="#" class="project-card">
+                    <div class="project-info">
+                        <p class="project-type">Sistema Médico con Inteligencia Artificial</p>
+                        <h3>Lumina</h3>
+                        <p>
+                            Sistema integral para clínicas y consultorios que integra inteligencia artificial 
+                            (Gemini 2.5 Flash) para generar diagnósticos clínicos preliminares y planes 
+                            nutricionales personalizados. Incluye química sanguínea de 35 elementos, composición 
+                            corporal, calculadora del Sistema Mexicano de Equivalentes (SMAE), gestión de 
+                            pacientes, agenda de citas con API REST y autenticación segura con roles.
+                        </p>
+                        <div class="project-tech">
+                            <span>C#</span>
+                            <span>ASP.NET Core</span>
+                            <span>Entity Framework</span>
+                            <span>SQL Server</span>
+                            <span>Gemini API</span>
+                            <span>BCrypt</span>
+                        </div>
+                    </div>
+                    <span class="project-arrow">↗</span>
+                </a>
+
+                <!-- Proyecto 2: Sitios Web Corporativos -->
+                <a href="#" class="project-card">
+                    <div class="project-info">
+                        <p class="project-type">Desarrollo Web</p>
+                        <h3>Sitios Web Corporativos</h3>
+                        <p>
+                            Páginas profesionales para negocios con diseño personalizado, formularios de contacto,
+                            galerías de evidencia y hosting gratuito de por vida con GitHub Pages. Incluye diseño
+                            responsive, optimización SEO y panel de administración opcional.
+                        </p>
+                        <div class="project-tech">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>GitHub Pages</span>
+                        </div>
+                    </div>
+                    <span class="project-arrow">↗</span>
+                </a>
+
+                <!-- Proyecto 3: Videojuego -->
+                <a href="#" class="project-card">
+                    <div class="project-info">
+                        <p class="project-type">Videojuego Interactivo</p>
+                        <h3>Sistema de Retos con Pygame</h3>
+                        <p>
+                            Experiencia interactiva con animaciones fluidas, detección de colisiones
+                            y lógica de juego completa. Desarrollado completamente con Python y Pygame,
+                            con sistema de puntuación, niveles progresivos y gestión de estados.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Pygame</span>
+                        </div>
+                    </div>
+                    <span class="project-arrow">↗</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== STACK ==================== -->
+    <section class="section" id="stack">
+        <div class="section-inner">
+            <p class="section-tag">Stack Tecnológico</p>
+            <h2 class="section-title">Tecnologías<br>que domino</h2>
+
+            <div class="stack-container">
+                <span class="stack-tag">HTML5</span>
+                <span class="stack-tag">CSS3</span>
+                <span class="stack-tag">JavaScript</span>
+                <span class="stack-tag">Python</span>
+                <span class="stack-tag">Java</span>
+                <span class="stack-tag">C#</span>
+                <span class="stack-tag">ASP.NET Core</span>
+                <span class="stack-tag">SQL Server</span>
+                <span class="stack-tag">Entity Framework</span>
+                <span class="stack-tag">Git</span>
+                <span class="stack-tag">GitHub Pages</span>
+                <span class="stack-tag">Pygame</span>
+                <span class="stack-tag">Inteligencia Artificial</span>
+                <span class="stack-tag">API REST</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="section" id="sobre-mi">
+        <div class="section-inner">
+            <p class="section-tag">Sobre mí</p>
+            <h2 class="section-title">Más que<br>código</h2>
+
+            <div class="about-text">
+                <p>
+                    Soy <span class="highlight">desarrollador de software y web</span> enfocado en crear
+                    soluciones digitales que generan resultados reales para negocios y profesionales de la salud.
+                </p>
+                <p>
+                    Mi proyecto más ambicioso, <span class="highlight">Lumina</span>, integra inteligencia 
+                    artificial para apoyar a médicos y nutriólogos en diagnósticos clínicos y planes 
+                    nutricionales personalizados. Ya está en producción y fue vendido a una nutrióloga.
+                </p>
+                <p>
+                    No solo escribo código. <span class="highlight">Entiendo tu negocio</span>, tu mercado
+                    y lo que necesitas para destacar. Desde una landing page hasta un sistema médico con IA.
+                </p>
+                <p>
+                    Si tu negocio no tiene presencia digital profesional, estás perdiendo clientes.
+                    <span class="highlight">Yo evito que eso pase.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section" id="contacto">
+        <div class="section-inner">
+            <p class="section-tag">Contacto</p>
+            <h2 class="section-title">Hablemos</h2>
+
+            <div class="contact-links">
+                <a href="mailto:miguelhuerta.softwaredev@gmail.com" class="contact-link">
+                    <span class="icon">✉</span> miguelhuerta.softwaredev@gmail.com
+                </a>
+                <a href="https://wa.me/5212223585123" class="contact-link" target="_blank">
+                    <span class="icon">💬</span> WhatsApp
+                </a>
+            </div>
+            <p class="contact-note">
+                Abierto a proyectos, colaboraciones y oportunidades. Respuesta en menos de 24 horas.
+            </p>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <p>&copy; 2025 Miguel Ángel Huerta Vázquez. Construido con precisión.</p>
+    </footer>
+
+    <!-- ==================== CURSOR GLOW SCRIPT ==================== -->
+    <script>
+        const cursorGlow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+        document.addEventListener('mouseleave', () => {
+            cursorGlow.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            cursorGlow.style.opacity = '1';
+        });
+    </script>
+
+</body>
+</html>
