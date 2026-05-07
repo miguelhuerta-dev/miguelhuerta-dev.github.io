@@ -144,6 +144,24 @@
             text-align: center;
         }
 
+        /* FOTO AVATAR */
+        .hero-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin-bottom: 28px;
+            display: inline-block;
+            box-shadow: 0 8px 32px rgba(167, 139, 250, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(167, 139, 250, 0.35);
+        }
+
         .hero-overline {
             font-size: 0.7rem;
             font-weight: 600;
@@ -234,6 +252,10 @@
         @media (max-width: 768px) {
             .hero {
                 padding: 100px 20px 60px;
+            }
+            .hero-avatar {
+                width: 120px;
+                height: 120px;
             }
             .hero-title {
                 font-size: clamp(2.5rem, 10vw, 4rem);
@@ -523,12 +545,15 @@
     <!-- ==================== HERO ==================== -->
     <section class="hero">
         <div class="hero-inner">
-            <p class="hero-overline animate-in">Desarrollador Web & Software</p>
-            <h1 class="hero-title animate-in delay-1">
+            <!-- FOTO CIRCULAR -->
+            <!-- REEMPLAZA ESTA RUTA POR TU FOTO REAL: assets/img/miguel.jpg -->
+            <img src="assets/img/miguel.jpg" alt="Miguel Ángel Huerta Vázquez" class="hero-avatar animate-in">
+            <p class="hero-overline animate-in delay-1">Desarrollador Web & Software</p>
+            <h1 class="hero-title animate-in delay-2">
                 Miguel Ángel
                 <span class="thin">Huerta Vázquez</span>
             </h1>
-            <p class="hero-subtitle animate-in delay-2">
+            <p class="hero-subtitle animate-in delay-3">
                 Construyo soluciones digitales que transforman negocios.
                 Del código a la experiencia, cada proyecto es una historia de impacto.
             </p>
