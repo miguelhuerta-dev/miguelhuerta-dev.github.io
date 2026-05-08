@@ -135,7 +135,8 @@
             object-fit: cover;
             display: block;
         }
-        /* Placeholder elegante cuando no hay video */
+
+        /* Placeholder elegante cuando NO hay video */
         .video-placeholder {
             position: absolute;
             inset: 0;
@@ -161,26 +162,6 @@
             color: rgba(255,255,255,0.2);
             letter-spacing: 2px;
             text-transform: uppercase;
-        }
-
-        /* Overlay "hover para reproducir" */
-        .hover-hint {
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        .hover-hint i {
-            font-size: 3rem;
-            color: rgba(255,255,255,0.7);
-        }
-        .video-card:hover .hover-hint {
-            opacity: 0;
         }
 
         /* Info del proyecto */
@@ -305,15 +286,7 @@
                 <!-- ═══════════ PROYECTO 1: MOTO PARTES RIVERA ═══════════ -->
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <!-- CAMBIA ESTE SRC POR TU VIDEO REAL -->
                         <video src="assets/videos/motopartes-rivera.mp4" muted loop playsinline preload="metadata"></video>
-                        <div class="video-placeholder">
-                            <i class="bi bi-play-circle-fill"></i>
-                            <span>Video próximamente</span>
-                        </div>
-                        <div class="hover-hint">
-                            <i class="bi bi-play-circle"></i>
-                        </div>
                     </div>
                     <div class="video-info">
                         <h3>Moto Partes Rivera</h3>
