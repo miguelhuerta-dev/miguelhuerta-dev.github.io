@@ -1,1 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Web | Miguel Ángel Huerta Vázquez</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --bg-elevated: #111111;
+            --bg-card: #161616;
+            --text: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #a78bfa;
+            --accent-glow: rgba(167, 139, 250, 0.15);
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(167, 139, 250, 0.35);
+            --radius: 14px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ========== NOISE TEXTURE ========== */
+        .noise-overlay {
+            position: fixed; inset: 0; opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 1;
+        }
+
+        /* ========== NAVBAR ========== */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 20px 40px; display: flex; justify-content: space-between; align-items: center;
+            mix-blend-mode: difference;
+        }
+        .nav-logo { font-size: 1rem; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.3px; opacity: 0.8; transition: opacity 0.3s; }
+        .nav-logo:hover { opacity: 1; }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a {
+            color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 500;
+            letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.5; transition: opacity 0.3s;
+        }
+        .nav-links a:hover { opacity: 1; }
+        .nav-links a.active { opacity: 1; color: var(--accent); }
+        .btn-volver {
+            background: transparent; color: var(--text); border: 1px solid var(--border);
+            border-radius: 50px; padding: 8px 18px; font-size: 0.75rem; text-decoration: none;
+            transition: all var(--transition); display: flex; align-items: center; gap: 6px;
+        }
+        .btn-volver:hover { border-color: var(--accent); color: var(--accent); }
+
+        @media (max-width: 768px) {
+            nav { padding: 16px 20px; }
+            .nav-links { gap: 18px; }
+            .nav-links a { font-size: 0.7rem; }
+        }
+
+        /* ========== HERO DE SECCIÓN ========== */
+        .section-hero {
+            padding: 140px 40px 60px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .section-tag {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--accent); margin-bottom: 12px; opacity: 0.7;
+        }
+        .section-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;
+            margin-bottom: 16px; color: var(--text);
+        }
+        .section-hero p {
+            font-size: 1rem; color: var(--text-muted); max-width: 500px; margin: 0 auto;
+            font-weight: 300; line-height: 1.7;
+        }
+
+        /* ========== GALERÍA ========== */
+        .gallery-section {
+            padding: 20px 40px 100px;
+            position: relative;
+            z-index: 2;
+        }
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 40px;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+        .video-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(167, 139, 250, 0.1);
+        }
+
+        /* Contenedor del video */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* Placeholder elegante cuando no hay video */
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0d0d1a 100%);
+            pointer-events: none;
+        }
+        .video-placeholder i {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.08);
+            transition: all 0.3s;
+        }
+        .video-card:hover .video-placeholder i {
+            color: var(--accent);
+            opacity: 0.6;
+        }
+        .video-placeholder span {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Overlay "hover para reproducir" */
+        .hover-hint {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .hover-hint i {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.7);
+        }
+        .video-card:hover .hover-hint {
+            opacity: 0;
+        }
+
+        /* Info del proyecto */
+        .video-info {
+            padding: 20px 24px;
+        }
+        .video-info h3 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.3px;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        .video-info .video-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+        .video-info .video-tags span {
+            font-size: 0.65rem;
+            padding: 4px 10px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        .video-info .btn-visitar {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent);
+            color: #000;
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all var(--transition);
+        }
+        .video-info .btn-visitar:hover {
+            background: #c4b5fd;
+            transform: translateY(-1px);
+        }
+        .video-info .btn-visitar-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.8rem;
+            padding: 9px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all var(--transition);
+            margin-left: 8px;
+        }
+        .video-info .btn-visitar-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Próximamente */
+        .coming-soon {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+        .coming-soon-label {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(167,139,250,0.2);
+            color: var(--accent);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 50px;
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+            .section-hero { padding: 120px 20px 40px; }
+            .gallery-section { padding: 20px 20px 80px; }
+            .gallery-grid { grid-template-columns: 1fr; gap: 28px; }
+            .video-info { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noise-overlay" aria-hidden="true"></div>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav>
+        <a href="index.html" class="nav-logo">MAHV</a>
+        <ul class="nav-links">
+            <li><a href="index.html#proyectos">Proyectos</a></li>
+            <li><a href="portafolio.html" class="active">Portafolio Web</a></li>
+            <li><a href="index.html#stack">Stack</a></li>
+            <li><a href="index.html#sobre-mi">Sobre mí</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+        <a href="index.html" class="btn-volver"><i class="bi bi-arrow-left"></i> Volver</a>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="section-hero">
+        <p class="section-tag">Portafolio Web</p>
+        <h1>Proyectos en Video</h1>
+        <p>Explora mis sitios web. Pasa el mouse sobre cada video para verlo en acción.</p>
+    </section>
+
+    <!-- ==================== GALERÍA ==================== -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <div class="gallery-grid">
+
+                <!-- ═══════════ PROYECTO 1: MOTO PARTES RIVERA ═══════════ -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <!-- CAMBIA ESTE SRC POR TU VIDEO REAL -->
+                        <video src="assets/videos/motopartes-rivera.mp4" muted loop playsinline preload="metadata"></video>
+                        <div class="video-placeholder">
+                            <i class="bi bi-play-circle-fill"></i>
+                            <span>Video próximamente</span>
+                        </div>
+                        <div class="hover-hint">
+                            <i class="bi bi-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Moto Partes Rivera</h3>
+                        <div class="video-tags">
+                            <span>HTML5</span><span>CSS3</span><span>Bootstrap 5</span><span>Dark Mode</span>
+                        </div>
+                        <a href="https://motopartesrivera.github.io" target="_blank" class="btn-visitar">
+                            <i class="bi bi-box-arrow-up-right"></i> Visitar Sitio
+                        </a>
+                        <a href="https://github.com/MotoPartesRivera/MotoPartesRivera.github.io" target="_blank" class="btn-visitar-outline">
+                            <i class="bi bi-github"></i> Código
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ═══════════ PROYECTO 2: PRÓXIMAMENTE ═══════════ -->
+                <div class="video-card coming-soon">
+                    <div class="video-wrapper">
+                        <div class="video-placeholder">
+                            <i class="bi bi-hourglass-split"></i>
+                            <span>Próximamente</span>
+                        </div>
+                        <div class="coming-soon-label">Próximamente</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Álamo Acabados</h3>
+                        <div class="video-tags">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+                        </div>
+                        <span class="btn-visitar-outline" style="opacity:0.5;">
+                            <i class="bi bi-clock"></i> Muy pronto
+                        </span>
+                    </div>
+                </div>
+
+                <!-- ═══════════ PROYECTO 3: PRÓXIMAMENTE ═══════════ -->
+                <div class="video-card coming-soon">
+                    <div class="video-wrapper">
+                        <div class="video-placeholder">
+                            <i class="bi bi-hourglass-split"></i>
+                            <span>Próximamente</span>
+                        </div>
+                        <div class="coming-soon-label">Próximamente</div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Isidro Huerta — Consultoría</h3>
+                        <div class="video-tags">
+                            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+                        </div>
+                        <span class="btn-visitar-outline" style="opacity:0.5;">
+                            <i class="bi bi-clock"></i> Muy pronto
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== WHATSAPP ==================== -->
+    <a href="https://wa.me/5212211038688" style="position:fixed;bottom:28px;right:28px;z-index:9999;background:#25D366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 6px 24px rgba(37,211,102,0.4);text-decoration:none;animation:pulse 2s infinite;" target="_blank">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <style>
+        @keyframes pulse {
+            0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+        }
+    </style>
+
+    <!-- ==================== SCRIPT HOVER VIDEO ==================== -->
+    <script>
+        document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+            const video = wrapper.querySelector('video');
+            if (!video) return;
+
+            wrapper.addEventListener('mouseenter', () => {
+                video.play().catch(() => {});
+            });
+            wrapper.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
+    </script>
+
+</body>
+</html>
