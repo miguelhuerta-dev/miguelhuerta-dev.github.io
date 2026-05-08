@@ -132,9 +132,7 @@
             gap: 60px;
             align-items: center;
         }
-        .hero-text {
-            text-align: left;
-        }
+        .hero-text { text-align: left; }
         .hero-overline {
             font-size: 0.7rem;
             font-weight: 600;
@@ -252,11 +250,7 @@
             filter: drop-shadow(0 20px 60px rgba(167, 139, 250, 0.3));
         }
         @media (max-width: 768px) {
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
+            .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .hero-text { text-align: center; }
             .hero-subtitle { margin: 0 auto 36px; }
             .hero-actions { justify-content: center; }
@@ -264,208 +258,105 @@
         }
 
         /* ========== SECTION STYLES ========== */
-        .section {
-            padding: 100px 40px;
-            position: relative;
-            z-index: 2;
-        }
-        .section-inner {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        .section { padding: 100px 40px; position: relative; z-index: 2; }
+        .section-inner { max-width: 1100px; margin: 0 auto; }
         .section-tag {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 16px;
-            opacity: 0.7;
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 16px; opacity: 0.7;
         }
         .section-title {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 48px;
-            color: var(--text);
+            font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700;
+            letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 48px; color: var(--text);
         }
-        @media (max-width: 768px) {
-            .section { padding: 70px 20px; }
-        }
+        @media (max-width: 768px) { .section { padding: 70px 20px; } }
 
         /* ========== PROJECTS ========== */
         .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1px;
-            background: var(--border);
-            border: 1px solid var(--border);
+            display: grid; grid-template-columns: 1fr; gap: 1px;
+            background: var(--border); border: 1px solid var(--border);
         }
         .project-card {
-            background: var(--bg-elevated);
-            padding: 48px 40px;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 40px;
-            align-items: center;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            position: relative;
-            overflow: hidden;
+            background: var(--bg-elevated); padding: 48px 40px;
+            display: grid; grid-template-columns: 1fr auto; gap: 40px;
+            align-items: center; transition: all 0.4s ease;
+            cursor: pointer; text-decoration: none; color: inherit;
+            position: relative; overflow: hidden;
         }
         .project-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
+            content: ''; position: absolute; inset: 0;
             background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.04) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            opacity: 0; transition: opacity 0.5s ease;
         }
         .project-card:hover::before { opacity: 1; }
         .project-card:hover { background: #141414; }
         .project-info h3 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-            color: var(--text);
+            font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px;
+            margin-bottom: 8px; color: var(--text);
         }
         .project-info .project-type {
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 12px;
-            opacity: 0.8;
+            font-size: 0.75rem; font-weight: 500; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--accent); margin-bottom: 12px; opacity: 0.8;
         }
         .project-info p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            max-width: 500px;
+            font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; max-width: 500px;
         }
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 16px;
-        }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
         .project-tech span {
-            font-size: 0.7rem;
-            padding: 4px 12px;
-            border: 1px solid var(--border);
-            border-radius: 50px;
-            color: var(--text-secondary);
-            letter-spacing: 0.5px;
+            font-size: 0.7rem; padding: 4px 12px; border: 1px solid var(--border);
+            border-radius: 50px; color: var(--text-secondary); letter-spacing: 0.5px;
         }
         .project-arrow {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            transition: all 0.4s ease;
-            opacity: 0.4;
+            font-size: 1.5rem; color: var(--text-muted);
+            transition: all 0.4s ease; opacity: 0.4;
         }
-        .project-card:hover .project-arrow {
-            opacity: 1;
-            transform: translateX(4px);
-            color: var(--text);
-        }
+        .project-card:hover .project-arrow { opacity: 1; transform: translateX(4px); color: var(--text); }
         @media (max-width: 768px) {
             .project-card { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
             .project-arrow { display: none; }
         }
 
         /* ========== STACK ========== */
-        .stack-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
+        .stack-container { display: flex; flex-wrap: wrap; gap: 16px; }
         .stack-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: var(--bg-elevated);
-            transition: all 0.3s ease;
-            cursor: default;
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 20px; border: 1px solid var(--border);
+            border-radius: 12px; background: var(--bg-elevated);
+            transition: all 0.3s ease; cursor: default;
         }
         .stack-item:hover {
-            border-color: var(--border-hover);
-            background: #1a1a1a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(167, 139, 250, 0.08);
+            border-color: var(--border-hover); background: #1a1a1a;
+            transform: translateY(-2px); box-shadow: 0 8px 24px rgba(167, 139, 250, 0.08);
         }
-        .stack-item i {
-            font-size: 1.5rem;
-        }
-        .stack-item span {
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            letter-spacing: -0.2px;
-        }
+        .stack-item i { font-size: 1.5rem; }
+        .stack-item span { font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); letter-spacing: -0.2px; }
 
         /* ========== ABOUT ========== */
-        .about-text {
-            max-width: 600px;
-        }
+        .about-text { max-width: 600px; }
         .about-text p {
-            font-size: 1.05rem;
-            font-weight: 300;
-            line-height: 1.9;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
+            font-size: 1.05rem; font-weight: 300; line-height: 1.9;
+            color: var(--text-secondary); margin-bottom: 24px;
         }
-        .about-text .highlight {
-            color: var(--text);
-            font-weight: 500;
-        }
+        .about-text .highlight { color: var(--text); font-weight: 500; }
 
         /* ========== CONTACT ========== */
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+        .contact-links { display: flex; flex-direction: column; gap: 20px; }
         .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 400;
-            transition: color 0.3s ease;
-            letter-spacing: -0.2px;
+            display: flex; align-items: center; gap: 16px;
+            color: var(--text-secondary); text-decoration: none;
+            font-size: 1.05rem; font-weight: 400; transition: color 0.3s ease; letter-spacing: -0.2px;
         }
         .contact-link:hover { color: var(--text); }
         .contact-link .icon { font-size: 1.3rem; opacity: 0.6; }
         .contact-note {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 32px;
-            font-weight: 300;
+            font-size: 0.85rem; color: var(--text-muted); margin-top: 32px; font-weight: 300;
         }
 
         /* ========== FOOTER ========== */
         footer {
-            padding: 40px;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            position: relative;
-            z-index: 2;
+            padding: 40px; text-align: center; border-top: 1px solid var(--border);
+            position: relative; z-index: 2;
         }
-        footer p {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
-        }
+        footer p { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
@@ -478,6 +369,7 @@
         <a href="#" class="nav-logo">MAHV</a>
         <ul class="nav-links">
             <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="portafolio.html">Portafolio Web</a></li>
             <li><a href="#stack">Stack</a></li>
             <li><a href="#sobre-mi">Sobre mí</a></li>
             <li><a href="#contacto">Contacto</a></li>
@@ -489,14 +381,8 @@
         <div class="hero-inner">
             <div class="hero-text" data-aos="fade-right" data-aos-duration="800">
                 <p class="hero-overline">Desarrollador Web & Software</p>
-                <h1 class="hero-title">
-                    Miguel Ángel
-                    <span class="thin">Huerta Vázquez</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Construyo soluciones digitales que transforman negocios.
-                    Del código a la experiencia, cada proyecto es una historia de impacto.
-                </p>
+                <h1 class="hero-title">Miguel Ángel<span class="thin">Huerta Vázquez</span></h1>
+                <p class="hero-subtitle">Construyo soluciones digitales que transforman negocios. Del código a la experiencia, cada proyecto es una historia de impacto.</p>
                 <div class="hero-actions">
                     <a href="#proyectos" class="btn-primary">Ver proyectos</a>
                     <a href="#contacto" class="btn-ghost">Contactar</a>
@@ -509,27 +395,16 @@
             <div class="hero-visual" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                 <div class="laptop-container">
                     <div class="laptop-glow"></div>
-                    <!-- LAPTOP SVG CON CÓDIGO EN PANTALLA -->
                     <svg class="laptop-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Glow detrás de la pantalla -->
                         <defs>
                             <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#1a1a2e"/>
-                                <stop offset="100%" stop-color="#0d0d1a"/>
+                                <stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#0d0d1a"/>
                             </linearGradient>
-                            <filter id="glow">
-                                <feGaussianBlur stdDeviation="3" result="blur"/>
-                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                            </filter>
                         </defs>
-                        <!-- Base de la laptop -->
                         <rect x="60" y="200" width="280" height="12" rx="4" fill="#2a2a3a" stroke="#3a3a4a" stroke-width="1"/>
                         <rect x="90" y="212" width="220" height="6" rx="3" fill="#1a1a2a"/>
-                        <!-- Pantalla -->
                         <rect x="70" y="30" width="260" height="170" rx="8" fill="url(#screenGrad)" stroke="#3a3a4a" stroke-width="2"/>
-                        <!-- Brillo de pantalla -->
                         <rect x="70" y="30" width="260" height="170" rx="8" fill="url(#screenGrad)" opacity="0.5"/>
-                        <!-- Líneas de código en pantalla -->
                         <rect x="88" y="50" width="100" height="4" rx="2" fill="#a78bfa" opacity="0.9"/>
                         <rect x="88" y="62" width="140" height="4" rx="2" fill="#60a5fa" opacity="0.7"/>
                         <rect x="108" y="74" width="90" height="4" rx="2" fill="#f15a24" opacity="0.6"/>
@@ -542,11 +417,9 @@
                         <rect x="88" y="158" width="80" height="4" rx="2" fill="#60a5fa" opacity="0.5"/>
                         <rect x="108" y="170" width="140" height="4" rx="2" fill="#a78bfa" opacity="0.7"/>
                         <rect x="108" y="182" width="50" height="4" rx="2" fill="#f15a24" opacity="0.6"/>
-                        <!-- Cursor parpadeante -->
                         <rect x="218" y="182" width="8" height="4" rx="2" fill="#a78bfa" opacity="0.9">
                             <animate attributeName="opacity" values="0.9;0;0.9" dur="1.2s" repeatCount="indefinite"/>
                         </rect>
-                        <!-- Cámara -->
                         <circle cx="200" cy="38" r="3" fill="#3a3a4a"/>
                     </svg>
                 </div>
@@ -569,7 +442,8 @@
                     </div>
                     <span class="project-arrow">↗</span>
                 </a>
-                <a href="#" class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <!-- ✅ FLECHA AHORA APUNTA A PORTAFOLIO.HTML -->
+                <a href="portafolio.html" class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-info">
                         <p class="project-type">Desarrollo Web</p>
                         <h3>Sitios Web Corporativos</h3>
