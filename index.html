@@ -212,18 +212,14 @@
             color: var(--accent);
         }
 
-        /* ========== HERO VISUAL (LAPTOP) ========== */
+        /* ========== HERO VISUAL (TERMINAL) ========== */
         .hero-visual {
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
-        .laptop-container {
-            position: relative;
-            animation: floatLaptop 5s ease-in-out infinite;
-        }
-        .laptop-glow {
+        .terminal-glow {
             position: absolute;
             width: 280px;
             height: 280px;
@@ -236,25 +232,96 @@
             opacity: 0.6;
             animation: pulseGlow 3s ease-in-out infinite;
         }
-        @keyframes floatLaptop {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-18px); }
-        }
         @keyframes pulseGlow {
             0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
             50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.15); }
         }
-        .laptop-svg {
-            width: 320px;
-            height: auto;
-            filter: drop-shadow(0 20px 60px rgba(167, 139, 250, 0.3));
+        .code-terminal {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #0d0d0d;
+            box-shadow: 0 20px 60px rgba(167, 139, 250, 0.15);
+            width: 100%;
+            max-width: 450px;
+            animation: floatTerminal 5s ease-in-out infinite;
         }
+        @keyframes floatTerminal {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-18px); }
+        }
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 20px;
+            background: #111111;
+            border-bottom: 1px solid var(--border);
+        }
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-dot.red { background: #ff5f57; }
+        .terminal-dot.yellow { background: #febc2e; }
+        .terminal-dot.green { background: #28c840; }
+        .terminal-title {
+            margin-left: 8px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        .terminal-body {
+            padding: 24px 20px;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.78rem;
+            line-height: 2;
+            color: #c9d1d9;
+        }
+        .code-line {
+            display: flex;
+            align-items: center;
+            opacity: 0.9;
+        }
+        .line-number {
+            color: #444;
+            min-width: 28px;
+            text-align: right;
+            margin-right: 16px;
+            user-select: none;
+            font-size: 0.7rem;
+        }
+        .code-indent {
+            display: inline-block;
+            width: 20px;
+        }
+        .code-keyword { color: #ff79c6; }
+        .code-class { color: #8be9fd; }
+        .code-this { color: #ff79c6; }
+        .code-prop { color: #f1fa8c; }
+        .code-string { color: #50fa7b; }
+        .code-var { color: #bd93f9; }
+        .code-function { color: #ffb86c; }
+        .typing-text {
+            color: #f1fa8c;
+        }
+        .cursor-blink {
+            animation: cursorBlink 0.8s infinite;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
         @media (max-width: 768px) {
             .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .hero-text { text-align: center; }
             .hero-subtitle { margin: 0 auto 36px; }
             .hero-actions { justify-content: center; }
-            .laptop-svg { width: 220px; }
+            .code-terminal { max-width: 100%; }
         }
 
         /* ========== SECTION STYLES ========== */
@@ -410,7 +477,7 @@
         .stack-item i { font-size: 1.5rem; }
         .stack-item span { font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); letter-spacing: -0.2px; }
 
-        /* ========== ABOUT (2 COLUMNAS: TEXTO IZQ + TERMINAL DER) ========== */
+        /* ========== ABOUT (2 COLUMNAS: TEXTO IZQ + LAPTOP DER) ========== */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -423,78 +490,38 @@
         }
         .about-text .highlight { color: var(--text); font-weight: 500; }
 
-        /* ========== TERMINAL DE CÓDIGO ========== */
-        .code-terminal {
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            background: #0d0d0d;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        }
-        .terminal-header {
+        /* ========== LAPTOP EN SOBRE MÍ ========== */
+        .about-visual {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 14px 20px;
-            background: #111111;
-            border-bottom: 1px solid var(--border);
+            justify-content: center;
+            position: relative;
         }
-        .terminal-dot {
-            width: 12px;
-            height: 12px;
+        .laptop-container {
+            position: relative;
+            animation: floatLaptop 5s ease-in-out infinite;
+        }
+        .laptop-glow {
+            position: absolute;
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-strong) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            opacity: 0.6;
+            animation: pulseGlow 3s ease-in-out infinite;
         }
-        .terminal-dot.red { background: #ff5f57; }
-        .terminal-dot.yellow { background: #febc2e; }
-        .terminal-dot.green { background: #28c840; }
-        .terminal-title {
-            margin-left: 8px;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
+        @keyframes floatLaptop {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-18px); }
         }
-        .terminal-body {
-            padding: 24px 20px;
-            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-            font-size: 0.78rem;
-            line-height: 2;
-            color: #c9d1d9;
-        }
-        .code-line {
-            display: flex;
-            align-items: center;
-            opacity: 0.9;
-        }
-        .line-number {
-            color: #444;
-            min-width: 28px;
-            text-align: right;
-            margin-right: 16px;
-            user-select: none;
-            font-size: 0.7rem;
-        }
-        .code-indent {
-            display: inline-block;
-            width: 20px;
-        }
-        .code-keyword { color: #ff79c6; }
-        .code-class { color: #8be9fd; }
-        .code-this { color: #ff79c6; }
-        .code-prop { color: #f1fa8c; }
-        .code-string { color: #50fa7b; }
-        .code-var { color: #bd93f9; }
-        .code-function { color: #ffb86c; }
-        .typing-text {
-            color: #f1fa8c;
-        }
-        .cursor-blink {
-            animation: cursorBlink 0.8s infinite;
-            color: var(--accent);
-            font-weight: bold;
-        }
-        @keyframes cursorBlink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        .laptop-svg {
+            width: 320px;
+            height: auto;
+            filter: drop-shadow(0 20px 60px rgba(167, 139, 250, 0.3));
         }
 
         @media (max-width: 768px) {
@@ -502,6 +529,7 @@
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
+            .laptop-svg { width: 220px; }
         }
 
         /* ========== CONTACT ========== */
@@ -558,35 +586,50 @@
                     </a>
                 </div>
             </div>
+            <!-- TERMINAL DE CÓDIGO EN EL HERO -->
             <div class="hero-visual" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                <div class="laptop-container">
-                    <div class="laptop-glow"></div>
-                    <svg class="laptop-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#0d0d1a"/>
-                            </linearGradient>
-                        </defs>
-                        <rect x="60" y="200" width="280" height="12" rx="4" fill="#2a2a3a" stroke="#3a3a4a" stroke-width="1"/>
-                        <rect x="90" y="212" width="220" height="6" rx="3" fill="#1a1a2a"/>
-                        <rect x="70" y="30" width="260" height="170" rx="8" fill="url(#screenGrad)" stroke="#3a3a4a" stroke-width="2"/>
-                        <rect x="88" y="50" width="100" height="4" rx="2" fill="#a78bfa" opacity="0.9"/>
-                        <rect x="88" y="62" width="140" height="4" rx="2" fill="#60a5fa" opacity="0.7"/>
-                        <rect x="108" y="74" width="90" height="4" rx="2" fill="#f15a24" opacity="0.6"/>
-                        <rect x="108" y="86" width="130" height="4" rx="2" fill="#a78bfa" opacity="0.8"/>
-                        <rect x="88" y="98" width="70" height="4" rx="2" fill="#60a5fa" opacity="0.5"/>
-                        <rect x="108" y="110" width="150" height="4" rx="2" fill="#a78bfa" opacity="0.9"/>
-                        <rect x="108" y="122" width="60" height="4" rx="2" fill="#f15a24" opacity="0.7"/>
-                        <rect x="88" y="134" width="120" height="4" rx="2" fill="#60a5fa" opacity="0.6"/>
-                        <rect x="108" y="146" width="100" height="4" rx="2" fill="#a78bfa" opacity="0.8"/>
-                        <rect x="88" y="158" width="80" height="4" rx="2" fill="#60a5fa" opacity="0.5"/>
-                        <rect x="108" y="170" width="140" height="4" rx="2" fill="#a78bfa" opacity="0.7"/>
-                        <rect x="108" y="182" width="50" height="4" rx="2" fill="#f15a24" opacity="0.6"/>
-                        <rect x="218" y="182" width="8" height="4" rx="2" fill="#a78bfa" opacity="0.9">
-                            <animate attributeName="opacity" values="0.9;0;0.9" dur="1.2s" repeatCount="indefinite"/>
-                        </rect>
-                        <circle cx="200" cy="38" r="3" fill="#3a3a4a"/>
-                    </svg>
+                <div class="terminal-glow"></div>
+                <div class="code-terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">miguelhuerta/dev</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="code-line">
+                            <span class="line-number">1</span>
+                            <span class="code-keyword">class</span> <span class="code-class">Desarrollador</span> {
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">2</span>
+                            <span class="code-indent"></span><span class="code-keyword">constructor</span>() {
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">3</span>
+                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">nombre</span> = <span class="code-string">"Miguel Ángel Huerta Vázquez"</span>;
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">4</span>
+                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">rol</span> = <span class="code-string">"Full-Stack & Software Developer"</span>;
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">5</span>
+                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">stack</span> = [<span class="code-string">"HTML5"</span>, <span class="code-string">"CSS3"</span>, <span class="code-string">"JS"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"C#"</span>];
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">6</span>
+                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">mision</span> = <span class="code-string">"</span><span class="typing-text" id="typingText"></span><span class="code-string">"</span>;
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">7</span>
+                            <span class="code-indent"></span>}
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">8</span>
+                            }
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -737,7 +780,7 @@
         </div>
     </section>
 
-    <!-- ==================== ABOUT (2 COLUMNAS) ==================== -->
+    <!-- ==================== ABOUT (2 COLUMNAS: TEXTO IZQ + LAPTOP DER) ==================== -->
     <section class="section" id="sobre-mi">
         <div class="section-inner">
             <p class="section-tag" data-aos="fade-up">Sobre mí</p>
@@ -749,46 +792,36 @@
                     <p>No solo escribo código. <span class="highlight">Entiendo tu negocio</span>, tu mercado y lo que necesitas para destacar. Desde una landing page hasta un sistema médico con IA.</p>
                     <p>Si tu negocio no tiene presencia digital profesional, estás perdiendo clientes. <span class="highlight">Yo evito que eso pase.</span></p>
                 </div>
-                <div class="code-terminal" data-aos="fade-up" data-aos-delay="300">
-                    <div class="terminal-header">
-                        <span class="terminal-dot red"></span>
-                        <span class="terminal-dot yellow"></span>
-                        <span class="terminal-dot green"></span>
-                        <span class="terminal-title">miguelhuerta/dev</span>
-                    </div>
-                    <div class="terminal-body">
-                        <div class="code-line">
-                            <span class="line-number">1</span>
-                            <span class="code-keyword">class</span> <span class="code-class">Desarrollador</span> {
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">2</span>
-                            <span class="code-indent"></span><span class="code-keyword">constructor</span>() {
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">3</span>
-                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">nombre</span> = <span class="code-string">"Miguel Ángel Huerta Vázquez"</span>;
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">4</span>
-                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">rol</span> = <span class="code-string">"Full-Stack & Software Developer"</span>;
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">5</span>
-                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">stack</span> = [<span class="code-string">"HTML5"</span>, <span class="code-string">"CSS3"</span>, <span class="code-string">"JS"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"C#"</span>];
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">6</span>
-                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">mision</span> = <span class="code-string">"</span><span class="typing-text" id="typingText"></span><span class="code-string">"</span>;
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">7</span>
-                            <span class="code-indent"></span>}
-                        </div>
-                        <div class="code-line">
-                            <span class="line-number">8</span>
-                            }
-                        </div>
+                <!-- LAPTOP EN SOBRE MÍ -->
+                <div class="about-visual" data-aos="fade-up" data-aos-delay="300">
+                    <div class="laptop-container">
+                        <div class="laptop-glow"></div>
+                        <svg class="laptop-svg" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
+                                    <stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#0d0d1a"/>
+                                </linearGradient>
+                            </defs>
+                            <rect x="60" y="200" width="280" height="12" rx="4" fill="#2a2a3a" stroke="#3a3a4a" stroke-width="1"/>
+                            <rect x="90" y="212" width="220" height="6" rx="3" fill="#1a1a2a"/>
+                            <rect x="70" y="30" width="260" height="170" rx="8" fill="url(#screenGrad)" stroke="#3a3a4a" stroke-width="2"/>
+                            <rect x="88" y="50" width="100" height="4" rx="2" fill="#a78bfa" opacity="0.9"/>
+                            <rect x="88" y="62" width="140" height="4" rx="2" fill="#60a5fa" opacity="0.7"/>
+                            <rect x="108" y="74" width="90" height="4" rx="2" fill="#f15a24" opacity="0.6"/>
+                            <rect x="108" y="86" width="130" height="4" rx="2" fill="#a78bfa" opacity="0.8"/>
+                            <rect x="88" y="98" width="70" height="4" rx="2" fill="#60a5fa" opacity="0.5"/>
+                            <rect x="108" y="110" width="150" height="4" rx="2" fill="#a78bfa" opacity="0.9"/>
+                            <rect x="108" y="122" width="60" height="4" rx="2" fill="#f15a24" opacity="0.7"/>
+                            <rect x="88" y="134" width="120" height="4" rx="2" fill="#60a5fa" opacity="0.6"/>
+                            <rect x="108" y="146" width="100" height="4" rx="2" fill="#a78bfa" opacity="0.8"/>
+                            <rect x="88" y="158" width="80" height="4" rx="2" fill="#60a5fa" opacity="0.5"/>
+                            <rect x="108" y="170" width="140" height="4" rx="2" fill="#a78bfa" opacity="0.7"/>
+                            <rect x="108" y="182" width="50" height="4" rx="2" fill="#f15a24" opacity="0.6"/>
+                            <rect x="218" y="182" width="8" height="4" rx="2" fill="#a78bfa" opacity="0.9">
+                                <animate attributeName="opacity" values="0.9;0;0.9" dur="1.2s" repeatCount="indefinite"/>
+                            </rect>
+                            <circle cx="200" cy="38" r="3" fill="#3a3a4a"/>
+                        </svg>
                     </div>
                 </div>
             </div>
