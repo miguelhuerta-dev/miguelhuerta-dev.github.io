@@ -6,7 +6,7 @@
     <title>Miguel Ángel Huerta Vázquez — Desarrollador Web & Software</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
@@ -272,47 +272,127 @@
 
         /* ========== PROJECTS ========== */
         .projects-grid {
-            display: grid; grid-template-columns: 1fr; gap: 1px;
-            background: var(--border); border: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
         }
         .project-card {
-            background: var(--bg-elevated); padding: 48px 40px;
-            display: grid; grid-template-columns: 1fr auto; gap: 40px;
-            align-items: center; transition: all 0.4s ease;
-            cursor: pointer; text-decoration: none; color: inherit;
-            position: relative; overflow: hidden;
+            background: var(--bg-elevated);
+            padding: 48px 40px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 30px;
+            align-items: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
         }
         .project-card::before {
-            content: ''; position: absolute; inset: 0;
+            content: '';
+            position: absolute;
+            inset: 0;
             background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.04) 0%, transparent 70%);
-            opacity: 0; transition: opacity 0.5s ease;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
         .project-card:hover::before { opacity: 1; }
         .project-card:hover { background: #141414; }
         .project-info h3 {
-            font-size: 1.6rem; font-weight: 700; letter-spacing: -0.5px;
-            margin-bottom: 8px; color: var(--text);
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: var(--text);
         }
         .project-info .project-type {
-            font-size: 0.75rem; font-weight: 500; letter-spacing: 2px;
-            text-transform: uppercase; color: var(--accent); margin-bottom: 12px; opacity: 0.8;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+            opacity: 0.8;
         }
         .project-info p {
-            font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; max-width: 500px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 500px;
         }
-        .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
         .project-tech span {
-            font-size: 0.7rem; padding: 4px 12px; border: 1px solid var(--border);
-            border-radius: 50px; color: var(--text-secondary); letter-spacing: 0.5px;
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
         }
-        .project-arrow {
-            font-size: 1.5rem; color: var(--text-muted);
-            transition: all 0.4s ease; opacity: 0.4;
+        .project-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 100px;
         }
-        .project-card:hover .project-arrow { opacity: 1; transform: translateX(4px); color: var(--text); }
+        .project-visual svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* ========== BOTÓN CTA EN CARDS ========== */
+        .project-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            border-radius: 50px;
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            white-space: nowrap;
+        }
+        .project-cta::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover .project-cta {
+            background: var(--accent);
+            color: var(--bg);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .project-card:hover .project-cta::after {
+            transform: translateX(4px);
+        }
+
         @media (max-width: 768px) {
-            .project-card { grid-template-columns: 1fr; gap: 16px; padding: 32px 24px; }
-            .project-arrow { display: none; }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                padding: 32px 24px;
+            }
+            .project-visual {
+                justify-content: flex-start;
+            }
+            .project-cta {
+                align-self: flex-start;
+            }
         }
 
         /* ========== STACK ========== */
@@ -330,13 +410,99 @@
         .stack-item i { font-size: 1.5rem; }
         .stack-item span { font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); letter-spacing: -0.2px; }
 
-        /* ========== ABOUT ========== */
-        .about-text { max-width: 600px; }
+        /* ========== ABOUT (2 COLUMNAS: TEXTO IZQ + TERMINAL DER) ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
         .about-text p {
             font-size: 1.05rem; font-weight: 300; line-height: 1.9;
             color: var(--text-secondary); margin-bottom: 24px;
         }
         .about-text .highlight { color: var(--text); font-weight: 500; }
+
+        /* ========== TERMINAL DE CÓDIGO ========== */
+        .code-terminal {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #0d0d0d;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 20px;
+            background: #111111;
+            border-bottom: 1px solid var(--border);
+        }
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-dot.red { background: #ff5f57; }
+        .terminal-dot.yellow { background: #febc2e; }
+        .terminal-dot.green { background: #28c840; }
+        .terminal-title {
+            margin-left: 8px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        .terminal-body {
+            padding: 24px 20px;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 0.78rem;
+            line-height: 2;
+            color: #c9d1d9;
+        }
+        .code-line {
+            display: flex;
+            align-items: center;
+            opacity: 0.9;
+        }
+        .line-number {
+            color: #444;
+            min-width: 28px;
+            text-align: right;
+            margin-right: 16px;
+            user-select: none;
+            font-size: 0.7rem;
+        }
+        .code-indent {
+            display: inline-block;
+            width: 20px;
+        }
+        .code-keyword { color: #ff79c6; }
+        .code-class { color: #8be9fd; }
+        .code-this { color: #ff79c6; }
+        .code-prop { color: #f1fa8c; }
+        .code-string { color: #50fa7b; }
+        .code-var { color: #bd93f9; }
+        .code-function { color: #ffb86c; }
+        .typing-text {
+            color: #f1fa8c;
+        }
+        .cursor-blink {
+            animation: cursorBlink 0.8s infinite;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
 
         /* ========== CONTACT ========== */
         .contact-links { display: flex; flex-direction: column; gap: 20px; }
@@ -404,7 +570,6 @@
                         <rect x="60" y="200" width="280" height="12" rx="4" fill="#2a2a3a" stroke="#3a3a4a" stroke-width="1"/>
                         <rect x="90" y="212" width="220" height="6" rx="3" fill="#1a1a2a"/>
                         <rect x="70" y="30" width="260" height="170" rx="8" fill="url(#screenGrad)" stroke="#3a3a4a" stroke-width="2"/>
-                        <rect x="70" y="30" width="260" height="170" rx="8" fill="url(#screenGrad)" opacity="0.5"/>
                         <rect x="88" y="50" width="100" height="4" rx="2" fill="#a78bfa" opacity="0.9"/>
                         <rect x="88" y="62" width="140" height="4" rx="2" fill="#60a5fa" opacity="0.7"/>
                         <rect x="108" y="74" width="90" height="4" rx="2" fill="#f15a24" opacity="0.6"/>
@@ -433,16 +598,32 @@
             <p class="section-tag" data-aos="fade-up">Proyectos</p>
             <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Lo que he<br>construido</h2>
             <div class="projects-grid">
+                
+                <!-- CARD 1: LUMINA -->
                 <a href="#" class="project-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="project-info">
                         <p class="project-type">Sistema Médico con Inteligencia Artificial</p>
                         <h3>Lumina</h3>
-                        <p>Sistema integral para clínicas que integra IA (Gemini 2.5 Flash) para diagnósticos y planes nutricionales. Química sanguínea, composición corporal, SMAE y más.</p>
+                        <p>Sistema integral para clínicas que integra IA (Gemini 2.5 Flash) para diagnósticos y planes nutricionales.</p>
                         <div class="project-tech"><span>C#</span><span>ASP.NET Core</span><span>Entity Framework</span><span>SQL Server</span><span>Gemini API</span></div>
                     </div>
-                    <span class="project-arrow">↗</span>
+                    <div class="project-visual">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="15" y="20" width="70" height="55" rx="4" fill="#0d0d1a" stroke="#3a3a4a" stroke-width="1.5"/>
+                            <rect x="18" y="23" width="64" height="10" rx="2" fill="#111"/>
+                            <circle cx="78" cy="28" r="2" fill="#ff5f57"/>
+                            <polyline points="20,60 30,60 35,45 45,70 55,35 60,60 80,60" fill="none" stroke="#ff5f57" stroke-width="1.8" stroke-linejoin="round">
+                                <animate attributeName="stroke-dasharray" values="0,200;200,0" dur="2s" repeatCount="indefinite"/>
+                            </polyline>
+                            <rect x="30" y="68" width="40" height="3" rx="1.5" fill="#28c840" opacity="0.7">
+                                <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1s" repeatCount="indefinite"/>
+                            </rect>
+                        </svg>
+                    </div>
+                    <span class="project-cta">Ver sistema</span>
                 </a>
-                <!-- ✅ FLECHA AHORA APUNTA A PORTAFOLIO.HTML -->
+
+                <!-- CARD 2: SITIOS WEB CORPORATIVOS -->
                 <a href="portafolio.html" class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-info">
                         <p class="project-type">Desarrollo Web</p>
@@ -450,17 +631,88 @@
                         <p>Páginas profesionales con diseño personalizado, formularios, galerías y hosting gratuito. SEO, responsive, y panel opcional.</p>
                         <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span></div>
                     </div>
-                    <span class="project-arrow">↗</span>
+                    <div class="project-visual">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="10" y="35" width="18" height="45" fill="#1a1a2e" stroke="#3a3a4a" stroke-width="1.2">
+                                <animate attributeName="height" values="0;45" dur="1.5s" fill="freeze" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="80;35" dur="1.5s" fill="freeze" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="32" y="15" width="14" height="65" fill="#1a1a2e" stroke="#3a3a4a" stroke-width="1.2">
+                                <animate attributeName="height" values="0;65" dur="1.5s" begin="0.2s" fill="freeze" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="80;15" dur="1.5s" begin="0.2s" fill="freeze" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="50" y="45" width="22" height="35" fill="#1a1a2e" stroke="#3a3a4a" stroke-width="1.2">
+                                <animate attributeName="height" values="0;35" dur="1.5s" begin="0.4s" fill="freeze" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="80;45" dur="1.5s" begin="0.4s" fill="freeze" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="76" y="55" width="14" height="25" fill="#1a1a2e" stroke="#3a3a4a" stroke-width="1.2">
+                                <animate attributeName="height" values="0;25" dur="1.5s" begin="0.6s" fill="freeze" repeatCount="indefinite"/>
+                                <animate attributeName="y" values="80;55" dur="1.5s" begin="0.6s" fill="freeze" repeatCount="indefinite"/>
+                            </rect>
+                            <circle cx="50" cy="50" r="3" fill="#a78bfa" opacity="0">
+                                <animate attributeName="opacity" values="0;0.8;0" dur="2s" begin="1s" repeatCount="indefinite"/>
+                                <animate attributeName="r" values="3;8;3" dur="2s" begin="1s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                    </div>
+                    <span class="project-cta">Ver sitios</span>
                 </a>
+
+                <!-- CARD 3: SITIOS WEB PERSONALES -->
+                <a href="https://miguelhuerta-dev.github.io/leticia-vazquez-arte/" class="project-card" data-aos="fade-up" data-aos-delay="225">
+                    <div class="project-info">
+                        <p class="project-type">Desarrollo Web</p>
+                        <h3>Sitios Web Personales</h3>
+                        <p>Portafolios artísticos, sitios para profesionales independientes y landing pages con identidad única.</p>
+                        <div class="project-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GitHub Pages</span></div>
+                    </div>
+                    <div class="project-visual">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="15" y="10" width="70" height="70" rx="2" fill="#0d0d1a" stroke="#5a4a3a" stroke-width="2"/>
+                            <circle cx="50" cy="45" r="18" fill="none" stroke="#a78bfa" stroke-width="2" opacity="0.6">
+                                <animate attributeName="r" values="18;22;18" dur="3s" repeatCount="indefinite"/>
+                                <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M40,55 Q55,35 60,55 T75,55" fill="none" stroke="#ff79c6" stroke-width="2" stroke-linecap="round">
+                                <animate attributeName="stroke-dasharray" values="0,80;80,0" dur="2s" repeatCount="indefinite"/>
+                            </path>
+                            <circle cx="65" cy="30" r="2" fill="#f1fa8c">
+                                <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="38" cy="38" r="1.5" fill="#50fa7b">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                    </div>
+                    <span class="project-cta">Ver portafolios</span>
+                </a>
+
+                <!-- CARD 4: VIDEOJUEGO -->
                 <a href="#" class="project-card" data-aos="fade-up" data-aos-delay="250">
                     <div class="project-info">
                         <p class="project-type">Videojuego Interactivo</p>
                         <h3>Sistema de Retos con Pygame</h3>
-                        <p>Experiencia interactiva con animaciones, colisiones y lógica de juego. Sistema de puntuación, niveles y gestión de estados.</p>
+                        <p>Experiencia interactiva con animaciones, colisiones y lógica de juego. Sistema de puntuación y niveles.</p>
                         <div class="project-tech"><span>Python</span><span>Pygame</span></div>
                     </div>
-                    <span class="project-arrow">↗</span>
+                    <div class="project-visual">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="30" width="60" height="35" rx="8" fill="#0d0d1a" stroke="#3a3a4a" stroke-width="1.5"/>
+                            <rect x="30" y="50" width="40" height="10" rx="4" fill="#111" stroke="#2a2a3a" stroke-width="1"/>
+                            <circle cx="35" cy="47" r="6" fill="#1a1a2e" stroke="#a78bfa" stroke-width="1.2">
+                                <animate attributeName="fill" values="#1a1a2e;#a78bfa;#1a1a2e" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                            <circle cx="65" cy="47" r="5" fill="#1a1a2e" stroke="#ff79c6" stroke-width="1.2">
+                                <animate attributeName="fill" values="#1a1a2e;#ff79c6;#1a1a2e" dur="1.8s" repeatCount="indefinite"/>
+                            </circle>
+                            <rect x="44" y="44" width="12" height="6" rx="2" fill="#f1fa8c" opacity="0.6">
+                                <animate attributeName="opacity" values="0.6;0;0.6" dur="0.8s" repeatCount="indefinite"/>
+                            </rect>
+                        </svg>
+                    </div>
+                    <span class="project-cta">Ver proyecto</span>
                 </a>
+
             </div>
         </div>
     </section>
@@ -485,16 +737,60 @@
         </div>
     </section>
 
-    <!-- ==================== ABOUT ==================== -->
+    <!-- ==================== ABOUT (2 COLUMNAS) ==================== -->
     <section class="section" id="sobre-mi">
         <div class="section-inner">
             <p class="section-tag" data-aos="fade-up">Sobre mí</p>
             <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Más que<br>código</h2>
-            <div class="about-text" data-aos="fade-up" data-aos-delay="150">
-                <p>Soy <span class="highlight">desarrollador de software y web</span> enfocado en crear soluciones digitales que generan resultados reales para negocios y profesionales de la salud.</p>
-                <p>Mi proyecto más ambicioso, <span class="highlight">Lumina</span>, integra inteligencia artificial para apoyar a médicos y nutriólogos en diagnósticos clínicos y planes nutricionales personalizados.</p>
-                <p>No solo escribo código. <span class="highlight">Entiendo tu negocio</span>, tu mercado y lo que necesitas para destacar. Desde una landing page hasta un sistema médico con IA.</p>
-                <p>Si tu negocio no tiene presencia digital profesional, estás perdiendo clientes. <span class="highlight">Yo evito que eso pase.</span></p>
+            <div class="about-grid">
+                <div class="about-text" data-aos="fade-up" data-aos-delay="150">
+                    <p>Soy <span class="highlight">desarrollador de software y web</span> enfocado en crear soluciones digitales que generan resultados reales para negocios y profesionales de la salud.</p>
+                    <p>Mi proyecto más ambicioso, <span class="highlight">Lumina</span>, integra inteligencia artificial para apoyar a médicos y nutriólogos en diagnósticos clínicos y planes nutricionales personalizados.</p>
+                    <p>No solo escribo código. <span class="highlight">Entiendo tu negocio</span>, tu mercado y lo que necesitas para destacar. Desde una landing page hasta un sistema médico con IA.</p>
+                    <p>Si tu negocio no tiene presencia digital profesional, estás perdiendo clientes. <span class="highlight">Yo evito que eso pase.</span></p>
+                </div>
+                <div class="code-terminal" data-aos="fade-up" data-aos-delay="300">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">miguelhuerta/dev</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="code-line">
+                            <span class="line-number">1</span>
+                            <span class="code-keyword">class</span> <span class="code-class">Desarrollador</span> {
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">2</span>
+                            <span class="code-indent"></span><span class="code-keyword">constructor</span>() {
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">3</span>
+                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">nombre</span> = <span class="code-string">"Miguel Ángel Huerta Vázquez"</span>;
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">4</span>
+                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">rol</span> = <span class="code-string">"Full-Stack & Software Developer"</span>;
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">5</span>
+                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">stack</span> = [<span class="code-string">"HTML5"</span>, <span class="code-string">"CSS3"</span>, <span class="code-string">"JS"</span>, <span class="code-string">"Python"</span>, <span class="code-string">"C#"</span>];
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">6</span>
+                            <span class="code-indent"></span><span class="code-indent"></span><span class="code-this">this</span>.<span class="code-prop">mision</span> = <span class="code-string">"</span><span class="typing-text" id="typingText"></span><span class="code-string">"</span>;
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">7</span>
+                            <span class="code-indent"></span>}
+                        </div>
+                        <div class="code-line">
+                            <span class="line-number">8</span>
+                            }
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -521,6 +817,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init({ once: true, offset: 80, duration: 700 });
+
+        // Cursor glow
         const cursorGlow = document.getElementById('cursor-glow');
         document.addEventListener('mousemove', (e) => {
             cursorGlow.style.left = e.clientX + 'px';
@@ -528,8 +826,43 @@
         });
         document.addEventListener('mouseleave', () => { cursorGlow.style.opacity = '0'; });
         document.addEventListener('mouseenter', () => { cursorGlow.style.opacity = '1'; });
+
+        // Texto que se escribe solo en la terminal
+        const phrases = [
+            "Transformar ideas en soluciones digitales.",
+            "Crear software que impacta vidas.",
+            "Unir la lógica del código con la empatía del negocio.",
+            "Construir el futuro, una línea a la vez.",
+            "Resolver problemas reales con tecnología real."
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typingText');
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+
+            if (!isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2000);
+                    return;
+                }
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                }
+            }
+            setTimeout(typeEffect, isDeleting ? 30 : 60);
+        }
+
+        typeEffect();
     </script>
 </body>
-
-    <!-- 01000101 01101100 00100000 01110010 01100101 01110100 01101111 01110010 01101110 01101111 00100000 01100100 01100101 01101100 00100000 01101000 01101001 01101010 01101111 00100000 01010000 01110010 11110011 01100100 01101001 01100111 01101111 -->
 </html>
