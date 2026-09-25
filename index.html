@@ -532,6 +532,196 @@
             .laptop-svg { width: 220px; }
         }
 
+        /* ========== ÚLTIMO PROYECTO (ESCALERA DIAGONAL) ========== */
+        .latest-project {
+            position: relative;
+            overflow: hidden;
+        }
+        .lp-header { margin-bottom: 20px; }
+        .lp-codename {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-weight: 600;
+        }
+        .lp-codename .lp-prompt {
+            color: var(--accent);
+            margin-right: 4px;
+            opacity: 0.8;
+        }
+        .lp-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            padding: 7px 14px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+        .lp-status i {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 8px #4ade80;
+            animation: lpBlink 1.6s ease-in-out infinite;
+        }
+        @keyframes lpBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .lp-intro {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            max-width: 620px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .lp-tech {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 60px;
+            letter-spacing: 0.3px;
+        }
+        .lp-tech span { color: var(--accent); opacity: 0.85; }
+
+        .lp-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 90px;
+        }
+        .lp-step {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 56px;
+            align-items: center;
+        }
+        .lp-step:nth-child(even) {
+            grid-template-columns: 0.95fr 1.05fr;
+        }
+        .lp-step:nth-child(even) .lp-media { order: 2; }
+        .lp-step:nth-child(even) .lp-text { order: 1; text-align: right; }
+        .lp-step:nth-child(even) .lp-tech-row { justify-content: flex-end; }
+
+        /* Escalera: cada paso se desplaza un poco más que el anterior */
+        .lp-step:nth-child(1) { margin-left: 0; }
+        .lp-step:nth-child(2) { margin-left: 5%; }
+        .lp-step:nth-child(3) { margin-left: 10%; }
+        .lp-step:nth-child(4) { margin-left: 15%; }
+
+        .lp-step-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+        .lp-text h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+        .lp-text p {
+            font-size: 0.92rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 420px;
+        }
+        .lp-step:nth-child(even) .lp-text p { margin-left: auto; }
+
+        .lp-media {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: #0d0d0d;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+            transition: border-color 0.4s ease, transform 0.4s ease;
+        }
+        .lp-media:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+        .lp-media-chrome {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 14px;
+            background: #111111;
+            border-bottom: 1px solid var(--border);
+        }
+        .lp-media-chrome span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+        .lp-media-chrome span:nth-child(1) { background: #ff5f57; }
+        .lp-media-chrome span:nth-child(2) { background: #febc2e; }
+        .lp-media-chrome span:nth-child(3) { background: #28c840; }
+        .lp-media-frame {
+            position: relative;
+            aspect-ratio: 16 / 10;
+            width: 100%;
+        }
+        .lp-media-frame video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .lp-media.has-video .lp-media-frame video { display: block; }
+        .lp-media.has-video .lp-placeholder { display: none; }
+        .lp-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0d0d1a 100%);
+        }
+        .lp-placeholder svg {
+            width: 34px;
+            height: 34px;
+            color: var(--text-muted);
+            opacity: 0.35;
+        }
+        .lp-placeholder span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            opacity: 0.6;
+        }
+
+        @media (max-width: 900px) {
+            .lp-step,
+            .lp-step:nth-child(even) {
+                grid-template-columns: 1fr;
+                margin-left: 0 !important;
+                gap: 24px;
+            }
+            .lp-step:nth-child(even) .lp-media,
+            .lp-step:nth-child(even) .lp-text { order: initial; }
+            .lp-step:nth-child(even) .lp-text,
+            .lp-step:nth-child(even) .lp-text p {
+                text-align: left;
+                margin-left: 0;
+            }
+            .lp-step:nth-child(even) .lp-tech-row { justify-content: flex-start; }
+            .lp-steps { gap: 56px; }
+        }
+
         /* ========== CONTACT ========== */
         .contact-links { display: flex; flex-direction: column; gap: 20px; }
         .contact-link {
@@ -563,6 +753,7 @@
         <a href="#" class="nav-logo">INICIO</a>
         <ul class="nav-links">
             <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#ultimo-proyecto">Último Proyecto</a></li>
             <li><a href="portafolio.html">Portafolio Web</a></li>
             <li><a href="#stack">Stack</a></li>
             <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -634,6 +825,129 @@
             </div>
         </div>
     </section>
+
+    <!-- ==================== ÚLTIMO PROYECTO (ESCALERA DIAGONAL) ==================== -->
+    <section class="section latest-project" id="ultimo-proyecto">
+        <div class="section-inner">
+            <div class="lp-header">
+                <p class="section-tag" data-aos="fade-up">Último Proyecto</p>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+                    <span class="lp-codename"><span class="lp-prompt">~/</span>mentoring-crm-system</span>
+                </h2>
+            </div>
+            <span class="lp-status" data-aos="fade-up" data-aos-delay="150"><i></i>Vendido  · en desarrollo</span>
+            <p class="lp-intro" data-aos="fade-up" data-aos-delay="200">
+                CRM a la medida para un mentor ejecutivo de alto nivel. Reemplaza WhatsApp, notas sueltas
+                y memoria por un sistema real de gestión de cartera — con panel dual para el mentor y para
+                cada mentorado.
+            </p>
+            <p class="lp-tech" data-aos="fade-up" data-aos-delay="250">
+                <span>ASP.NET Core 8</span> · <span>C# 12</span> · <span>Entity Framework Core</span> · <span>SQL Server</span> · <span>Bootstrap 5</span> · <span>SignalR</span>
+            </p>
+
+            <div class="lp-steps">
+
+                <!-- PASO 1 -->
+                <div class="lp-step" data-aos="fade-up">
+                    <div class="lp-media">
+                        <div class="lp-media-chrome"><span></span><span></span><span></span></div>
+                        <div class="lp-media-frame">
+                            <video src="assets/videos/mentoring-crm-01-dashboard.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="lp-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                                <span>Clip pendiente</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-text">
+                        <p class="lp-step-number">01 · Dashboard del Mentor</p>
+                        <h3>Todo el negocio en un vistazo</h3>
+                        <p>Stats en tiempo real: mentorados activos, tareas pendientes, ingresos proyectados y alertas CRM, sin abrir cinco pestañas distintas.</p>
+                    </div>
+                </div>
+
+                <!-- PASO 2 -->
+                <div class="lp-step" data-aos="fade-up">
+                    <div class="lp-media">
+                        <div class="lp-media-chrome"><span></span><span></span><span></span></div>
+                        <div class="lp-media-frame">
+                            <video src="assets/videos/mentoring-crm-02-crm.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="lp-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                                <span>Clip pendiente</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-text">
+                        <p class="lp-step-number">02 · CRM de Mentorados</p>
+                        <h3>La cartera completa, filtrable</h3>
+                        <p>Lista por estado — Activo, Pausa, Prospecto, Finalizado — con búsqueda y progreso visual de cada cliente en su tarjeta.</p>
+                    </div>
+                </div>
+
+                <!-- PASO 3 -->
+                <div class="lp-step" data-aos="fade-up">
+                    <div class="lp-media">
+                        <div class="lp-media-chrome"><span></span><span></span><span></span></div>
+                        <div class="lp-media-frame">
+                            <video src="assets/videos/mentoring-crm-03-timeline.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="lp-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                                <span>Clip pendiente</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-text">
+                        <p class="lp-step-number">03 · Ficha de Mentorado</p>
+                        <h3>Historial completo, sin memoria</h3>
+                        <p>Timeline cronológico de interacciones — llamadas, sesiones, WhatsApp, notas — junto con tareas asignadas y progreso, todo en un solo lugar.</p>
+                    </div>
+                </div>
+
+                <!-- PASO 4 -->
+                <div class="lp-step" data-aos="fade-up">
+                    <div class="lp-media">
+                        <div class="lp-media-chrome"><span></span><span></span><span></span></div>
+                        <div class="lp-media-frame">
+                            <video src="assets/videos/mentoring-crm-04-mentorado.mp4" muted loop playsinline preload="metadata"></video>
+                            <div class="lp-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                                <span>Clip pendiente</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-text">
+                        <p class="lp-step-number">04 · Panel del Mentorado</p>
+                        <h3>La experiencia del lado del cliente</h3>
+                        <p>Vista personal mobile-first: tareas asignadas, progreso general y mensajes recientes — sin descargar ninguna app.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== STACK ==================== -->
+    <section class="section" id="stack" style="background: var(--bg-elevated);">
+        <div class="section-inner">
+            <p class="section-tag" data-aos="fade-up">Stack Tecnológico</p>
+            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Tecnologías<br>que domino</h2>
+            <div class="stack-container">
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="50"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="80"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="110"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="140"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="170"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="200"><i class="devicon-dotnetcore-plain colored"></i><span>ASP.NET Core</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="230"><i class="devicon-microsoftsqlserver-plain colored"></i><span>SQL Server</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="260"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="290"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+                <div class="stack-item" data-aos="zoom-in" data-aos-delay="320"><i class="devicon-github-plain"></i><span>GitHub Pages</span></div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- ==================== PROJECTS ==================== -->
     <section class="section" id="proyectos">
@@ -760,25 +1074,7 @@
         </div>
     </section>
 
-    <!-- ==================== STACK ==================== -->
-    <section class="section" id="stack" style="background: var(--bg-elevated);">
-        <div class="section-inner">
-            <p class="section-tag" data-aos="fade-up">Stack Tecnológico</p>
-            <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Tecnologías<br>que domino</h2>
-            <div class="stack-container">
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="50"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="80"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="110"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="140"><i class="devicon-python-plain colored"></i><span>Python</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="170"><i class="devicon-java-plain colored"></i><span>Java</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="200"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="230"><i class="devicon-dotnetcore-plain colored"></i><span>ASP.NET Core</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="260"><i class="devicon-microsoftsqlserver-plain colored"></i><span>SQL Server</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="290"><i class="devicon-git-plain colored"></i><span>Git</span></div>
-                <div class="stack-item" data-aos="zoom-in" data-aos-delay="320"><i class="devicon-github-plain"></i><span>GitHub Pages</span></div>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- ==================== ABOUT (2 COLUMNAS: TEXTO IZQ + LAPTOP DER) ==================== -->
     <section class="section" id="sobre-mi">
@@ -828,6 +1124,7 @@
         </div>
     </section>
 
+    
     <!-- ==================== CONTACT ==================== -->
     <section class="section" id="contacto" style="background: var(--bg-elevated);">
         <div class="section-inner">
@@ -896,6 +1193,25 @@
         }
 
         typeEffect();
+
+        // ===== Último Proyecto: hover-play + placeholder inteligente =====
+        // Si el <video> no tiene un archivo válido en la ruta, se queda
+        // visible el placeholder "Clip pendiente". En cuanto subas el
+        // mp4 real a assets/videos/ con el mismo nombre, esto se activa
+        // solo — no hay que tocar nada más.
+        document.querySelectorAll('.lp-media').forEach((mediaBox) => {
+            const video = mediaBox.querySelector('video');
+            if (!video) return;
+
+            video.addEventListener('loadeddata', () => mediaBox.classList.add('has-video'));
+            video.addEventListener('error', () => mediaBox.classList.remove('has-video'));
+
+            mediaBox.addEventListener('mouseenter', () => video.play().catch(() => {}));
+            mediaBox.addEventListener('mouseleave', () => {
+                video.pause();
+                video.currentTime = 0;
+            });
+        });
     </script>
 </body>
 </html>
