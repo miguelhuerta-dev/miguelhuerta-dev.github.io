@@ -246,6 +246,73 @@
             z-index: 5;
         }
 
+        /* ========== CASOS DESTACADOS ========== */
+        .cases-section { padding: 20px 40px 120px; position: relative; z-index: 2; }
+        .cases-head { text-align: center; margin-bottom: 64px; }
+        .cases-head h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 12px; }
+        .cases-head p:last-child { color: var(--text-muted); font-weight: 300; }
+        .case {
+            display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: start;
+            padding: 56px 0; border-top: 1px solid var(--border);
+        }
+        .case.rev .case-media { order: 2; }
+        .case-media {
+            position: sticky; top: 90px; border: 1px solid var(--border); border-radius: var(--radius);
+            overflow: hidden; background: var(--bg-card); box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+        }
+        .case-chrome { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--bg-elevated); border-bottom: 1px solid var(--border); }
+        .case-chrome span { width: 9px; height: 9px; border-radius: 50%; }
+        .case-chrome span:nth-child(1) { background: #ff5f57; }
+        .case-chrome span:nth-child(2) { background: #febc2e; }
+        .case-chrome span:nth-child(3) { background: #28c840; }
+        .case-chrome em {
+            font-style: normal; font-size: 0.68rem; color: var(--text-muted); margin-left: 12px; letter-spacing: 0.3px;
+            background: rgba(255,255,255,0.04); padding: 3px 12px; border-radius: 50px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+        .case-shots { position: relative; aspect-ratio: 16 / 9; background: #000; }
+        .case-shots img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            opacity: 0; transition: opacity 0.6s ease;
+        }
+        .case-shots img.on { opacity: 1; }
+        .case-progress { height: 2px; background: var(--border); }
+        .case-progress i { display: block; height: 100%; width: 0; background: var(--accent); }
+        .case-progress i.run { width: 100%; transition: width 4s linear; }
+        .case-info h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 14px; }
+        .case-desc { color: var(--text-secondary); font-weight: 300; font-size: 0.95rem; line-height: 1.75; margin-bottom: 22px; }
+        .case-features { list-style: none; display: grid; gap: 4px; margin-bottom: 22px; }
+        .case-features li {
+            display: flex; gap: 14px; align-items: flex-start; padding: 11px 14px; border-radius: 12px;
+            border: 1px solid transparent; transition: all var(--transition);
+        }
+        .case-features li[data-i] { cursor: pointer; }
+        .case-features li[data-i]:hover { background: rgba(255,255,255,0.03); }
+        .case-features li.on { border-color: var(--border-hover); background: rgba(167,139,250,0.06); }
+        .case-features i { color: var(--accent); font-size: 1.05rem; margin-top: 2px; }
+        .case-features strong { display: block; font-size: 0.9rem; font-weight: 600; color: var(--text); letter-spacing: -0.2px; }
+        .case-features span { display: block; font-size: 0.8rem; color: var(--text-muted); line-height: 1.55; margin-top: 2px; }
+        .case-info .video-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+        .case-info .video-tags span { font-size: 0.65rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 50px; color: var(--text-muted); letter-spacing: 0.5px; }
+        .case-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+        .case-actions .btn-visitar, .case-actions .btn-visitar-outline { margin-left: 0; }
+        .case-actions .btn-visitar {
+            display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #000; font-weight: 600;
+            font-size: 0.8rem; padding: 10px 20px; border-radius: 50px; text-decoration: none; transition: all var(--transition);
+        }
+        .case-actions .btn-visitar:hover { background: #c4b5fd; transform: translateY(-1px); }
+        .case-actions .btn-visitar-outline {
+            display: inline-flex; align-items: center; gap: 6px; color: var(--text-secondary); font-weight: 500; font-size: 0.8rem;
+            padding: 9px 20px; border-radius: 50px; text-decoration: none; border: 1px solid var(--border); transition: all var(--transition);
+        }
+        .case-actions .btn-visitar-outline:hover { border-color: var(--accent); color: var(--accent); }
+        @media (max-width: 900px) {
+            .cases-section { padding: 10px 20px 90px; }
+            .case { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; }
+            .case.rev .case-media { order: 0; }
+            .case-media { position: relative; top: 0; }
+        }
+
         @media (max-width: 768px) {
             .section-hero { padding: 120px 20px 40px; }
             .gallery-section { padding: 20px 20px 80px; }
@@ -275,7 +342,7 @@
     <section class="section-hero">
         <p class="section-tag">Portafolio Web</p>
         <h1>Proyectos en Video</h1>
-        <p>Explora mis sitios web. Pasa el mouse sobre cada video para verlo en acción.</p>
+        <p>Explora mis sitios web. Pasa el mouse sobre cada video para verlo en acción y conoce las funciones de mis proyectos más recientes.</p>
     </section>
 
     <!-- ==================== GALERÍA ==================== -->
@@ -329,6 +396,76 @@
         </div>
     </section>
 
+
+    <!-- ==================== CASOS DESTACADOS ==================== -->
+    <section class="cases-section">
+        <div class="gallery-container">
+            <div class="cases-head">
+                <p class="section-tag">Proyectos recientes</p>
+                <h2>Funciones que hacen la diferencia</h2>
+                <p>Toca cada función para ver cómo se ve en el sitio.</p>
+            </div>
+
+            <!-- ═══════════ GABRIELA L. GONZÁLEZ VÁZQUEZ ═══════════ -->
+            <article class="case" id="gabriela">
+                <div class="case-media">
+                    <div class="case-chrome"><span></span><span></span><span></span><em>gabrielagonzalezvazquez.github.io</em></div>
+                    <div class="case-shots"><img src="assets/img/portafolio/gabriela-01-portada.webp" alt="Gabriela L. González Vázquez — Portada con video de fondo" loading="lazy" class="on" data-i="0"><img src="assets/img/portafolio/gabriela-02-sobre-mi.webp" alt="Gabriela L. González Vázquez — Contadores animados" loading="lazy" class="" data-i="1"><img src="assets/img/portafolio/gabriela-03-areas.webp" alt="Gabriela L. González Vázquez — Áreas de práctica" loading="lazy" class="" data-i="2"><img src="assets/img/portafolio/gabriela-04-trayectoria.webp" alt="Gabriela L. González Vázquez — Trayectoria en línea de tiempo" loading="lazy" class="" data-i="3"><img src="assets/img/portafolio/gabriela-05-habilidades.webp" alt="Gabriela L. González Vázquez — Habilidades e idiomas" loading="lazy" class="" data-i="4"><img src="assets/img/portafolio/gabriela-06-ingles.webp" alt="Gabriela L. González Vázquez — Sitio bilingüe ES / EN" loading="lazy" class="" data-i="5"><img src="assets/img/portafolio/gabriela-07-articulo.webp" alt="Gabriela L. González Vázquez — Blog con artículos propios" loading="lazy" class="" data-i="6"><img src="assets/img/portafolio/gabriela-08-contacto.webp" alt="Gabriela L. González Vázquez — Contacto y aviso de privacidad" loading="lazy" class="" data-i="7"></div>
+                    <div class="case-progress"><i></i></div>
+                </div>
+                <div class="case-info">
+                    <p class="section-tag">Sitio profesional · Abogada corporativa</p>
+                    <h2>Gabriela L. González Vázquez</h2>
+                    <p class="case-desc">Sitio para una abogada corporativa y de compliance: presenta su trayectoria, servicios y artículos en español e inglés, con una línea visual sobria en negro, blanco y azul.</p>
+                    <ul class="case-features">
+<li data-i="0" class="on"><i class="bi bi-play-btn"></i><div><strong>Portada con video de fondo</strong><span>Frase rotativa con sus áreas de práctica y llamadas a la acción.</span></div></li>
+<li data-i="1"><i class="bi bi-123"></i><div><strong>Contadores animados</strong><span>Años de experiencia, países y proyectos que cuentan al hacer scroll.</span></div></li>
+<li data-i="2"><i class="bi bi-briefcase"></i><div><strong>Áreas de práctica</strong><span>Video de borde a borde y seis servicios especializados con íconos.</span></div></li>
+<li data-i="3"><i class="bi bi-diagram-3"></i><div><strong>Trayectoria en línea de tiempo</strong><span>Experiencia con logos de cada institución y efecto parallax.</span></div></li>
+<li data-i="4"><i class="bi bi-bar-chart"></i><div><strong>Habilidades e idiomas</strong><span>Competencias y nivel de idiomas con barras de progreso.</span></div></li>
+<li data-i="5"><i class="bi bi-translate"></i><div><strong>Sitio bilingüe ES / EN</strong><span>Un clic traduce todo el contenido y recuerda la preferencia.</span></div></li>
+<li data-i="6"><i class="bi bi-journal-text"></i><div><strong>Blog con artículos propios</strong><span>Categorías, filtros, barra de progreso de lectura y compartir.</span></div></li>
+<li data-i="7"><i class="bi bi-whatsapp"></i><div><strong>Contacto y aviso de privacidad</strong><span>Correo, WhatsApp con mensaje prellenado y banner de cookies.</span></div></li>
+                    </ul>
+                    <div class="video-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>GSAP</span><span>Bilingüe</span><span>Blog</span></div>
+                    <div class="case-actions">
+                        <a href="https://gabrielagonzalezvazquez.github.io/" target="_blank" rel="noopener" class="btn-visitar"><i class="bi bi-box-arrow-up-right"></i> Visitar Sitio</a>
+                        <a href="https://github.com/gabrielagonzalezvazquez/gabrielagonzalezvazquez.github.io" target="_blank" rel="noopener" class="btn-visitar-outline"><i class="bi bi-github"></i> Código</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ═══════════ BRAVAR SPORTS BAR ═══════════ -->
+            <article class="case rev" id="bravar">
+                <div class="case-media">
+                    <div class="case-chrome"><span></span><span></span><span></span><em>bravarsportsbar.github.io</em></div>
+                    <div class="case-shots"><img src="assets/img/portafolio/bravar-01-portada.webp" alt="Bravar Sports Bar — Portada animada" loading="lazy" class="on" data-i="0"><img src="assets/img/portafolio/bravar-02-destacados.webp" alt="Bravar Sports Bar — Carrusel “Lo más bravo”" loading="lazy" class="" data-i="1"><img src="assets/img/portafolio/bravar-03-menu-libro.webp" alt="Bravar Sports Bar — Menú que se hojea como libro" loading="lazy" class="" data-i="2"><img src="assets/img/portafolio/bravar-04-idiomas.webp" alt="Bravar Sports Bar — 7 idiomas" loading="lazy" class="" data-i="3"><img src="assets/img/portafolio/bravar-05-historias.webp" alt="Bravar Sports Bar — Historias estilo Instagram" loading="lazy" class="" data-i="4"><img src="assets/img/portafolio/bravar-06-ambiente.webp" alt="Bravar Sports Bar — Área de juegos y ambiente" loading="lazy" class="" data-i="5"><img src="assets/img/portafolio/bravar-07-visitanos.webp" alt="Bravar Sports Bar — Visítanos" loading="lazy" class="" data-i="6"></div>
+                    <div class="case-progress"><i></i></div>
+                </div>
+                <div class="case-info">
+                    <p class="section-tag">Restaurante · Sports bar</p>
+                    <h2>Bravar Sports Bar</h2>
+                    <p class="case-desc">Sitio para un sports bar en Apodaca, N.L.: menú interactivo que se hojea como libro, en 7 idiomas y descargable en PDF, más historias, galería y datos para reservar.</p>
+                    <ul class="case-features">
+<li data-i="0" class="on"><i class="bi bi-stars"></i><div><strong>Portada animada</strong><span>Título que se arma letra por letra, horario y botón de reserva.</span></div></li>
+<li data-i="1"><i class="bi bi-collection"></i><div><strong>Carrusel “Lo más bravo”</strong><span>Platillos con precio y descripción; avanza solo o con flechas.</span></div></li>
+<li data-i="2"><i class="bi bi-book"></i><div><strong>Menú que se hojea como libro</strong><span>Clic, flechas, deslizar o saltar por sección. Con zoom para leer.</span></div></li>
+<li data-i="3"><i class="bi bi-globe2"></i><div><strong>7 idiomas</strong><span>Interfaz y hojas del menú en ES, EN, FR, DE, JA, KO y ZH.</span></div></li>
+<li><i class="bi bi-file-earmark-pdf"></i><div><strong>Menú en PDF</strong><span>Se genera en el navegador en el idioma elegido, listo para descargar.</span></div></li>
+<li data-i="4"><i class="bi bi-instagram"></i><div><strong>Historias estilo Instagram</strong><span>Cada historia y publicación enlaza directo a sus redes.</span></div></li>
+<li data-i="5"><i class="bi bi-controller"></i><div><strong>Área de juegos y ambiente</strong><span>Galería con animaciones al hacer scroll.</span></div></li>
+<li data-i="6"><i class="bi bi-geo-alt"></i><div><strong>Visítanos</strong><span>Horario, reservaciones, mapa y teléfono en un solo lugar.</span></div></li>
+                    </ul>
+                    <div class="video-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>7 idiomas</span><span>PDF en navegador</span><span>Sin dependencias</span></div>
+                    <div class="case-actions">
+                        <a href="https://bravarsportsbar.github.io/" target="_blank" rel="noopener" class="btn-visitar"><i class="bi bi-box-arrow-up-right"></i> Visitar Sitio</a>
+                        <a href="https://github.com/bravarsportsbar/bravarsportsbar.github.io" target="_blank" rel="noopener" class="btn-visitar-outline"><i class="bi bi-github"></i> Código</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
     <!-- ==================== WHATSAPP ==================== -->
     <a href="https://wa.me/5212211038688" style="position:fixed;bottom:28px;right:28px;z-index:9999;background:#25D366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 6px 24px rgba(37,211,102,0.4);text-decoration:none;animation:pulse 2s infinite;" target="_blank">
         <i class="bi bi-whatsapp"></i>
@@ -352,6 +489,37 @@
                 video.pause();
                 video.currentTime = 0;
             });
+        });
+    </script>
+
+    <!-- ==================== CASOS: GALERÍA DE FUNCIONES ==================== -->
+    <script>
+        document.querySelectorAll('.case').forEach(cs => {
+            const imgs = [...cs.querySelectorAll('.case-shots img')];
+            const items = [...cs.querySelectorAll('.case-features li[data-i]')];
+            const bar = cs.querySelector('.case-progress i');
+            let cur = 0, timer = null, visible = false, hold = false;
+
+            const show = (i) => {
+                cur = (i + imgs.length) % imgs.length;
+                imgs.forEach((im, k) => im.classList.toggle('on', k === cur));
+                items.forEach(li => li.classList.toggle('on', +li.dataset.i === cur));
+                bar.classList.remove('run'); void bar.offsetWidth;
+                if (visible && !hold) bar.classList.add('run');
+            };
+            const tick = () => { if (visible && !hold) show(cur + 1); };
+            const start = () => { clearInterval(timer); timer = setInterval(tick, 4000); show(cur); };
+
+            items.forEach(li => {
+                li.addEventListener('click', () => { hold = true; clearInterval(timer); show(+li.dataset.i); });
+                li.addEventListener('mouseenter', () => { if (matchMedia('(hover:hover)').matches) { hold = true; clearInterval(timer); show(+li.dataset.i); } });
+            });
+            cs.querySelector('.case-features').addEventListener('mouseleave', () => { if (hold) { hold = false; start(); } });
+
+            new IntersectionObserver(es => es.forEach(e => {
+                visible = e.isIntersecting;
+                if (visible) start(); else { clearInterval(timer); bar.classList.remove('run'); }
+            }), { threshold: 0.3 }).observe(cs);
         });
     </script>
 

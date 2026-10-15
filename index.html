@@ -612,6 +612,7 @@
         .lp-step:nth-child(2) { margin-left: 5%; }
         .lp-step:nth-child(3) { margin-left: 10%; }
         .lp-step:nth-child(4) { margin-left: 15%; }
+        .lp-step:nth-child(5) { margin-left: 20%; }
 
         .lp-step-number {
             font-family: 'JetBrains Mono', monospace;
@@ -668,7 +669,7 @@
         .lp-media-chrome span:nth-child(3) { background: #28c840; }
         .lp-media-frame {
             position: relative;
-            aspect-ratio: 16 / 10;
+            aspect-ratio: 16 / 9;
             width: 100%;
         }
         .lp-media-frame video {
@@ -720,6 +721,50 @@
             }
             .lp-step:nth-child(even) .lp-tech-row { justify-content: flex-start; }
             .lp-steps { gap: 56px; }
+        }
+
+        /* Demo completa + modal */
+        .lp-full {
+            margin-top: 100px;
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 48px;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 70px;
+        }
+        .lp-full-text h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 12px; }
+        .lp-full-text p { font-size: 0.92rem; font-weight: 300; color: var(--text-secondary); line-height: 1.8; }
+        .lp-full-btn {
+            position: relative; display: block; width: 100%; padding: 0; border: 1px solid var(--border);
+            border-radius: 12px; overflow: hidden; background: #0d0d0d; cursor: pointer;
+            aspect-ratio: 16 / 9; transition: border-color 0.4s ease, transform 0.4s ease;
+        }
+        .lp-full-btn:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+        .lp-full-btn img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.75; transition: opacity 0.4s ease; }
+        .lp-full-btn:hover img { opacity: 0.95; }
+        .lp-play {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 74px; height: 74px; border-radius: 50%; background: var(--accent); color: var(--bg);
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 0 10px rgba(167, 139, 250, 0.18), 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+        .lp-play svg { width: 30px; height: 30px; margin-left: 4px; }
+        .lp-modal {
+            position: fixed; inset: 0; z-index: 1000; background: rgba(0, 0, 0, 0.88);
+            display: none; align-items: center; justify-content: center; padding: 24px;
+            backdrop-filter: blur(6px);
+        }
+        .lp-modal.open { display: flex; }
+        .lp-modal-inner { position: relative; width: 100%; max-width: 1100px; }
+        .lp-modal-inner video { width: 100%; border-radius: 12px; display: block; background: #000; }
+        .lp-modal-close {
+            position: absolute; top: -46px; right: 0; background: transparent; color: var(--text);
+            border: 1px solid var(--border); border-radius: 50px; width: 36px; height: 36px; cursor: pointer; font-size: 0.9rem;
+        }
+        .lp-modal-close:hover { border-color: var(--accent); color: var(--accent); }
+        @media (max-width: 900px) {
+            .lp-full { grid-template-columns: 1fr; gap: 24px; margin-top: 70px; padding-top: 50px; }
         }
 
         /* ========== CONTACT ========== */
@@ -835,7 +880,7 @@
                     <span class="lp-codename"><span class="lp-prompt">~/</span>mentoring-crm-system</span>
                 </h2>
             </div>
-            <span class="lp-status" data-aos="fade-up" data-aos-delay="150"><i></i>Vendido  · en desarrollo</span>
+            <span class="lp-status" data-aos="fade-up" data-aos-delay="150"><i></i>Vendido · en desarrollo</span>
             <p class="lp-intro" data-aos="fade-up" data-aos-delay="200">
                 CRM a la medida para un mentor ejecutivo de alto nivel. Reemplaza WhatsApp, notas sueltas
                 y memoria por un sistema real de gestión de cartera — con panel dual para el mentor y para
@@ -852,7 +897,7 @@
                     <div class="lp-media">
                         <div class="lp-media-chrome"><span></span><span></span><span></span></div>
                         <div class="lp-media-frame">
-                            <video src="assets/videos/mentoring-crm-01-dashboard.mp4" autoplay muted loop playsinline preload="auto"></video>
+                            <video src="assets/videos/mentoring/01-panel-mentor.mp4" poster="assets/img/mentoring/01-panel-mentor.jpg" autoplay muted loop playsinline preload="metadata"></video>
                             <div class="lp-placeholder">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                                 <span>Clip pendiente</span>
@@ -871,7 +916,7 @@
                     <div class="lp-media">
                         <div class="lp-media-chrome"><span></span><span></span><span></span></div>
                         <div class="lp-media-frame">
-                            <video src="assets/videos/mentoring-crm-02-crm.mp4" autoplay muted loop playsinline preload="auto"></video>
+                            <video src="assets/videos/mentoring/02-crm-embudo.mp4" poster="assets/img/mentoring/02-crm-embudo.jpg" autoplay muted loop playsinline preload="metadata"></video>
                             <div class="lp-placeholder">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                                 <span>Clip pendiente</span>
@@ -890,7 +935,7 @@
                     <div class="lp-media">
                         <div class="lp-media-chrome"><span></span><span></span><span></span></div>
                         <div class="lp-media-frame">
-                            <video src="assets/videos/mentoring-crm-03-timeline.mp4" autoplay muted loop playsinline preload="auto"></video>
+                            <video src="assets/videos/mentoring/03-ficha-linea-de-tiempo.mp4" poster="assets/img/mentoring/03-ficha-linea-de-tiempo.jpg" autoplay muted loop playsinline preload="metadata"></video>
                             <div class="lp-placeholder">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                                 <span>Clip pendiente</span>
@@ -909,7 +954,7 @@
                     <div class="lp-media">
                         <div class="lp-media-chrome"><span></span><span></span><span></span></div>
                         <div class="lp-media-frame">
-                            <video src="assets/videos/mentoring-crm-04-mentorado.mp4" autoplay muted loop playsinline preload="auto"></video>
+                            <video src="assets/videos/mentoring/04-panel-mentorado.mp4" poster="assets/img/mentoring/04-panel-mentorado.jpg" autoplay muted loop playsinline preload="metadata"></video>
                             <div class="lp-placeholder">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
                                 <span>Clip pendiente</span>
@@ -923,9 +968,51 @@
                     </div>
                 </div>
 
+                <!-- PASO 5 -->
+                <div class="lp-step" data-aos="fade-up">
+                    <div class="lp-media">
+                        <div class="lp-media-chrome"><span></span><span></span><span></span></div>
+                        <div class="lp-media-frame">
+                            <video src="assets/videos/mentoring/05-tiempo-real.mp4" poster="assets/img/mentoring/05-tiempo-real.jpg" autoplay muted loop playsinline preload="metadata"></video>
+                            <div class="lp-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                                <span>Clip pendiente</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lp-text">
+                        <p class="lp-step-number">05 · Tiempo Real</p>
+                        <h3>Mentor y mentorado, sincronizados</h3>
+                        <p>Cuando el mentorado completa una tarea o envía un mensaje, el panel del mentor se actualiza al instante con SignalR — sin recargar la página.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- DEMO COMPLETA -->
+            <div class="lp-full" data-aos="fade-up">
+                <div class="lp-full-text">
+                    <p class="lp-step-number">Demo completa · 1:12</p>
+                    <h3>El recorrido de principio a fin</h3>
+                    <p>Del panel del mentor al del mentorado, en un solo video.</p>
+                </div>
+                <button type="button" class="lp-full-btn" id="lpFullOpen" aria-label="Ver demo completa">
+                    <img src="assets/img/mentoring/demo-completa.jpg" alt="Demo completa del CRM de mentoring" loading="lazy">
+                    <span class="lp-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                </button>
             </div>
         </div>
     </section>
+
+    <!-- MODAL DEMO COMPLETA -->
+    <div class="lp-modal" id="lpModal" aria-hidden="true">
+        <div class="lp-modal-inner">
+            <button type="button" class="lp-modal-close" id="lpFullClose" aria-label="Cerrar">✕</button>
+            <video id="lpFullVideo" controls playsinline preload="none" poster="assets/img/mentoring/demo-completa.jpg">
+                <source src="assets/videos/mentoring/demo-completa.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
 
     <!-- ==================== STACK ==================== -->
@@ -1225,6 +1312,18 @@
             }, { threshold: 0.25 });
             observer.observe(mediaBox);
         });
+
+        // ===== Demo completa en modal =====
+        const lpModal = document.getElementById('lpModal');
+        const lpFullVideo = document.getElementById('lpFullVideo');
+        const closeFull = () => { lpModal.classList.remove('open'); lpModal.setAttribute('aria-hidden', 'true'); lpFullVideo.pause(); };
+        document.getElementById('lpFullOpen').addEventListener('click', () => {
+            lpModal.classList.add('open'); lpModal.setAttribute('aria-hidden', 'false');
+            lpFullVideo.play().catch(() => {});
+        });
+        document.getElementById('lpFullClose').addEventListener('click', closeFull);
+        lpModal.addEventListener('click', (e) => { if (e.target === lpModal) closeFull(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lpModal.classList.contains('open')) closeFull(); });
     </script>
 </body>
 </html>
