@@ -6,7 +6,7 @@
     <title>Miguel Ángel Huerta Vázquez — Desarrollador Web & Software</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Cinzel:wght@500;700;900&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
@@ -403,7 +403,7 @@
         .pj-lumina  { --pj: 251, 113, 133; }
         .pj-corp    { --pj: 96, 165, 250; }
         .pj-pers    { --pj: 244, 114, 182; }
-        .pj-game    { --pj: 74, 222, 128; }
+        .pj-game    { --pj: 234, 108, 52; }
 
         .pj-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 26px; }
         .pj-icon {
@@ -811,6 +811,188 @@
             .lp-full { grid-template-columns: 1fr; gap: 24px; margin-top: 70px; padding-top: 50px; }
         }
 
+        /* ========== JUEGO: LO QUE LA PESTE OCULTÓ ========== */
+        .gm {
+            --gm-bg: #0b0907; --gm-ember: #ea6c34; --gm-ember-rgb: 234, 108, 52; --gm-bone: #e6d9bf;
+            --gm-muted: #9a8c76; --gm-dim: #5f5446; --gm-line: rgba(230, 217, 191, 0.12); --gm-blood: #8e2a22;
+            position: relative; z-index: 2; overflow: hidden;
+            padding: 130px 40px 120px;
+            background:
+                radial-gradient(ellipse 70% 50% at 50% 0%, rgba(var(--gm-ember-rgb), 0.10), transparent 70%),
+                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(142, 42, 34, 0.12), transparent 70%),
+                var(--gm-bg);
+            color: var(--gm-bone);
+            border-top: 1px solid rgba(var(--gm-ember-rgb), 0.18);
+            border-bottom: 1px solid rgba(var(--gm-ember-rgb), 0.18);
+        }
+        .gm::before {
+            content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.75) 100%);
+        }
+        .gm-embers { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.9; }
+        .gm-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; }
+
+        .gm-status {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--gm-ember); border: 1px solid rgba(var(--gm-ember-rgb), 0.35); border-radius: 50px; padding: 8px 16px;
+            background: rgba(var(--gm-ember-rgb), 0.06);
+        }
+        .gm-status i { width: 7px; height: 7px; border-radius: 50%; background: var(--gm-ember); box-shadow: 0 0 10px var(--gm-ember); animation: gmFlicker 2.2s ease-in-out infinite; }
+        @keyframes gmFlicker { 0%, 100% { opacity: 1; } 40% { opacity: 0.45; } 55% { opacity: 0.9; } 70% { opacity: 0.3; } }
+        .gm-year {
+            font-family: 'Cinzel', serif; font-weight: 500; font-size: 0.85rem; letter-spacing: 8px;
+            color: var(--gm-muted); margin: 34px 0 10px;
+        }
+        .gm-title {
+            font-family: 'Cinzel', serif; font-weight: 900; text-transform: uppercase;
+            font-size: clamp(2.4rem, 6.4vw, 5.4rem); line-height: 0.98; letter-spacing: 1px;
+            color: var(--gm-bone); text-shadow: 0 0 40px rgba(var(--gm-ember-rgb), 0.25);
+            margin-bottom: 26px;
+        }
+        .gm-title span { display: block; color: transparent; -webkit-text-stroke: 1px rgba(230, 217, 191, 0.55); }
+        .gm-hook {
+            font-family: 'IM Fell English', Georgia, serif; font-style: italic;
+            font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.5; color: var(--gm-bone); max-width: 720px; margin-bottom: 18px;
+        }
+        .gm-lead { font-size: 0.98rem; font-weight: 300; line-height: 1.85; color: var(--gm-muted); max-width: 640px; }
+
+        .gm-rule {
+            display: flex; align-items: center; gap: 18px; margin: 64px 0 40px; color: var(--gm-dim);
+            font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 5px; text-transform: uppercase;
+        }
+        .gm-rule::before, .gm-rule::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gm-line), transparent); }
+        .gm-rule b { color: var(--gm-ember); font-weight: 500; }
+
+        /* Galería de la maqueta */
+        .gm-shots { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        .gm-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+        .gm-tab {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--gm-muted); background: transparent; border: 1px solid var(--gm-line); border-radius: 8px;
+            padding: 10px 16px; cursor: pointer; transition: all 0.3s ease;
+        }
+        .gm-tab:hover { color: var(--gm-bone); border-color: rgba(230,217,191,0.3); }
+        .gm-tab[aria-selected="true"] { color: var(--gm-bg); background: var(--gm-ember); border-color: var(--gm-ember); }
+        .gm-frame {
+            position: relative; border-radius: 6px; padding: 10px;
+            background: linear-gradient(145deg, #2a221b, #15110d);
+            box-shadow: 0 0 0 1px rgba(230,217,191,0.08), 0 40px 90px rgba(0,0,0,0.6), 0 0 80px rgba(var(--gm-ember-rgb), 0.08);
+        }
+        .gm-frame::after {
+            content: ''; position: absolute; inset: 10px; pointer-events: none; border-radius: 2px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.6), inset 0 0 60px rgba(0,0,0,0.35);
+        }
+        .gm-view { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 2px; background: #000; }
+        .gm-view img {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; image-rendering: pixelated;
+            opacity: 0; transform: scale(1.02); transition: opacity 0.6s ease, transform 1.2s ease;
+        }
+        .gm-view img.on { opacity: 1; transform: scale(1); }
+        .gm-cap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 4px; font-size: 0.85rem; color: var(--gm-muted); line-height: 1.6; }
+        .gm-cap em { font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--gm-dim); letter-spacing: 0.5px; }
+
+        /* Pilares */
+        .gm-pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .gm-pillar {
+            position: relative; padding: 24px 22px 22px; border: 1px solid var(--gm-line); border-radius: 14px;
+            background: linear-gradient(180deg, rgba(230,217,191,0.03), transparent);
+            transition: border-color 0.4s ease, transform 0.4s ease, background 0.4s ease;
+        }
+        .gm-pillar:hover { border-color: rgba(var(--gm-ember-rgb), 0.45); transform: translateY(-4px); background: linear-gradient(180deg, rgba(var(--gm-ember-rgb),0.07), transparent); }
+        .gm-pillar svg { width: 30px; height: 30px; color: var(--gm-ember); margin-bottom: 16px; }
+        .gm-pillar h4 { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.5px; color: var(--gm-bone); margin-bottom: 8px; }
+        .gm-pillar p { font-size: 0.85rem; color: var(--gm-muted); line-height: 1.65; }
+
+        /* Ficha + hoja de ruta */
+        .gm-facts { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--gm-line); border-radius: 14px; overflow: hidden; }
+        .gm-fact { padding: 20px 22px; border-right: 1px solid var(--gm-line); }
+        .gm-fact:last-child { border-right: 0; }
+        .gm-fact small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gm-dim); margin-bottom: 6px; }
+        .gm-fact b { font-weight: 600; font-size: 0.95rem; color: var(--gm-bone); }
+        .gm-road { list-style: none; display: grid; grid-template-columns: repeat(6, 1fr); margin-top: 26px; position: relative; }
+        .gm-road::before { content: ''; position: absolute; left: 8px; right: 8px; top: 7px; height: 2px; background: var(--gm-line); }
+        .gm-road::after { content: ''; position: absolute; left: 8px; top: 7px; height: 2px; width: calc((100% - 16px) * 0.2); background: linear-gradient(90deg, var(--gm-ember), rgba(var(--gm-ember-rgb), 0.2)); }
+        .gm-road li { position: relative; padding-top: 28px; font-size: 0.8rem; color: var(--gm-dim); line-height: 1.4; padding-right: 8px; }
+        .gm-road li::before { content: ''; position: absolute; left: 0; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--gm-bg); border: 2px solid var(--gm-dim); z-index: 1; }
+        .gm-road li.done { color: var(--gm-bone); }
+        .gm-road li.done::before { background: var(--gm-ember); border-color: var(--gm-ember); }
+        .gm-road li.now { color: var(--gm-ember); }
+        .gm-road li.now::before { border-color: var(--gm-ember); box-shadow: 0 0 0 4px rgba(var(--gm-ember-rgb), 0.2); animation: gmPing 2s ease-in-out infinite; }
+        @keyframes gmPing { 0%, 100% { box-shadow: 0 0 0 4px rgba(var(--gm-ember-rgb), 0.2); } 50% { box-shadow: 0 0 0 8px rgba(var(--gm-ember-rgb), 0.05); } }
+        .gm-road li span { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; opacity: 0.75; }
+
+        /* Expediente (ver más) */
+        .gm-more-wrap { text-align: center; margin-top: 56px; }
+        .gm-more {
+            display: inline-flex; align-items: center; gap: 12px; cursor: pointer;
+            font-family: 'Cinzel', serif; font-size: 0.92rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+            color: var(--gm-bone); background: transparent; border: 1px solid rgba(var(--gm-ember-rgb), 0.5);
+            border-radius: 4px; padding: 16px 30px; transition: all 0.35s ease;
+        }
+        .gm-more:hover { background: rgba(var(--gm-ember-rgb), 0.1); box-shadow: 0 0 30px rgba(var(--gm-ember-rgb), 0.2); }
+        .gm-more svg { width: 16px; height: 16px; transition: transform 0.4s ease; }
+        .gm-more[aria-expanded="true"] svg { transform: rotate(180deg); }
+        .gm-dossier { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.7s cubic-bezier(.2,.8,.2,1); }
+        .gm-dossier.open { grid-template-rows: 1fr; }
+        .gm-dossier > div { overflow: hidden; }
+        .gm-paper {
+            margin-top: 34px; padding: 44px 48px; border-radius: 4px; position: relative; text-align: left;
+            background:
+                radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.04), transparent 60%),
+                linear-gradient(180deg, #1a1511, #120e0b);
+            border: 1px solid rgba(230,217,191,0.1);
+            box-shadow: inset 0 0 80px rgba(0,0,0,0.5);
+        }
+        .gm-stamp {
+            position: absolute; top: 28px; right: 32px; transform: rotate(-8deg);
+            font-family: 'Cinzel', serif; font-weight: 900; font-size: 0.8rem; letter-spacing: 3px;
+            color: var(--gm-blood); border: 2px solid var(--gm-blood); padding: 6px 12px; opacity: 0.85;
+        }
+        .gm-paper h4 { font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; color: var(--gm-ember); margin: 30px 0 12px; text-transform: uppercase; }
+        .gm-paper h4:first-of-type { margin-top: 0; }
+        .gm-paper p, .gm-paper li { font-size: 0.93rem; color: #c9bba1; line-height: 1.85; font-weight: 300; }
+        .gm-paper strong { color: var(--gm-bone); font-weight: 600; }
+        .gm-chars { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .gm-char { border-left: 2px solid rgba(var(--gm-ember-rgb), 0.5); padding-left: 16px; }
+        .gm-chapters { list-style: none; counter-reset: ch -1; display: grid; gap: 4px; }
+        .gm-chapters li { counter-increment: ch; display: grid; grid-template-columns: 34px 1fr; gap: 10px; }
+        .gm-chapters li::before { content: counter(ch); font-family: 'Cinzel', serif; color: var(--gm-dim); }
+        .gm-redact {
+            display: inline-block; vertical-align: middle; height: 1.05em; border-radius: 2px; cursor: help;
+            background: repeating-linear-gradient(90deg, #050403 0 6px, #0d0a08 6px 7px);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.6); position: relative;
+        }
+        .gm-redact::after {
+            content: 'Se revela en el juego'; position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%) translateY(4px);
+            white-space: nowrap; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--gm-bg); background: var(--gm-ember); padding: 4px 8px; border-radius: 3px; opacity: 0; pointer-events: none; transition: all 0.25s ease;
+        }
+        .gm-redact:hover::after, .gm-redact:focus::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .gm-note { margin-top: 30px; font-family: 'IM Fell English', Georgia, serif; font-style: italic; color: var(--gm-muted); font-size: 1.05rem; }
+
+        @media (max-width: 900px) {
+            .gm { padding: 90px 20px 80px; }
+            .gm-title { line-height: 1.06; }
+            .gm-year { letter-spacing: 5px; }
+            .gm-pillars { grid-template-columns: 1fr 1fr; }
+            .gm-facts { grid-template-columns: 1fr 1fr; }
+            .gm-fact:nth-child(2) { border-right: 0; }
+            .gm-fact:nth-child(-n+2) { border-bottom: 1px solid var(--gm-line); }
+            .gm-road { grid-template-columns: 1fr; gap: 16px; }
+            .gm-road::before, .gm-road::after { left: 7px; right: auto; top: 8px; bottom: 8px; width: 2px; height: auto; }
+            .gm-road::after { height: 20%; bottom: auto; }
+            .gm-road li { padding: 0 0 0 30px; }
+            .gm-paper { padding: 32px 22px; }
+            .gm-stamp { position: static; display: inline-block; margin-bottom: 18px; }
+            .gm-chars { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 520px) { .gm-pillars { grid-template-columns: 1fr; } }
+        @media (prefers-reduced-motion: reduce) {
+            .gm-status i, .gm-road li.now::before { animation: none; }
+            .gm-embers { display: none; }
+        }
+
         /* ========== CONTACT ========== */
         .contact-links { display: flex; flex-direction: column; gap: 20px; }
         .contact-link {
@@ -1169,37 +1351,148 @@
                     </div>
                 </a>
 
-                <!-- 04 · PYGAME (demo pendiente: cambia <div> por <a href="..."> cuando esté lista) -->
-                <div class="pj-card pj-game is-soon" data-aos="fade-up" data-aos-delay="200">
+                <!-- 04 · VIDEOJUEGO (lleva a su sección #juego) -->
+                <a href="#juego" class="pj-card pj-game" data-aos="fade-up" data-aos-delay="200">
                     <div class="pj-top">
                         <div class="pj-icon" aria-hidden="true">
                             <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path class="draw" pathLength="1" d="M12 11h16a8 8 0 0 1 8 8v3a7 7 0 0 1-12.4 4.5L22 25h-4l-1.6 1.5A7 7 0 0 1 4 22v-3a8 8 0 0 1 8-8z"/>
-                                <path class="draw d2" pathLength="1" d="M12 16v6M9 19h6"/>
-                                <circle class="pulse" cx="27" cy="17" r="1.6" fill="currentColor" stroke="none"/>
-                                <circle class="pulse" cx="30" cy="21" r="1.6" fill="currentColor" stroke="none" style="animation-delay:.6s"/>
+                                <path class="draw" pathLength="1" d="M15 9h10M16 9v4h8V9M14 13h12l2 4v13a3 3 0 0 1-3 3H15a3 3 0 0 1-3-3V17z"/>
+                                <path class="draw d2" pathLength="1" d="M20 4v5"/>
+                                <path class="pulse" d="M20 19c2.4 2.4 3.4 4.1 3.4 5.6a3.4 3.4 0 0 1-6.8 0c0-1.5 1-3.2 3.4-5.6z" fill="currentColor" stroke="none"/>
                             </svg>
                         </div>
                         <div class="pj-meta">
                             <span class="pj-num">04</span>
-                            <span class="pj-badge soon"><i></i>Demo próximamente</span>
+                            <span class="pj-badge soon"><i></i>En desarrollo</span>
                         </div>
                     </div>
-                    <p class="pj-type">Videojuego interactivo</p>
-                    <h3>Sistema de Retos con Pygame</h3>
-                    <p class="pj-desc">Experiencia interactiva con animaciones, colisiones y lógica de juego, con sistema de puntuación y niveles.</p>
+                    <p class="pj-type">Videojuego narrativo 2D</p>
+                    <h3>Lo que la peste ocultó</h3>
+                    <p class="pj-desc">1348, en plena Peste Negra. Un padre y su hija enferma cruzan un valle donde algo más que la peste camina de noche. Sigilo, decisiones y una tos que puede delatarlos.</p>
                     <div class="pj-sep" aria-hidden="true"></div>
                     <div class="pj-bottom">
-                        <div class="pj-tech"><span><i class="devicon-python-plain colored"></i>Python</span><span>🎮 Pygame</span></div>
-                        <span class="pj-cta">Muy pronto <span class="pj-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span>
+                        <div class="pj-tech"><span><i class="devicon-godot-plain colored"></i>Godot 4</span><span>Pixel art</span><span>Steam</span></div>
+                        <span class="pj-cta">Ver proyecto <span class="pj-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span>
                     </div>
-                </div>
+                </a>
 
             </div>
         </div>
     </section>
 
     
+
+    <!-- ==================== JUEGO: LO QUE LA PESTE OCULTÓ ==================== -->
+    <section class="gm" id="juego" aria-labelledby="gm-title">
+        <canvas class="gm-embers" id="gmEmbers" aria-hidden="true"></canvas>
+        <div class="gm-inner">
+            <span class="gm-status" data-aos="fade-up"><i></i>En desarrollo · Videojuego narrativo 2D</span>
+            <p class="gm-year" data-aos="fade-up" data-aos-delay="80">Castilla · Otoño de 1348</p>
+            <h2 class="gm-title" id="gm-title" data-aos="fade-up" data-aos-delay="120">Lo que la peste<span>ocultó</span></h2>
+            <p class="gm-hook" data-aos="fade-up" data-aos-delay="180">Todos conocen la Peste Negra. Nadie conoce lo que caminó detrás de ella, porque quienes lo vieron ardieron junto con los muertos.</p>
+            <p class="gm-lead" data-aos="fade-up" data-aos-delay="220">Un padre lleva a su hija enferma a través de un valle en cuarentena, buscando a un monje que pueda curarla. De noche, algo recorre los caminos en silencio. Escucha. Y la tos de la niña es lo único que no se puede callar.</p>
+
+            <div class="gm-rule" data-aos="fade-up"><b>I</b> Primer vistazo</div>
+            <div class="gm-shots" data-aos="fade-up">
+                <div class="gm-tabs" role="tablist" aria-label="Pantallas del juego">
+                    <button class="gm-tab" role="tab" aria-selected="true" data-shot="0">Exploración</button>
+                    <button class="gm-tab" role="tab" aria-selected="false" data-shot="1">Encuentro por turnos</button>
+                </div>
+                <div class="gm-frame">
+                    <div class="gm-view">
+                        <img class="on" src="assets/img/juego/interfaz-exploracion.webp" alt="Maqueta de exploración: Tomás e Inés de noche con una lámpara; la tos de Inés hace ondas de ruido y un Callado la escucha" loading="lazy">
+                        <img src="assets/img/juego/interfaz-encuentro.webp" alt="Maqueta de encuentro por turnos: un Callado bloquea el paso y el jugador elige entre cinco opciones con su costo" loading="lazy">
+                    </div>
+                </div>
+                <div class="gm-cap">
+                    <span id="gmCap">Sigilo en tiempo real: el ruido se ve como ondas, y los Callados oyen dentro de su círculo.</span>
+                    <em>Maqueta de interfaz · arte no final</em>
+                </div>
+            </div>
+
+            <div class="gm-rule" data-aos="fade-up"><b>II</b> Cómo se juega</div>
+            <div class="gm-pillars">
+                <div class="gm-pillar" data-aos="fade-up" data-aos-delay="0">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 8a8 8 0 0 1 12 7c0 4-3 5-3 8a4 4 0 0 1-7 2"/><path d="M15 14a3 3 0 0 1 5 2"/><path d="M5 12c-2 3-2 6 0 9M8 14c-1 1.5-1 3.5 0 5"/></svg>
+                    <h4>Sigilo por sonido</h4>
+                    <p>Los Callados casi no ven: cazan por el oído. Cada paso, cada puerta y cada respiración cuentan.</p>
+                </div>
+                <div class="gm-pillar" data-aos="fade-up" data-aos-delay="80">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5v9"/><path d="M14 13c-3-2-8-1-8 5v6c0 3 4 3 6 1l2-3"/><path d="M18 13c3-2 8-1 8 5v6c0 3-4 3-6 1l-2-3"/></svg>
+                    <h4>La tos es la amenaza</h4>
+                    <p>La tos de Inés sube con el frío, el humo y el miedo. Si se llena el medidor, todos la escuchan.</p>
+                </div>
+                <div class="gm-pillar" data-aos="fade-up" data-aos-delay="160">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4v24M16 9l-9 3 9 3M16 17l9 3-9 3"/></svg>
+                    <h4>Decisiones con costo</h4>
+                    <p>Encuentros por turnos sin salidas gratis: esconderse, distraer, huir o sacrificar algo valioso.</p>
+                </div>
+                <div class="gm-pillar" data-aos="fade-up" data-aos-delay="240">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="8" r="3"/><path d="M6 27v-9a5 5 0 0 1 10 0v9"/><circle cx="22.5" cy="14" r="2.5"/><path d="M19 27v-5a3.5 3.5 0 0 1 7 0v5"/></svg>
+                    <h4>Dos protagonistas</h4>
+                    <p>Tomás, el padre, y Inés, su hija. Cada uno ve, oye y resuelve el mundo de forma distinta.</p>
+                </div>
+            </div>
+
+            <div class="gm-rule" data-aos="fade-up"><b>III</b> Estado del proyecto</div>
+            <div data-aos="fade-up">
+                <div class="gm-facts">
+                    <div class="gm-fact"><small>Género</small><b>Aventura narrativa de sigilo</b></div>
+                    <div class="gm-fact"><small>Vista</small><b>Desde arriba · pixel art</b></div>
+                    <div class="gm-fact"><small>Motor</small><b>Godot 4</b></div>
+                    <div class="gm-fact"><small>Objetivo</small><b>PC en Steam</b></div>
+                </div>
+                <ol class="gm-road">
+                    <li class="done">Documento de diseño<span>Listo</span></li>
+                    <li class="done">Maqueta de interfaz<span>Lista</span></li>
+                    <li class="now">Prototipo jugable<span>Siguiente</span></li>
+                    <li>Prólogo completo<span>Pendiente</span></li>
+                    <li>Página de Steam<span>Pendiente</span></li>
+                    <li>Demo<span>Pendiente</span></li>
+                </ol>
+            </div>
+
+            <div class="gm-more-wrap">
+                <button class="gm-more" id="gmMore" aria-expanded="false" aria-controls="gmDossier">
+                    Abrir el expediente
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+            </div>
+            <div class="gm-dossier" id="gmDossier">
+                <div>
+                    <article class="gm-paper">
+                        <span class="gm-stamp">Parcialmente sellado</span>
+
+                        <h4>El mundo</h4>
+                        <p>Otoño de 1348. La peste avanza por los reinos de la península y un valle de Castilla queda en cuarentena. Algunos de los muertos no se quedan quietos: la gente del valle los llama <strong>los Callados</strong>. Caminan sin hacer ruido, con la cabeza ladeada, escuchando. De día se esconden en la sombra; de noche recorren los caminos.</p>
+                        <p>Alguien sabe lo que son, y alguien ha decidido que nadie más lo sepa. <span class="gm-redact" style="width:9em" tabindex="0" aria-label="Información oculta"></span> <span class="gm-redact" style="width:14em" tabindex="0" aria-label="Información oculta"></span>.</p>
+
+                        <h4>Los protagonistas</h4>
+                        <div class="gm-chars">
+                            <div class="gm-char"><p><strong>Tomás, 38 años.</strong> Carbonero del bosque, viudo desde hace dos inviernos. Sabe moverse por el monte, hacer fuego y leer huellas, pero no sabe leer letras. Todo lo que hace es por su hija.</p></div>
+                            <div class="gm-char"><p><strong>Inés, 9 años.</strong> Curiosa y más lista de lo que su padre cree. Sabe leer un poco. Tose desde el otoño, una tos seca que empeora con el frío y el miedo. <strong>No es peste.</strong> <span class="gm-redact" style="width:10em" tabindex="0" aria-label="Información oculta"></span></p></div>
+                        </div>
+
+                        <h4>El viaje</h4>
+                        <ol class="gm-chapters">
+                            <li><span><strong>Prólogo · La aldea de Robledo.</strong> La vida antes del miedo, y la noche en que todo arde.</span></li>
+                            <li><span><strong>El bosque de los carboneros.</strong> Aprender a moverse sin ser oído.</span></li>
+                            <li><span><strong>El camino real.</strong> Pueblos vacíos, peregrinos y patrullas que no preguntan.</span></li>
+                            <li><span><strong>San Lázaro.</strong> Un monasterio en la sierra y un monje que guarda secretos. <span class="gm-redact" style="width:8em" tabindex="0" aria-label="Información oculta"></span></span></li>
+                            <li><span><span class="gm-redact" style="width:7em" tabindex="0" aria-label="Información oculta"></span> <span class="gm-redact" style="width:16em" tabindex="0" aria-label="Información oculta"></span></span></li>
+                            <li><span><span class="gm-redact" style="width:5em" tabindex="0" aria-label="Información oculta"></span> <span class="gm-redact" style="width:13em" tabindex="0" aria-label="Información oculta"></span></span></li>
+                            <li><span><span class="gm-redact" style="width:9em" tabindex="0" aria-label="Información oculta"></span> <span class="gm-redact" style="width:11em" tabindex="0" aria-label="Información oculta"></span></span></li>
+                        </ol>
+
+                        <h4>Decisiones</h4>
+                        <p>Ayudar a otros cuesta comida y tiempo, pero crea aliados. Decir la verdad o proteger a Inés de ella cambia cómo enfrenta el mundo. Lo que decidas acompaña a la historia hasta el final, y hay más de un final. <span class="gm-redact" style="width:12em" tabindex="0" aria-label="Información oculta"></span></p>
+
+                        <p class="gm-note">“Las crónicas hablan de la peste. No hablan de lo que se quemó con ella.”</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- ==================== ABOUT (2 COLUMNAS: TEXTO IZQ + LAPTOP DER) ==================== -->
     <section class="section" id="sobre-mi">
@@ -1365,6 +1658,61 @@
             });
         }, { threshold: 0.35 });
         document.querySelectorAll('.pj-card').forEach((c) => pjObserver.observe(c));
+
+        // ===== Juego: pestañas de la maqueta, expediente y brasas =====
+        (() => {
+            const tabs = document.querySelectorAll('.gm-tab');
+            const shots = document.querySelectorAll('.gm-view img');
+            const cap = document.getElementById('gmCap');
+            const caps = [
+                'Sigilo en tiempo real: el ruido se ve como ondas, y los Callados oyen dentro de su círculo.',
+                'Encuentro por turnos: cada opción muestra su costo antes de elegir, y el tiempo corre contra la tos.'
+            ];
+            tabs.forEach((t) => t.addEventListener('click', () => {
+                const i = +t.dataset.shot;
+                tabs.forEach((x) => x.setAttribute('aria-selected', String(x === t)));
+                shots.forEach((im, k) => im.classList.toggle('on', k === i));
+                cap.textContent = caps[i];
+            }));
+
+            const more = document.getElementById('gmMore');
+            const dossier = document.getElementById('gmDossier');
+            more.addEventListener('click', () => {
+                const open = dossier.classList.toggle('open');
+                more.setAttribute('aria-expanded', String(open));
+                more.firstChild.textContent = open ? 'Cerrar el expediente ' : 'Abrir el expediente ';
+                if (open) setTimeout(() => dossier.scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);
+            });
+
+            const cv = document.getElementById('gmEmbers');
+            if (!cv || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            const ctx = cv.getContext('2d');
+            let w = 0, h = 0, running = false, raf = 0;
+            const parts = Array.from({ length: 46 }, () => ({}));
+            const reset = (p, first) => {
+                p.x = Math.random() * w; p.y = first ? Math.random() * h : h + 10;
+                p.r = Math.random() * 1.6 + 0.4; p.vy = Math.random() * 0.35 + 0.12;
+                p.vx = (Math.random() - 0.5) * 0.2; p.a = Math.random() * 0.6 + 0.2; p.t = Math.random() * 6.28;
+            };
+            const size = () => { w = cv.width = cv.offsetWidth; h = cv.height = cv.offsetHeight; parts.forEach((p) => reset(p, true)); };
+            const tick = () => {
+                ctx.clearRect(0, 0, w, h);
+                parts.forEach((p) => {
+                    p.t += 0.02; p.y -= p.vy; p.x += p.vx + Math.sin(p.t) * 0.15;
+                    if (p.y < -10) reset(p, false);
+                    const fade = Math.min(1, p.y / (h * 0.5));
+                    ctx.fillStyle = `rgba(234, 108, 52, ${p.a * fade})`;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
+                });
+                if (running) raf = requestAnimationFrame(tick);
+            };
+            size(); addEventListener('resize', size);
+            new IntersectionObserver((es) => es.forEach((e) => {
+                running = e.isIntersecting;
+                cancelAnimationFrame(raf);
+                if (running) raf = requestAnimationFrame(tick);
+            })).observe(cv);
+        })();
 
         // ===== Demo completa en modal =====
         const lpModal = document.getElementById('lpModal');
