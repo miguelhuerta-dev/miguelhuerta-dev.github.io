@@ -1,0 +1,64 @@
+/* Ajustes para tablet y celular, tacto y movimiento reducido */
+
+/* ---------- Ajustes responsive ---------- */
+@media (max-width: 1100px) {
+    .hx-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+    .hx-full h3, .mx-full h3 { font-size: 1.9rem; }
+    .pz-top { margin-bottom: 44px; }
+    .pg + .pg { margin-top: 64px; }
+    .pt.span7 h4 { font-size: 2.2rem; }
+}
+@media (max-width: 600px) {
+    .hx-actions .hx-btn { flex: 1 1 100%; justify-content: center; }
+    .hx-lede { font-size: 1.05rem; }
+    .hx-step h3 { font-size: 2rem; }
+    .hx-step-bottom p, .mx-bottom p { font-size: 1rem; }
+    .hx-chips span { font-size: 12px; }
+    .hx-frame { border-radius: 8px; }
+    .hx-chrome { height: 30px; font-size: 11px; padding: 0 10px; }
+    .hx-chrome span:last-child { display: none; }
+    .mx-chrome em { display: none; }
+    .mx-media { border-radius: 10px; }
+    .mx-step h3 { font-size: 1.75rem; letter-spacing: -1px; }
+    .mx-title { letter-spacing: -1px; }
+    .hx-full, .mx-full { padding: 22px 18px; border-radius: 10px; }
+    .hx-play span, .mx-play span { width: 58px; height: 58px; }
+    .pt { padding: 18px; }
+    .pt-mini { grid-template-columns: 1fr 1fr; }
+    .pt-mini span:last-child { grid-column: span 2; }
+    .pt-sites { grid-template-columns: 1fr; }
+    .pg-head h3 { font-size: 1.6rem; }
+    .pg-count b { font-size: 1.8rem; }
+    .chap { margin-bottom: 28px; }
+    .chap-status { font-size: .64rem; padding: 5px 9px; }
+    .stack-item { padding: 10px 14px; }
+    .contact-link { font-size: .95rem; }
+    .vm { padding: 12px; }
+    .vm-close { top: -44px; }
+}
+@media (max-width: 380px) {
+    .nv-logo { font-size: .85rem; }
+    .hx-title { font-size: 4.4rem; }
+    .hero-title { font-size: 2.6rem; }
+}
+/* En pantallas táctiles no hay hover: sin saltos al tocar */
+@media (hover: none) {
+    .pt:hover { transform: none; box-shadow: none; }
+    .hx-btn:hover { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rv, .hx-title span, .hm-tile, .mx-step h3 .w { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+    .hx-step, .mx-step { --p: 1 !important; }
+    .hm-float { animation: none !important; }
+    .chap-line { transform: none; }
+}
+
+/* Datos del hero en 2 × 2 en celular */
+@media (max-width: 600px) {
+    .hero-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; width: 100%; }
+    .hero-chips li { display: flex; }
+    .hero-chip { width: 100%; justify-content: center; padding: 8px 6px; font-size: .68rem; }
+}

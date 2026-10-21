@@ -1,0 +1,53 @@
+/* Hero: esfera de código binario y presentación */
+
+/* =====================================================================
+   HERO · esfera de código binario (estilo Midjourney, en gris claro)
+   ===================================================================== */
+.hero { position: relative; z-index: 2; min-height: 100vh; min-height: 100svh; overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 110px 24px 90px; background: var(--sec-b); }
+.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background:
+        radial-gradient(ellipse 32% 28% at 50% 50%, rgba(227,227,227,.94), rgba(227,227,227,.5) 60%, rgba(227,227,227,0) 100%),
+        linear-gradient(180deg, rgba(227,227,227,0) 72%, #e3e3e3 100%);
+}
+.hero-inner { position: relative; z-index: 2; text-align: center; max-width: 900px; display: flex; flex-direction: column; align-items: center; }
+.hero-eyebrow { font-family: var(--font-mono); font-size: .76rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; display: inline-flex; align-items: center; gap: 10px; }
+.hero-eyebrow i { width: 7px; height: 7px; border-radius: 1px; background: var(--cat-med); animation: lpBlink 1.6s ease-in-out infinite; }
+.hero-title { font-size: clamp(2.3rem, 6.2vw, 5.6rem); font-weight: 600; letter-spacing: -0.05em; line-height: 1; color: var(--ink); }
+.hero-title span { display: block; color: #8a8a8a; font-weight: 500; }
+.hero-inner { padding: 30px 10px; }
+.hero-type { margin-top: 26px; font-family: var(--font-mono); font-size: .95rem; color: var(--sub); min-height: 1.6em; }
+.hero-type b { color: var(--muted); font-weight: 400; }
+.hero-type .cur { display: inline-block; width: .6em; height: 1.1em; vertical-align: -.2em; background: var(--ink); margin-left: 2px; animation: lpBlink .9s steps(1) infinite; }
+.hero-sub { margin-top: 14px; font-size: 1.08rem; line-height: 1.6; color: var(--sub); max-width: 560px; }
+.hero-actions { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.hero-chips { margin-top: 26px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.hero-chip {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 8px; text-decoration: none;
+    font-family: var(--font-mono); font-size: .76rem; color: var(--ink);
+    background: color-mix(in srgb, var(--c) 30%, transparent); border: 1px solid color-mix(in srgb, var(--c) 70%, transparent);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,.05), 0 2px 4px -2px rgba(0,0,0,.05);
+    transition: background .25s ease, transform .25s ease;
+}
+.hero-chip i { width: 7px; height: 7px; border-radius: 1px; background: var(--c); }
+.hero-chip:hover { background: color-mix(in srgb, var(--c) 55%, transparent); transform: translateY(-1px); }
+.hero-scroll { position: absolute; z-index: 2; left: 50%; bottom: 26px; transform: translateX(-50%); font-family: var(--font-mono); font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; }
+.hero-scroll i { width: 1px; height: 34px; background: linear-gradient(var(--ink), transparent); animation: heroDrop 1.8s ease-in-out infinite; transform-origin: top; }
+@keyframes heroDrop { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+.hero-reveal > * { opacity: 0; transform: translateY(18px); animation: heroIn .9s var(--ease) forwards; }
+.hero-reveal > *:nth-child(2) { animation-delay: .12s; } .hero-reveal > *:nth-child(3) { animation-delay: .24s; }
+.hero-reveal > *:nth-child(4) { animation-delay: .36s; } .hero-reveal > *:nth-child(5) { animation-delay: .48s; } .hero-reveal > *:nth-child(6) { animation-delay: .6s; }
+@keyframes heroIn { to { opacity: 1; transform: none; } }
+@media (max-width: 600px) {
+    .hero { padding: 100px 18px 80px; }
+    .hero-actions .btn { flex: 1 1 100%; }
+    .hero-type { font-size: .8rem; }
+    .hero::after { background: radial-gradient(ellipse 60% 34% at 50% 50%, rgba(227,227,227,.92), rgba(227,227,227,0) 100%), linear-gradient(180deg, rgba(227,227,227,0) 75%, #e3e3e3 100%); }
+}
+
+/* El texto del hero nunca se pierde: la animación deja libre su espacio
+   (ver hero-binario.js) y además lleva un halo del color del lienzo */
+.hero-eyebrow, .hero-title, .hero-type, .hero-sub, .hero-scroll {
+    text-shadow: 0 0 2px #e3e3e3, 0 0 10px #e3e3e3, 0 0 18px #e3e3e3;
+}

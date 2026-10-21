@@ -1,0 +1,34 @@
+/* Mentoring CRM: mismas piezas de Hito con su color */
+
+/* =====================================================================
+   MENTORING · mismas piezas de Hito, con su propio color
+   ===================================================================== */
+.mx { --chap-dot: var(--cat-proy); overflow: hidden; }
+.mx-head { text-align: center; max-width: 820px; margin: 0 auto; }
+.mx-title { font-family: var(--font-mono); font-weight: 500; font-size: clamp(1.7rem, 4.6vw, 3.5rem); letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 22px; color: var(--ink); }
+.mx-title b { color: #8a8a8a; font-weight: 500; }
+.mx-type { border-right: 2px solid var(--ink); padding-right: 4px; animation: mxBlink .8s infinite; }
+@keyframes mxBlink { 0%, 100% { border-color: var(--ink); } 50% { border-color: transparent; } }
+.mx-intro { font-size: 1.15rem; color: var(--sub); line-height: 1.6; letter-spacing: -0.15px; margin-bottom: 22px; }
+.mx-tech { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.mx-tech span { display: inline-flex; align-items: center; gap: 8px; font: 500 13px var(--font-tight); color: var(--ink); padding: 7px 12px; border-radius: 4px; border: 1px solid rgba(34,34,34,.18); background: rgba(255,255,255,.6); }
+.mx-tech span::before { content: ''; width: 6px; height: 6px; border-radius: 1px; background: var(--cat-proy); }
+.mx-track { position: relative; margin-top: 150px; }
+.mx-rail { position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(34,34,34,.12); }
+.mx-rail i { position: absolute; left: 0; top: 0; width: 1px; height: calc(var(--rp, 0) * 100%); background: var(--ink); }
+.mx-steps { display: flex; flex-direction: column; gap: 150px; padding-left: 60px; }
+.mx-node { position: absolute; left: -66px; top: 4px; width: 13px; height: 13px; border-radius: 3px; border: 1px solid rgba(34,34,34,.3); background: var(--sec-b); transition: all .5s var(--ease); }
+.mx-step.on .mx-node { background: var(--cat-proy); border-color: var(--ink); box-shadow: 0 0 0 5px rgba(201,167,245,.35); }
+.mx-step { position: relative; }
+.mx-step h3 .w { display: inline-block; opacity: 0; transform: translateY(18px); filter: blur(6px); transition: opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease); transition-delay: calc(var(--i) * 55ms); }
+.mx-step.in h3 .w { opacity: 1; transform: none; filter: none; }
+.mx-full { margin-top: 170px; background: #000; border-radius: 12px; color: #fff; padding: 56px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: center; }
+.mx-full small { font-family: var(--font-tight); font-size: .9rem; color: #bdbdbd; }
+.mx-full h3 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.045em; line-height: 1.05; margin: 10px 0 14px; }
+.mx-full p { color: #bdbdbd; line-height: 1.6; }
+@media (max-width: 900px) {
+    .mx-track { margin-top: 100px; }
+    .mx-rail, .mx-node { display: none; }
+    .mx-steps { padding-left: 0; gap: 100px; }
+    .mx-full { grid-template-columns: 1fr; padding: 28px 22px; margin-top: 110px; gap: 24px; }
+}

@@ -1,0 +1,99 @@
+/* Modo noche: misma lógica que el modo noche de Hito.
+   Lienzos casi negros alternados, tinta clara y los mismos colores de categoría.
+   Solo se activa con <html data-theme="dark">; el modo día no cambia. */
+
+/* ---------- Botón Día / Noche (en la barra de navegación) ---------- */
+.theme-btn {
+    flex: none; width: 38px; height: 38px; border-radius: 8px; cursor: pointer; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: transparent; color: var(--ink); border: 1px solid rgba(34, 34, 34, .2);
+    transition: background .25s ease, border-color .25s ease;
+}
+.theme-btn:hover { background: rgba(127, 127, 127, .14); }
+.theme-btn svg { width: 18px; height: 18px; }
+.theme-btn .moon { display: none; }
+[data-theme="dark"] .theme-btn .sun { display: none; }
+[data-theme="dark"] .theme-btn .moon { display: block; }
+@media (max-width: 760px) { .theme-btn { width: 34px; height: 34px; } }
+
+/* Transición suave solo al cambiar de tema (no al cargar) */
+.theme-anim, .theme-anim * { transition: background-color .45s ease, color .45s ease, border-color .45s ease !important; }
+
+/* ---------- Tokens de noche ---------- */
+[data-theme="dark"] {
+    color-scheme: dark;
+    --sec-a: #111111;
+    --sec-b: #171717;
+    --ink: #eeeeee;
+    --sub: #d0d0d0;
+    --muted: #9e9e9e;
+    --rule: rgba(238, 238, 238, .16);
+    --bg: #111111; --text: #eeeeee; --text-secondary: #d0d0d0; --text-muted: #9e9e9e;
+    --accent: #eeeeee; --border: rgba(238, 238, 238, .14);
+}
+[data-theme="dark"] body { background: var(--sec-a); color: var(--ink); }
+[data-theme="dark"] :focus-visible { outline-color: #eeeeee; }
+[data-theme="dark"] .theme-btn { border-color: rgba(238, 238, 238, .22); }
+
+/* ---------- Componentes compartidos ---------- */
+[data-theme="dark"] .chap-line, [data-theme="dark"] .chap-status { --chap-rule: rgba(238, 238, 238, .18); }
+[data-theme="dark"] .btn-dark { background: #eeeeee; color: #111111; border-color: #eeeeee; }
+[data-theme="dark"] .btn-light { background: #1c1c1c; color: #eeeeee; border-color: #eeeeee; }
+[data-theme="dark"] .btn-ghost { color: #eeeeee; border-color: rgba(238, 238, 238, .3); }
+[data-theme="dark"] .nv {
+    background: rgba(24, 24, 24, .72); border-color: rgba(238, 238, 238, .1); color: #eeeeee;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+[data-theme="dark"] .nv-cta { background: #eeeeee; color: #111111; }
+
+/* ---------- Hero ---------- */
+[data-theme="dark"] .hero::after {
+    background:
+        radial-gradient(ellipse 32% 28% at 50% 50%, rgba(23,23,23,.94), rgba(23,23,23,.5) 60%, rgba(23,23,23,0) 100%),
+        linear-gradient(180deg, rgba(23,23,23,0) 72%, #171717 100%);
+}
+[data-theme="dark"] .hero-eyebrow, [data-theme="dark"] .hero-title, [data-theme="dark"] .hero-type,
+[data-theme="dark"] .hero-sub, [data-theme="dark"] .hero-scroll { text-shadow: 0 0 2px #171717, 0 0 10px #171717, 0 0 18px #171717; }
+[data-theme="dark"] .hero-title span { color: #8f8f8f; }
+[data-theme="dark"] .hero-type .cur { background: #eeeeee; }
+[data-theme="dark"] .hero-chip { color: #eeeeee; background: color-mix(in srgb, var(--c) 18%, transparent); }
+[data-theme="dark"] .hero-scroll i { background: linear-gradient(#eeeeee, transparent); }
+@media (max-width: 600px) {
+    [data-theme="dark"] .hero::after { background: radial-gradient(ellipse 60% 34% at 50% 50%, rgba(23,23,23,.92), rgba(23,23,23,0) 100%), linear-gradient(180deg, rgba(23,23,23,0) 75%, #171717 100%); }
+}
+
+/* ---------- Hito (versión noche; el modo día queda intacto) ---------- */
+/* --hp en 0 hace que la sección use su paleta oscura incorporada */
+[data-theme="dark"] .hx { --hp: 0 !important; background: var(--sec-a); }
+[data-theme="dark"] .hx-btn { border-color: #eeeeee; }
+[data-theme="dark"] .hx-btn-dark { background: #eeeeee; color: #111111; }
+[data-theme="dark"] .hx-btn-light { background: #1c1c1c; color: #eeeeee; }
+[data-theme="dark"] .hx-btn-soon { background: transparent; color: #eeeeee; }
+[data-theme="dark"] .hx-meta div { border-top-color: rgba(238, 238, 238, .7); }
+[data-theme="dark"] .hx-meta small, [data-theme="dark"] .hx-num { color: #9e9e9e; }
+[data-theme="dark"] .hx-meta b, [data-theme="dark"] .hx-step h3 { color: #eeeeee; }
+[data-theme="dark"] .hx-step-bottom p { color: #d0d0d0; }
+[data-theme="dark"] .hx-chips span { color: #eeeeee; border-color: rgba(238, 238, 238, .2); background: rgba(255, 255, 255, .04); }
+[data-theme="dark"] .hx-frame { box-shadow: 0 0 0 1px rgba(238, 238, 238, .12), 0 50px 90px -30px rgba(0, 0, 0, .8); }
+[data-theme="dark"] .hm { box-shadow: 0 0 0 1px rgba(238, 238, 238, .12), 0 50px 100px -20px rgba(0, 0, 0, .7); }
+[data-theme="dark"] .hx-full, [data-theme="dark"] .mx-full { background: #1c1c1c; box-shadow: inset 0 0 0 1px rgba(238, 238, 238, .08); }
+
+/* ---------- Mentoring ---------- */
+[data-theme="dark"] .mx-tech span { border-color: rgba(238, 238, 238, .2); background: rgba(255, 255, 255, .04); }
+[data-theme="dark"] .mx-rail { background: rgba(238, 238, 238, .12); }
+[data-theme="dark"] .mx-node { border-color: rgba(238, 238, 238, .3); }
+[data-theme="dark"] .mx-step.on .mx-node { border-color: #eeeeee; }
+
+/* ---------- Stack, Sobre mí, Contacto, footer, modal ---------- */
+[data-theme="dark"] .stack-item { background: #1c1c1c; border-color: rgba(238, 238, 238, .08); }
+[data-theme="dark"] .devicon-github-plain { color: #eeeeee; }
+[data-theme="dark"] .pg-head { border-top-color: #eeeeee; }
+[data-theme="dark"] .pt:hover { box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .8) !important; }
+[data-theme="dark"] .mosaic > div[style*="#222"] { background: #000 !important; box-shadow: inset 0 0 0 1px rgba(238, 238, 238, .14); }
+[data-theme="dark"] footer { background: #000000; }
+[data-theme="dark"] .vm { background: rgba(17, 17, 17, .92); }
+[data-theme="dark"] .vm-close { background: #1c1c1c; color: #eeeeee; border-color: #eeeeee; }
+
+/* Pulido: piezas nuevas en modo noche */
+[data-theme="dark"] .stack-item em { background: rgba(238, 238, 238, .08); }
+[data-theme="dark"] .stack-also span { background: #1c1c1c; border-color: rgba(238, 238, 238, .08); }
