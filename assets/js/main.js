@@ -143,7 +143,7 @@
         steps.forEach((s) => {
             const b = s.getBoundingClientRect();
             if (b.bottom < -200 || b.top > vh + 200) return;
-            const fig = s.querySelector('.hx-figure, .mx-fig');
+            const fig = s.querySelector('.hx-figure, .mx-fig, .lu-fig');
             const fb = fig.getBoundingClientRect();
             s.style.setProperty('--p', reduce ? 1 : clamp((vh - fb.top) / (vh * 0.62)).toFixed(3));
         });
