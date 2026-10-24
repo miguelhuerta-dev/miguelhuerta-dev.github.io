@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miguel Ángel Huerta Vázquez — Desarrollador .NET y full-stack</title>
-    <meta name="description" content="Desarrollador .NET y full-stack. Hito, app de escritorio para Windows y macOS; Mentoring CRM, sistema vendido a un cliente real; y sitios web para negocios.">
+    <meta name="description" content="Desarrollador .NET y full-stack. Hito, app de escritorio para Windows y macOS; Lumina, sistema médico con IA en producción; Mentoring CRM, sistema vendido a un cliente real; y sitios web para negocios.">
     <meta name="author" content="Miguel Ángel Huerta Vázquez">
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Miguel Ángel Huerta Vázquez — Desarrollador .NET y full-stack">
-    <meta property="og:description" content="Sistemas a la medida, apps de escritorio y sitios web. Conoce Hito y Mentoring CRM en video.">
+    <meta property="og:description" content="Sistemas a la medida, apps de escritorio y sitios web. Conoce Hito, Lumina y Mentoring CRM en video.">
     <meta property="og:image" content="https://miguelhuerta-dev.github.io/assets/img/hito/01-hoy.jpg">
     <meta property="og:url" content="https://miguelhuerta-dev.github.io/">
     <meta name="twitter:card" content="summary_large_image">
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="assets/css/proyectos.css">
     <link rel="stylesheet" href="assets/css/hero.css">
     <link rel="stylesheet" href="assets/css/mentoring.css">
+    <link rel="stylesheet" href="assets/css/lumina.css">
     <link rel="stylesheet" href="assets/css/secciones.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/noche.css">
@@ -38,6 +39,7 @@
             <ul class="nv-links">
                 <li class="nv-ind" aria-hidden="true"></li>
                 <li><a href="#hito">Hito</a></li>
+                <li><a href="#lumina">Lumina</a></li>
                 <li><a href="#mentoring">Mentoring</a></li>
                 <li><a href="#stack">Stack</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
@@ -310,9 +312,211 @@
     </section>
 
     <!-- ==================== 02 · MENTORING CRM ==================== -->
+    <!-- ==================== 02 · LUMINA ==================== -->
+    <section class="lu" id="lumina" data-nav="Lumina" data-accent="#7FB3F5">
+        <div class="lu-ambient" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+        </div>
+        <div class="lu-inner">
+            <div class="chap rv"><span class="chap-num">02</span><span>Proyecto en producción · cliente real</span><span class="chap-line"></span><span class="chap-status"><i></i>En producción · Lumina 3.0</span></div>
+
+            <div class="lu-head">
+                <div class="lu-brand rv">
+                    <img class="lu-mark" src="assets/img/lumina/lumina-mark.png" alt="" width="88" height="88">
+                    <span class="lu-word">LUMINA</span>
+                </div>
+                <h2 class="lu-title rv" style="--d:.1s">La ciencia de tu consulta, <span>a la vista.</span></h2>
+                <p class="lu-lede rv" style="--d:.2s">Expediente clínico, laboratorios, placas, recetas, agenda y cobros para consultorios médicos y de nutrición, con IA para leer estudios y redactar notas. Funciona en Windows y en Mac, y los expedientes nunca salen del consultorio.</p>
+                <div class="lu-actions rv" style="--d:.3s">
+                    <button type="button" class="lu-btn lu-btn-blue" data-video="assets/videos/lumina/demo-completa.mp4" data-poster="assets/img/lumina/demo-completa.jpg">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>Ver demo · 3:51
+                    </button>
+                    <a class="lu-btn lu-btn-glass" href="#lumina-funciones">Funciones
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Escenario: la app flotando con datos clínicos alrededor -->
+            <div class="lu-stage rv" id="luStage">
+                <svg class="lu-ecg" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M0 80 H330 L350 80 365 52 380 104 398 18 418 122 436 80 H640 L655 80 668 62 680 96 694 34 708 112 722 80 H1200"/></svg>
+                <div class="lu-window" data-depth="1">
+                    <div class="lu-chrome"><span></span><span></span><span></span><b>Lumina</b><em>Inicio</em></div>
+                    <img src="assets/img/lumina/01-tu-dia.jpg" alt="Pantalla de inicio de Lumina: citas del día, consulta en curso y tendencias" loading="lazy">
+                </div>
+                <div class="lu-float lf1" data-depth="2.2"><small>Glucosa</small><b>98 <em>mg/dL</em></b></div>
+                <div class="lu-float lf2" data-depth="1.6"><small>Requerimiento</small><b>1,750 <em>kcal</em></b></div>
+                <div class="lu-float lf3" data-depth="2.6"><i></i>Laboratorio leído</div>
+                <div class="lu-float lf4" data-depth="1.9"><i class="red"></i>Alergia: Penicilina</div>
+            </div>
+
+            <dl class="lu-meta">
+                <div class="rv" style="--d:.05s"><dt>Plataformas</dt><dd>Windows 10/11 · macOS 14+</dd></div>
+                <div class="rv" style="--d:.12s"><dt>Stack</dt><dd>C# · ASP.NET Core (.NET 10) · EF Core · SQLite</dd></div>
+                <div class="rv" style="--d:.19s"><dt>Inteligencia artificial</dt><dd>Groq · Llama 3.3 70B, opcional</dd></div>
+                <div class="rv" style="--d:.26s"><dt>Privacidad</dt><dd>Los expedientes nunca salen del consultorio</dd></div>
+            </dl>
+
+            <div class="lu-stats" id="luStats">
+                <div class="rv" style="--d:.0s"><b data-count="14484">0</b><span>códigos CIE-10 en español, sin internet</span></div>
+                <div class="rv" style="--d:.08s"><b data-count="35">0</b><span>analitos de química sanguínea</span></div>
+                <div class="rv" style="--d:.16s"><b data-count="9">0</b><span>escalas clínicas validadas</span></div>
+                <div class="rv" style="--d:.24s"><b data-count="7">0</b><span>especialidades por módulo</span></div>
+            </div>
+
+            <div class="lu-steps" id="lumina-funciones">
+                <article class="lu-step" data-scroll>
+                    <div class="lu-step-top">
+                        <p class="lu-num"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-5v-5h-4v5H5a1 1 0 0 1-1-1z"/></svg></i>01 · Inicio</p>
+                        <h3 aria-label="Tu día de un vistazo."><span class="w" style="--i:0">Tu</span> <span class="w" style="--i:1">día</span> <span class="w" style="--i:2">de</span> <span class="w" style="--i:3">un</span> <span class="w" style="--i:4">vistazo.</span></h3>
+                    </div>
+                    <div class="lu-fig">
+                        <span class="lu-glow" aria-hidden="true"></span>
+                        <div class="lu-frame">
+                            <div class="lu-chrome"><span></span><span></span><span></span><b>Lumina</b><em>Inicio</em></div>
+                            <video data-src="assets/videos/lumina/01-tu-dia.mp4" poster="assets/img/lumina/01-tu-dia.jpg" muted loop playsinline preload="none"></video>
+                        </div>
+                    </div>
+                    <div class="lu-step-bottom">
+                        <p>Citas del día, consulta en curso, pendientes y tendencias de 8 semanas en una sola pantalla. Los recordatorios salen por WhatsApp con un clic.</p>
+                        <div class="lu-chips"><span>Agenda del día</span><span>Recordatorios por WhatsApp</span><span>Mapa de consultas</span></div>
+                    </div>
+                </article>
+                <article class="lu-step" data-scroll>
+                    <div class="lu-step-top">
+                        <p class="lu-num"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h7l4 4v12H7z M14 4v4h4 M10 12h5 M10 15h5 M10 18h3"/></svg></i>02 · Expediente</p>
+                        <h3 aria-label="Lo importante, siempre arriba."><span class="w" style="--i:0">Lo</span> <span class="w" style="--i:1">importante,</span> <span class="w" style="--i:2">siempre</span> <span class="w" style="--i:3">arriba.</span></h3>
+                    </div>
+                    <div class="lu-fig">
+                        <span class="lu-glow" aria-hidden="true"></span>
+                        <div class="lu-frame">
+                            <div class="lu-chrome"><span></span><span></span><span></span><b>Lumina</b><em>Pacientes · Expediente</em></div>
+                            <video data-src="assets/videos/lumina/02-expediente.mp4" poster="assets/img/lumina/02-expediente.jpg" muted loop playsinline preload="none"></video>
+                        </div>
+                    </div>
+                    <div class="lu-step-bottom">
+                        <p>Las alergias graves se ven antes de cualquier acción, con un resumen de lo que debes saber hoy y la cronología completa del paciente: consultas, recetas, estudios y placas en una sola línea de tiempo.</p>
+                        <div class="lu-chips"><span>Alertas de alergia</span><span>Resumen con IA</span><span>Cronología del paciente</span></div>
+                    </div>
+                </article>
+                <article class="lu-step" data-scroll>
+                    <div class="lu-step-top">
+                        <p class="lu-num"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 4v6L5 18a1.5 1.5 0 0 0 1.3 2h11.4A1.5 1.5 0 0 0 19 18l-4.5-8V4 M8.5 4h7 M7.5 15h9"/></svg></i>03 · Laboratorios</p>
+                        <h3 aria-label="Arrastra el PDF. Lumina lo lee."><span class="w" style="--i:0">Arrastra</span> <span class="w" style="--i:1">el</span> <span class="w" style="--i:2">PDF.</span> <span class="w" style="--i:3">Lumina</span> <span class="w" style="--i:4">lo</span> <span class="w" style="--i:5">lee.</span></h3>
+                    </div>
+                    <div class="lu-fig">
+                        <span class="lu-glow" aria-hidden="true"></span>
+                        <div class="lu-frame">
+                            <div class="lu-chrome"><span></span><span></span><span></span><b>Lumina</b><em>Laboratorio · Capturar estudio</em></div>
+                            <video data-src="assets/videos/lumina/03-laboratorios.mp4" poster="assets/img/lumina/03-laboratorios.jpg" muted loop playsinline preload="none"></video>
+                        </div>
+                    </div>
+                    <div class="lu-step-bottom">
+                        <p>Sube el estudio en PDF o foto: los resultados se reconocen solos, se ordenan por panel y se marcan fuera de rango. También calcula índices como HOMA-IR, FIB-4 y filtrado glomerular, con su tendencia.</p>
+                        <div class="lu-chips"><span>Lectura automática</span><span>Índices calculados</span><span>Tendencias</span></div>
+                    </div>
+                </article>
+                <article class="lu-step" data-scroll>
+                    <div class="lu-step-top">
+                        <p class="lu-num"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v14H4z M12 8v8 M8.5 9.5c1 1 1 4 0 5 M15.5 9.5c-1 1-1 4 0 5"/></svg></i>04 · Placas</p>
+                        <h3 aria-label="Un visor DICOM dentro del expediente."><span class="w" style="--i:0">Un</span> <span class="w" style="--i:1">visor</span> <span class="w" style="--i:2">DICOM</span> <span class="w" style="--i:3">dentro</span> <span class="w" style="--i:4">del</span> <span class="w" style="--i:5">expediente.</span></h3>
+                    </div>
+                    <div class="lu-fig">
+                        <span class="lu-glow" aria-hidden="true"></span>
+                        <div class="lu-frame">
+                            <div class="lu-chrome"><span></span><span></span><span></span><b>Lumina</b><em>Visor · Rx de tórax PA</em></div>
+                            <video data-src="assets/videos/lumina/04-placas.mp4" poster="assets/img/lumina/04-placas.jpg" muted loop playsinline preload="none"></video>
+                        </div>
+                    </div>
+                    <div class="lu-step-bottom">
+                        <p>Compara dos estudios lado a lado, ajusta brillo y contraste, rota, invierte y mide en milímetros sin salir de Lumina.</p>
+                        <div class="lu-chips"><span>DICOM y JPG</span><span>Comparación lado a lado</span><span>Medición en mm</span></div>
+                    </div>
+                </article>
+                <article class="lu-step" data-scroll>
+                    <div class="lu-step-top">
+                        <p class="lu-num"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v3H8z M6 5.5H5v14.5h14V5.5h-1 M8.5 12l2 2 5-5"/></svg></i>05 · Consulta</p>
+                        <h3 aria-label="Consulta guiada, con CIE-10 sin internet."><span class="w" style="--i:0">Consulta</span> <span class="w" style="--i:1">guiada,</span> <span class="w" style="--i:2">con</span> <span class="w" style="--i:3">CIE-10</span> <span class="w" style="--i:4">sin</span> <span class="w" style="--i:5">internet.</span></h3>
+                    </div>
+                    <div class="lu-fig">
+                        <span class="lu-glow" aria-hidden="true"></span>
+                        <div class="lu-frame">
+                            <div class="lu-chrome"><span></span><span></span><span></span><b>Lumina</b><em>Nueva consulta</em></div>
+                            <video data-src="assets/videos/lumina/05-consulta.mp4" poster="assets/img/lumina/05-consulta.jpg" muted loop playsinline preload="none"></video>
+                        </div>
+                    </div>
+                    <div class="lu-step-bottom">
+                        <p>Pasos claros, plantillas, dictado por voz y advertencias de interacciones mientras escribes. El diagnóstico se busca entre 14,484 códigos CIE-10 en español, y al firmar la nota queda protegida (NOM-004).</p>
+                        <div class="lu-chips"><span>Plantillas y dictado</span><span>14,484 códigos CIE-10</span><span>Firma de la nota</span></div>
+                    </div>
+                </article>
+                <article class="lu-step" data-scroll>
+                    <div class="lu-step-top">
+                        <p class="lu-num"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4h7a3 3 0 0 1 0 6H6z M6 10v10 M10 10l7 10 M17 13l-6 7"/></svg></i>06 · Recetas</p>
+                        <h3 aria-label="Recetas con doble verificación."><span class="w" style="--i:0">Recetas</span> <span class="w" style="--i:1">con</span> <span class="w" style="--i:2">doble</span> <span class="w" style="--i:3">verificación.</span></h3>
+                    </div>
+                    <div class="lu-fig">
+                        <span class="lu-glow" aria-hidden="true"></span>
+                        <div class="lu-frame">
+                            <div class="lu-chrome"><span></span><span></span><span></span><b>Lumina</b><em>Recetas · Nueva receta</em></div>
+                            <video data-src="assets/videos/lumina/06-receta.mp4" poster="assets/img/lumina/06-receta.jpg" muted loop playsinline preload="none"></video>
+                        </div>
+                    </div>
+                    <div class="lu-step-bottom">
+                        <p>Antes de guardar, Lumina cruza cada medicamento contra las alergias del paciente y su tratamiento habitual, y avisa si encuentra una interacción.</p>
+                        <div class="lu-chips"><span>Alergias cruzadas</span><span>Interacciones</span><span>Lista para imprimir</span></div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="lu-more">
+                <h3 class="lu-more-title rv">Y además.</h3>
+                <div class="lu-grid">
+                <figure class="lu-card rv" style="--d:0.00s;--lc:#5856d6">
+                    <div class="lu-card-img"><img src="assets/img/lumina/f-escalas.jpg" alt="Lumina: Escalas por especialidad" loading="lazy"></div>
+                    <figcaption><b><i></i>Escalas por especialidad</b><span>PHQ-9, GAD-7, FINDRISC, Barthel, MNA-SF y más, con el resultado al instante y graficado en cada visita.</span></figcaption>
+                </figure>
+                <figure class="lu-card rv" style="--d:0.07s;--lc:#0071e3">
+                    <div class="lu-card-img"><img src="assets/img/lumina/f-documentos.jpg" alt="Lumina: Documentos con firma en pantalla" loading="lazy"></div>
+                    <figcaption><b><i></i>Documentos con firma en pantalla</b><span>Consentimientos, justificantes, constancias y aviso de privacidad, firmados por el paciente en la pantalla.</span></figcaption>
+                </figure>
+                <figure class="lu-card rv" style="--d:0.14s;--lc:#28cd41">
+                    <div class="lu-card-img"><img src="assets/img/lumina/f-caja.jpg" alt="Lumina: Caja y cobros" loading="lazy"></div>
+                    <figcaption><b><i></i>Caja y cobros</b><span>Ingresos del mes, adeudos por paciente y un reporte listo para el contador.</span></figcaption>
+                </figure>
+                <figure class="lu-card rv" style="--d:0.21s;--lc:#ff9500">
+                    <div class="lu-card-img"><img src="assets/img/lumina/f-nutricion.jpg" alt="Lumina: Nutrición con equivalentes SMAE" loading="lazy"></div>
+                    <figcaption><b><i></i>Nutrición con equivalentes SMAE</b><span>Planes y menús por día con el Sistema Mexicano de Alimentos Equivalentes.</span></figcaption>
+                </figure>
+                <figure class="lu-card rv" style="--d:0.28s;--lc:#af52de">
+                    <div class="lu-card-img"><img src="assets/img/lumina/f-especialidades.jpg" alt="Lumina: Un sistema, varias especialidades" loading="lazy"></div>
+                    <figcaption><b><i></i>Un sistema, varias especialidades</b><span>Cada consultorio activa solo los módulos que usa: nutrición, oncología, geriatría, salud mental y más.</span></figcaption>
+                </figure>
+                <figure class="lu-card rv" style="--d:0.35s;--lc:#30b0c7">
+                    <div class="lu-card-img"><img src="assets/img/lumina/f-ia.jpg" alt="Lumina: IA opcional con Groq" loading="lazy"></div>
+                    <figcaption><b><i></i>IA opcional con Groq</b><span>Ayuda a leer estudios y redactar notas. Es gratuita, opcional y solo recibe datos sin nombre ni CURP.</span></figcaption>
+                </figure>
+                </div>
+            </div>
+
+            <div class="lu-full rv">
+                <div class="lu-full-text">
+                    <img src="assets/img/lumina/lumina-mark-white.png" alt="" width="56" height="56">
+                    <small>Demo completa · 3:51</small>
+                    <h3>Menos captura, más consulta.</h3>
+                    <p>El recorrido completo: del inicio de sesión a la consulta, los laboratorios, las placas, las recetas y la configuración por especialidad.</p>
+                </div>
+                <button type="button" class="lu-play" data-video="assets/videos/lumina/demo-completa.mp4" data-poster="assets/img/lumina/demo-completa.jpg" aria-label="Ver la demo completa de Lumina">
+                    <img src="assets/img/lumina/f-login.jpg" alt="" loading="lazy">
+                    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <section class="sec bg-b mx" id="mentoring" data-nav="Mentoring" data-accent="#C9A7F5">
         <div class="sec-inner">
-            <div class="chap rv"><span class="chap-num">02</span><span>Proyecto anterior · cliente real</span><span class="chap-line"></span><span class="chap-status"><i></i>Vendido · en desarrollo</span></div>
+            <div class="chap rv"><span class="chap-num">03</span><span>Proyecto anterior · cliente real</span><span class="chap-line"></span><span class="chap-status"><i></i>Vendido · en desarrollo</span></div>
             <div class="mx-head">
                 <h2 class="mx-title rv" style="--d:.1s"><b>~/</b><span id="mxType" class="mx-type">mentoring-crm-system</span></h2>
                 <p class="mx-intro rv" style="--d:.2s">CRM a la medida para un mentor ejecutivo de alto nivel. Reemplaza WhatsApp, notas sueltas y memoria por un sistema real de gestión de cartera — con panel dual para el mentor y para cada mentorado. <strong>Lo desarrollé yo solo, de principio a fin.</strong></p>
@@ -463,7 +667,7 @@
                 <div class="stack-item rv" style="--d:0.00s"><i class="devicon-csharp-plain colored"></i><div><span>C#</span><small>Lenguaje principal</small><em>Hito · Mentoring · Lumina</em></div></div>
                 <div class="stack-item rv" style="--d:0.05s"><i class="devicon-dotnetcore-plain colored"></i><div><span>ASP.NET Core</span><small>Web, APIs y MVC</small><em>Mentoring · Lumina</em></div></div>
                 <div class="stack-item rv" style="--d:0.10s"><i class="devicon-dot-net-plain colored"></i><div><span>.NET MAUI + Blazor</span><small>Apps de escritorio</small><em>Hito</em></div></div>
-                <div class="stack-item rv" style="--d:0.15s"><i class="devicon-microsoftsqlserver-plain colored"></i><div><span>SQL Server</span><small>Bases de datos</small><em>Mentoring · Lumina</em></div></div>
+                <div class="stack-item rv" style="--d:0.15s"><i class="devicon-microsoftsqlserver-plain colored"></i><div><span>SQL Server · SQLite</span><small>Bases de datos</small><em>Mentoring · Lumina</em></div></div>
                 <div class="stack-item rv" style="--d:0.20s"><svg class="stack-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M4 4h12l4 4v12H4z M16 4v4h4"/><path d="M8 10h8 M8 13h8 M8 16h5"/></svg><div><span>Entity Framework Core</span><small>Acceso a datos</small><em>Mentoring · Lumina</em></div></div>
                 <div class="stack-item rv" style="--d:0.25s"><svg class="stack-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" aria-hidden="true"><path d="M4 4h12l4 4v12H4z M16 4v4h4"/><path d="M8 12a4 4 0 0 1 7-2.5 M16 12a4 4 0 0 1-7 2.5 M15 7.5v2h-2 M9 16.5v-2h2"/></svg><div><span>SignalR</span><small>Tiempo real</small><em>Mentoring</em></div></div>
             </div>
@@ -484,7 +688,7 @@
     <!-- ==================== 03 · PROYECTOS (diseño Hito, por secciones) ==================== -->
     <section class="pz bg-b" id="proyectos" data-nav="Proyectos" data-accent="#F4B740">
         <div class="pz-inner">
-            <div class="chap rv"><span class="chap-num">03</span><span>Proyectos</span><span class="chap-line"></span><span class="chap-status" style="--chap-dot:#F5A3C7"><i></i>2 secciones · 4 proyectos</span></div>
+            <div class="chap rv"><span class="chap-num">04</span><span>Proyectos</span><span class="chap-line"></span><span class="chap-status" style="--chap-dot:#F5A3C7"><i></i>2 secciones · 4 proyectos</span></div>
             <div class="pz-top">
                 <h2 class="pz-title rv">Lo que he<br>construido.</h2>
                 <p class="pz-lead rv" style="--d:.15s">Sistemas a la medida y sitios para negocios reales, ordenados como en una agenda: cada sección con lo suyo, cada proyecto con su color.</p>
@@ -529,17 +733,17 @@
                         </div>
                     </a>
 
-                    <div class="pt span5 soon rv" style="--c:var(--cat-cita);--d:.2s">
+                    <a href="#lumina" class="pt span5 rv" style="--c:var(--cat-cita);--d:.2s">
                         <div class="pt-row">
                             <span class="pt-ic"><svg viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.6" stroke-linecap="square"><path pathLength="1" d="M4 4h12l4 4v12H4z M16 4v4h4"/><path pathLength="1" d="M7 14h2.5l1.5-3.5 2.5 6 1.5-2.5H17"/></svg></span>
-                            <div class="pt-head"><span class="pt-kind">Sistema médico con IA</span><h4>Lumina <span class="pt-tag line">PRÓXIMAMENTE</span></h4></div>
+                            <div class="pt-head"><span class="pt-kind">Sistema médico con IA · Windows y macOS</span><h4>Lumina <span class="pt-tag">EN PRODUCCIÓN</span></h4></div>
                         </div>
-                        <p>Sistema para clínicas que integra IA (Gemini 2.5 Flash) para apoyar diagnósticos y generar planes nutricionales personalizados.</p>
+                        <p>Expediente clínico, laboratorios, placas, recetas, agenda y cobros para consultorios, con IA que lee estudios y redacta notas. Los datos nunca salen del consultorio.</p>
                         <div class="pt-foot">
-                            <div class="pt-tech"><span>C#</span><span>ASP.NET Core</span><span>SQL Server</span><span>Gemini API</span></div>
+                            <div class="pt-tech"><span>C#</span><span>ASP.NET Core</span><span>EF Core</span><span>SQLite</span><span>Groq IA</span></div>
                             <span class="pt-go" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
 
@@ -582,7 +786,7 @@
                 <div class="about-text">
                     <h2 class="sec-title rv">Más que<br>código.</h2>
                     <p class="rv">Soy <span class="highlight">desarrollador de software enfocado en .NET</span>. Diseño y construyo sistemas completos: la base de datos, el backend y la interfaz que usa la gente.</p>
-                    <p class="rv">El <span class="highlight">CRM de Mentoring lo hice yo solo, de principio a fin</span>, para un cliente real que lo compró. <span class="highlight">Hito</span>, mi proyecto más reciente, es una app de escritorio gratuita para Windows y macOS con su lógica cubierta por pruebas unitarias.</p>
+                    <p class="rv">El <span class="highlight">CRM de Mentoring lo hice yo solo, de principio a fin</span>, para un cliente real que lo compró. <span class="highlight">Lumina</span>, un sistema médico con IA, ya está en producción en consultorios reales, y <span class="highlight">Hito</span>, mi proyecto más reciente, es una app de escritorio gratuita para Windows y macOS con su lógica cubierta por pruebas unitarias.</p>
                     <p class="rv">Antes de escribir código me gusta entender el problema: qué necesita quien va a usar el sistema y qué necesita el negocio que lo paga. Por eso también cuido el diseño, como verás en cada proyecto.</p>
                     <p class="rv">Si tienes <span class="highlight">una vacante o un proyecto</span>, me encantará escucharlo.</p>
                     <div class="about-actions rv"><a href="#contacto" class="btn btn-dark">Hablemos</a><a href="https://github.com/miguelhuerta-dev" target="_blank" rel="noopener" class="btn btn-light">Ver mi GitHub</a></div>
@@ -602,7 +806,7 @@
     <section class="gm" id="juego" aria-labelledby="gm-title" data-nav="Juego" data-accent="#F28B6E">
         <canvas class="gm-embers" id="gmEmbers" aria-hidden="true"></canvas>
         <div class="gm-inner">
-            <div class="chap rv"><span class="chap-num">04</span><span>Proyecto paralelo</span><span class="chap-line"></span></div>
+            <div class="chap rv"><span class="chap-num">05</span><span>Proyecto paralelo</span><span class="chap-line"></span></div>
             <span class="gm-status"><i></i>En desarrollo · Videojuego narrativo 2D</span>
             <p class="gm-year">Castilla · Otoño de 1348</p>
             <h2 class="gm-title" id="gm-title">Lo que la peste<span>ocultó</span></h2>
@@ -740,7 +944,7 @@
             </div>
             <div>
                 <h4>Proyectos</h4>
-                <a href="#hito">Hito</a><a href="#mentoring">Mentoring CRM</a><a href="#proyectos">Lumina</a><a href="#juego">Lo que la peste ocultó</a>
+                <a href="#hito">Hito</a><a href="#mentoring">Mentoring CRM</a><a href="#lumina">Lumina</a><a href="#juego">Lo que la peste ocultó</a>
             </div>
             <div>
                 <h4>Sitio</h4>
@@ -761,6 +965,7 @@
     <script src="assets/js/hero-binario.js" defer></script>
     <script src="assets/js/escritura.js" defer></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/lumina.js" defer></script>
     <script src="assets/js/juego.js" defer></script>
 
 </body>
