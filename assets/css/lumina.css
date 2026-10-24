@@ -1,0 +1,236 @@
+/* Lumina: sección con la identidad del propio sistema
+   (estilo macOS: fondo #f5f5f7, azul de sistema, vidrio esmerilado,
+   esferas de luz que flotan y trazo de electrocardiograma) */
+
+.lu {
+    --lu-bg: #f5f5f7;
+    --lu-elev: #ffffff;
+    --lu-text: #1d1d1f;
+    --lu-text-2: #6e6e73;
+    --lu-blue: #0071e3;
+    --lu-teal: #30b0c7;
+    --lu-glass: rgba(255, 255, 255, .68);
+    --lu-glass-border: rgba(255, 255, 255, .7);
+    --lu-hairline: rgba(0, 0, 0, .08);
+    --lu-shadow-2: 0 2px 6px rgba(0, 0, 0, .04), 0 12px 36px rgba(0, 0, 0, .07);
+    --lu-shadow-3: 0 24px 80px rgba(0, 0, 0, .16), 0 4px 16px rgba(0, 0, 0, .06);
+    --lu-spring: cubic-bezier(.34, 1.4, .64, 1);
+    --lu-ease: cubic-bezier(.16, 1, .3, 1);
+    --amb-1: rgba(0, 113, 227, .30);
+    --amb-2: rgba(175, 82, 222, .22);
+    --amb-3: rgba(48, 176, 199, .28);
+    --amb-4: rgba(255, 45, 85, .14);
+    --chap-ink: var(--lu-text-2);
+    --chap-accent: var(--lu-blue);
+    --chap-rule: rgba(0, 0, 0, .12);
+    --chap-dot: #28cd41;
+
+    position: relative; z-index: 2; overflow: hidden; isolation: isolate;
+    padding: 150px 40px 150px;
+    background: var(--lu-bg); color: var(--lu-text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", system-ui, sans-serif;
+}
+.lu-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+
+/* ---------- Fondo: esferas de luz que flotan (como en la app) ---------- */
+.lu-ambient { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.lu-ambient span {
+    position: absolute; border-radius: 50%; filter: blur(70px); will-change: transform;
+    animation: luDrift 26s var(--lu-ease) infinite alternate;
+}
+.lu-ambient span:nth-child(1) { width: 56vw; height: 56vw; left: -14vw; top: -10vw; background: radial-gradient(circle at 30% 30%, var(--amb-1), transparent 65%); }
+.lu-ambient span:nth-child(2) { width: 46vw; height: 46vw; right: -14vw; top: 30%; background: radial-gradient(circle at 60% 40%, var(--amb-2), transparent 65%); animation-duration: 32s; animation-delay: -8s; }
+.lu-ambient span:nth-child(3) { width: 52vw; height: 52vw; left: 18vw; top: 60%; background: radial-gradient(circle, var(--amb-3), transparent 65%); animation-duration: 38s; animation-delay: -14s; }
+.lu-ambient span:nth-child(4) { width: 34vw; height: 34vw; right: 10vw; bottom: 2%; background: radial-gradient(circle, var(--amb-4), transparent 65%); animation-duration: 29s; animation-delay: -4s; }
+@keyframes luDrift {
+    0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+    33% { transform: translate3d(6vw, 4vh, 0) scale(1.08) rotate(20deg); }
+    66% { transform: translate3d(-4vw, 8vh, 0) scale(.94) rotate(-10deg); }
+    100% { transform: translate3d(3vw, -5vh, 0) scale(1.05) rotate(8deg); }
+}
+
+/* ---------- Encabezado ---------- */
+.lu-head { text-align: center; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+.lu-brand { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 30px; }
+.lu-brand.rv { transform: scale(.7); transition: opacity .9s var(--lu-ease), transform 1s var(--lu-spring); }
+.lu-brand.rv.in { transform: none; }
+.lu-mark { width: 88px; height: 88px; filter: drop-shadow(0 18px 30px rgba(0, 113, 227, .28)); animation: luFloat 6s ease-in-out infinite; }
+@keyframes luFloat { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+.lu-word { font-size: .82rem; font-weight: 600; letter-spacing: .5em; padding-left: .5em; color: var(--lu-blue); }
+.lu-title { font-size: clamp(2.6rem, 6.4vw, 5.4rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.02; color: var(--lu-text); }
+.lu-title span { background: linear-gradient(90deg, var(--lu-blue), var(--lu-teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lu-lede { margin-top: 24px; font-size: 1.2rem; line-height: 1.55; letter-spacing: -0.01em; color: var(--lu-text-2); max-width: 720px; }
+.lu-actions { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.lu-btn {
+    display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 980px; cursor: pointer;
+    font: 500 1rem/1.2 inherit; font-family: inherit; text-decoration: none; border: 0;
+    transition: transform .4s var(--lu-spring), box-shadow .3s ease, background .25s ease;
+}
+.lu-btn svg { width: 17px; height: 17px; }
+.lu-btn:hover { transform: translateY(-2px) scale(1.02); }
+.lu-btn-blue { background: var(--lu-blue); color: #fff; box-shadow: 0 10px 30px rgba(0, 113, 227, .3); }
+.lu-btn-blue:hover { background: #0077ed; }
+.lu-btn-glass { background: var(--lu-glass); color: var(--lu-blue); box-shadow: inset 0 0 0 1px var(--lu-glass-border), var(--lu-shadow-2); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); }
+
+/* ---------- Escenario con la app flotando ---------- */
+.lu-stage { position: relative; max-width: 1080px; margin: 90px auto 0; padding: 30px 0; }
+.lu-stage.rv { transform: translateY(60px) scale(.94); transition: opacity 1s var(--lu-ease), transform 1.2s var(--lu-spring); }
+.lu-stage.rv.in { transform: none; }
+.lu-ecg { position: absolute; left: -8%; right: -8%; width: 116%; top: 42%; height: 140px; z-index: 0; overflow: visible; }
+.lu-ecg path { fill: none; stroke: var(--lu-blue); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .35; filter: drop-shadow(0 0 6px rgba(0, 113, 227, .6)); }
+.lu-stage.in .lu-ecg path { animation: luEcg 7s linear .4s infinite; }
+@keyframes luEcg { 0% { stroke-dashoffset: 1; opacity: 0; } 8% { opacity: .45; } 60% { stroke-dashoffset: 0; opacity: .45; } 100% { stroke-dashoffset: -1; opacity: 0; } }
+.lu-window, .lu-frame {
+    position: relative; z-index: 1; border-radius: 18px; overflow: hidden; background: var(--lu-elev);
+    box-shadow: 0 0 0 1px var(--lu-hairline), var(--lu-shadow-3);
+}
+.lu-window { transform: translate3d(calc(var(--px, 0) * 8px), calc(var(--py, 0) * 8px), 0); transition: transform .5s var(--lu-ease); }
+.lu-window img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.lu-chrome {
+    height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 16px;
+    background: rgba(246, 246, 248, .92); border-bottom: 1px solid var(--lu-hairline);
+    font-size: 12.5px; color: var(--lu-text-2);
+}
+.lu-chrome span { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+.lu-chrome span:nth-child(2) { background: #febc2e; } .lu-chrome span:nth-child(3) { background: #28c840; margin-right: 8px; }
+.lu-chrome b { font-weight: 600; color: var(--lu-text); }
+.lu-chrome em { font-style: normal; }
+.lu-chrome em::before { content: '·'; margin-right: 8px; }
+.lu-float {
+    position: absolute; z-index: 2; display: flex; flex-direction: column; gap: 2px; padding: 12px 16px; border-radius: 16px;
+    background: var(--lu-glass); box-shadow: inset 0 0 0 1px var(--lu-glass-border), var(--lu-shadow-2);
+    -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+    font-size: 13px; color: var(--lu-text);
+    transform: translate3d(calc(var(--px, 0) * var(--dp, 14px)), calc(var(--py, 0) * var(--dp, 14px)), 0);
+    transition: transform .5s var(--lu-ease);
+    animation: luFloat 7s ease-in-out infinite;
+}
+.lu-float small { color: var(--lu-text-2); font-size: 11.5px; }
+.lu-float b { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; }
+.lu-float b em { font-style: normal; font-size: .8rem; font-weight: 500; color: var(--lu-text-2); }
+.lu-float.lf3, .lu-float.lf4 { flex-direction: row; align-items: center; gap: 8px; font-weight: 600; }
+.lu-float i { width: 9px; height: 9px; border-radius: 50%; background: #28cd41; box-shadow: 0 0 0 4px rgba(40, 205, 65, .18); }
+.lu-float i.red { background: #ff3b30; box-shadow: 0 0 0 4px rgba(255, 59, 48, .18); }
+.lu-float.lf1 { left: -50px; top: 90px; --dp: 26px; }
+.lu-float.lf2 { right: -46px; top: 160px; --dp: 20px; animation-delay: -2s; }
+.lu-float.lf3 { left: 60px; bottom: -6px; --dp: 30px; animation-delay: -4s; }
+.lu-float.lf4 { right: 80px; bottom: 20px; --dp: 24px; animation-delay: -1s; }
+
+/* ---------- Datos clave ---------- */
+.lu-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 70px; }
+.lu-meta div, .lu-stats div {
+    padding: 18px 20px; border-radius: 18px; background: var(--lu-glass);
+    box-shadow: inset 0 0 0 1px var(--lu-glass-border), var(--lu-shadow-2);
+    -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+}
+.lu-meta dt { font-size: .8rem; color: var(--lu-text-2); margin-bottom: 6px; }
+.lu-meta dd { font-size: 1rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.35; }
+.lu-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.lu-stats b { display: block; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.05; font-variant-numeric: tabular-nums; background: linear-gradient(90deg, var(--lu-blue), var(--lu-teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lu-stats span { display: block; margin-top: 6px; font-size: .92rem; color: var(--lu-text-2); line-height: 1.4; }
+
+/* ---------- Funciones: video grande al centro, texto arriba y abajo ---------- */
+.lu-steps { display: flex; flex-direction: column; gap: 150px; margin-top: 170px; }
+.lu-step { --p: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.lu-step-top { max-width: 800px; margin-bottom: 40px; }
+.lu-num { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 980px; margin-bottom: 18px; font-size: .92rem; font-weight: 600; color: var(--lu-blue); background: rgba(0, 113, 227, .1); }
+.lu-num i { width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--lu-blue); color: #fff; }
+.lu-num svg { width: 16px; height: 16px; }
+.lu-step h3 { font-size: clamp(2.1rem, 4.8vw, 3.8rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; color: var(--lu-text); }
+.lu-step h3 .w { display: inline-block; opacity: 0; transform: translateY(16px); filter: blur(8px); transition: opacity .8s var(--lu-ease), transform .8s var(--lu-ease), filter .8s var(--lu-ease); transition-delay: calc(var(--i) * 60ms); }
+.lu-step.in h3 .w { opacity: 1; transform: none; filter: none; }
+.lu-fig { position: relative; width: 100%; max-width: 1120px; }
+.lu-glow { position: absolute; z-index: 0; inset: 8% 10%; border-radius: 40px; background: radial-gradient(ellipse at 30% 40%, var(--amb-1), transparent 60%), radial-gradient(ellipse at 75% 60%, var(--amb-3), transparent 60%); filter: blur(50px); opacity: calc(.4 + .6 * var(--p)); transform: scale(calc(.85 + .25 * var(--p))); }
+.lu-frame {
+    transform: perspective(1600px) rotateX(calc((1 - var(--p)) * 14deg)) scale(calc(.88 + .12 * var(--p)));
+    transform-origin: 50% 100%; will-change: transform;
+}
+.lu-frame video, .lu-frame img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; background: var(--lu-bg); }
+.lu-step-bottom { max-width: 700px; margin-top: 40px; }
+.lu-step-bottom p { font-size: 1.15rem; line-height: 1.6; color: var(--lu-text-2); letter-spacing: -0.01em; }
+.lu-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 20px; }
+.lu-chips span { padding: 7px 14px; border-radius: 980px; font-size: .86rem; font-weight: 500; color: var(--lu-text); background: var(--lu-glass); box-shadow: inset 0 0 0 1px var(--lu-glass-border), 0 1px 4px rgba(0, 0, 0, .05); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+
+/* ---------- Y además: capturas en tarjetas de vidrio ---------- */
+.lu-more { margin-top: 170px; }
+.lu-more-title { font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 600; letter-spacing: -0.035em; text-align: center; margin-bottom: 44px; }
+.lu-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.lu-card {
+    border-radius: 24px; overflow: hidden; background: var(--lu-glass);
+    box-shadow: inset 0 0 0 1px var(--lu-glass-border), var(--lu-shadow-2);
+    -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+    transition: transform .5s var(--lu-spring), box-shadow .4s ease;
+}
+.lu-card.rv { transform: translateY(40px) scale(.96); transition: opacity .8s var(--lu-ease), transform .9s var(--lu-spring), box-shadow .4s ease; transition-delay: var(--d, 0s); }
+.lu-card.rv.in { transform: none; }
+.lu-card:hover { transform: translateY(-6px); box-shadow: inset 0 0 0 1px var(--lu-glass-border), var(--lu-shadow-3); }
+.lu-card-img { margin: 10px 10px 0; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 10; background: var(--lu-elev); box-shadow: 0 0 0 1px var(--lu-hairline); }
+.lu-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 0; display: block; transition: transform 1.2s var(--lu-ease); }
+.lu-card:hover .lu-card-img img { transform: scale(1.06); }
+.lu-card figcaption { padding: 16px 20px 22px; display: flex; flex-direction: column; gap: 6px; }
+.lu-card b { display: flex; align-items: center; gap: 8px; font-size: 1.08rem; font-weight: 600; letter-spacing: -0.02em; color: var(--lu-text); }
+.lu-card b i { width: 10px; height: 10px; border-radius: 3px; background: var(--lc); }
+.lu-card span { font-size: .93rem; line-height: 1.5; color: var(--lu-text-2); }
+
+/* ---------- Demo completa ---------- */
+.lu-full {
+    margin-top: 150px; padding: 56px; border-radius: 32px; color: #fff; overflow: hidden; position: relative;
+    display: grid; grid-template-columns: .85fr 1.15fr; gap: 48px; align-items: center;
+    background: radial-gradient(ellipse at 15% 0%, rgba(0, 113, 227, .55), transparent 55%), radial-gradient(ellipse at 90% 100%, rgba(48, 176, 199, .35), transparent 55%), #0b1220;
+    box-shadow: var(--lu-shadow-3);
+}
+.lu-full-text img { width: 56px; height: 56px; margin-bottom: 18px; }
+.lu-full small { display: block; font-size: .9rem; color: rgba(255, 255, 255, .7); }
+.lu-full h3 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; margin: 8px 0 14px; }
+.lu-full p { color: rgba(255, 255, 255, .75); line-height: 1.6; }
+.lu-play { position: relative; display: block; width: 100%; padding: 0; border: 0; border-radius: 18px; overflow: hidden; cursor: pointer; background: #000; box-shadow: 0 0 0 1px rgba(255, 255, 255, .12), 0 30px 60px rgba(0, 0, 0, .4); }
+.lu-play img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform 1s var(--lu-ease); }
+.lu-play:hover img { transform: scale(1.04); }
+.lu-play span { position: absolute; left: 50%; top: 50%; width: 78px; height: 78px; border-radius: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; color: #fff; background: rgba(255, 255, 255, .22); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .4); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); transition: transform .4s var(--lu-spring); }
+.lu-play:hover span { transform: translate(-50%, -50%) scale(1.1); }
+.lu-play svg { width: 28px; height: 28px; margin-left: 4px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1240px) { .lu-float.lf1 { left: 10px; } .lu-float.lf2 { right: 10px; } }
+@media (max-width: 900px) {
+    .lu { padding: 110px 18px 100px; }
+    .lu-meta, .lu-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lu-steps { gap: 100px; margin-top: 110px; }
+    .lu-step-top { margin-bottom: 26px; } .lu-step-bottom { margin-top: 26px; }
+    .lu-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lu-more, .lu-full { margin-top: 110px; }
+    .lu-full { grid-template-columns: 1fr; padding: 28px 22px; gap: 26px; border-radius: 24px; }
+    .lu-float.lf3, .lu-float.lf4 { display: none; }
+}
+@media (max-width: 600px) {
+    .lu-lede, .lu-step-bottom p { font-size: 1.02rem; }
+    .lu-actions .lu-btn { flex: 1 1 100%; justify-content: center; }
+    .lu-float { padding: 8px 12px; border-radius: 12px; }
+    .lu-float b { font-size: 1rem; }
+    .lu-float.lf1 { left: 4px; top: 4px; } .lu-float.lf2 { right: 4px; top: auto; bottom: 0; }
+    .lu-chrome { height: 30px; padding: 0 10px; } .lu-chrome span { width: 8px; height: 8px; } .lu-chrome em { display: none; }
+    .lu-window, .lu-frame { border-radius: 12px; }
+    .lu-grid { grid-template-columns: 1fr; }
+    .lu-meta, .lu-stats { gap: 10px; }
+    .lu-meta div, .lu-stats div { padding: 14px; border-radius: 14px; }
+    .lu-ecg { top: 30%; height: 90px; }
+}
+@media (hover: none) { .lu-card:hover, .lu-btn:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+    .lu-ambient span, .lu-mark, .lu-float, .lu-ecg path { animation: none !important; }
+    .lu-step { --p: 1 !important; }
+    .lu-step h3 .w, .lu-brand.rv, .lu-stage.rv, .lu-card.rv { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* ---------- Modo noche: el modo oscuro de Lumina ---------- */
+[data-theme="dark"] .lu {
+    --lu-bg: #000000; --lu-elev: #1c1c1e; --lu-text: #f5f5f7; --lu-text-2: #a1a1a6;
+    --lu-blue: #0a84ff; --lu-teal: #40c8e0;
+    --lu-glass: rgba(28, 28, 30, .62); --lu-glass-border: rgba(255, 255, 255, .08); --lu-hairline: rgba(255, 255, 255, .1);
+    --lu-shadow-2: 0 2px 6px rgba(0, 0, 0, .3), 0 12px 36px rgba(0, 0, 0, .4);
+    --lu-shadow-3: 0 24px 80px rgba(0, 0, 0, .6), 0 4px 16px rgba(0, 0, 0, .4);
+    --amb-1: rgba(10, 132, 255, .30); --amb-2: rgba(191, 90, 242, .22); --amb-3: rgba(64, 200, 224, .24); --amb-4: rgba(255, 55, 95, .14);
+    --chap-rule: rgba(255, 255, 255, .14);
+}
+[data-theme="dark"] .lu-chrome { background: rgba(36, 36, 38, .92); }
+[data-theme="dark"] .lu-num { background: rgba(10, 132, 255, .16); }
