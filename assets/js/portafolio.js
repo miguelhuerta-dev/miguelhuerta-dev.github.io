@@ -4,29 +4,15 @@
 document.querySelectorAll('.case').forEach(cs => {
     const imgs = [...cs.querySelectorAll('.case-shots img')];
     const items = [...cs.querySelectorAll('.case-features li[data-i]')];
-    const bar = cs.querySelector('.case-progress i');
-    let cur = 0, timer = null, visible = false, hold = false;
-
+    // Sin avance automático: la captura cambia solo cuando eliges una función
     const show = (i) => {
-        cur = (i + imgs.length) % imgs.length;
-        imgs.forEach((im, k) => im.classList.toggle('on', k === cur));
-        items.forEach(li => li.classList.toggle('on', +li.dataset.i === cur));
-        bar.classList.remove('run'); void bar.offsetWidth;
-        if (visible && !hold) bar.classList.add('run');
+        imgs.forEach((im, k) => im.classList.toggle('on', k === i));
+        items.forEach(li => li.classList.toggle('on', +li.dataset.i === i));
     };
-    const tick = () => { if (visible && !hold) show(cur + 1); };
-    const start = () => { clearInterval(timer); timer = setInterval(tick, 4000); show(cur); };
-
     items.forEach(li => {
-        li.addEventListener('click', () => { hold = true; clearInterval(timer); show(+li.dataset.i); });
-        li.addEventListener('mouseenter', () => { if (matchMedia('(hover:hover)').matches) { hold = true; clearInterval(timer); show(+li.dataset.i); } });
+        li.addEventListener('click', () => show(+li.dataset.i));
+        li.addEventListener('mouseenter', () => { if (matchMedia('(hover:hover)').matches) show(+li.dataset.i); });
     });
-    cs.querySelector('.case-features').addEventListener('mouseleave', () => { if (hold) { hold = false; start(); } });
-
-    new IntersectionObserver(es => es.forEach(e => {
-        visible = e.isIntersecting;
-        if (visible) start(); else { clearInterval(timer); bar.classList.remove('run'); }
-    }), { threshold: 0.3 }).observe(cs);
 });
 
 // ===== Menú en celular =====

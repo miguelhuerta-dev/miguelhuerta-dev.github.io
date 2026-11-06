@@ -25,15 +25,16 @@
 .hx-btn {
     display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 8px; cursor: pointer;
     font: 600 15px/1.4 'Inter', sans-serif; letter-spacing: -0.4px; text-decoration: none; border: 1px solid #222222;
-    transition: box-shadow .25s ease, transform .25s ease;
+    touch-action: manipulation; transition: background-color .14s ease-out, transform .09s ease-out;
 }
-.hx-btn:hover { box-shadow: 0 2px 15px rgba(0,0,0,.12); transform: translateY(-1px); }
+.hx-btn:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) { .hx-btn-dark:hover { background: #3a3a3a; } .hx-btn-light:hover { background: #f6f6f6; } }
 .hx-btn-dark { background: #222222; color: #ffffff; }
 .hx-btn-light { background: #ffffff; color: #333333; }
 .hx-btn svg { width: 16px; height: 16px; }
 .hx-btn-soon { cursor: default; background: transparent; color: #222; border-style: dashed; }
-.hx-btn-soon:hover { box-shadow: none; transform: none; }
-.hx-btn-soon em { font-style: normal; font-size: 10.5px; font-weight: 700; letter-spacing: .6px; text-transform: uppercase; padding: 3px 6px; border-radius: 4px; background: #F5A3C7; color: #222; }
+.hx-btn-soon:active { transform: none; }
+.hx-btn-soon em { font-style: normal; font-size: 12px; font-weight: 600; padding: 3px 6px; border-radius: 4px; background: #F5A3C7; color: #222; }
 .hx-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 64px; }
 .hx-meta div { border-top: 1px solid rgba(34,34,34,.85); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
 .hx-meta small { font-family: 'Inter Tight', 'Inter', sans-serif; font-size: .82rem; font-weight: 500; color: #555555; }
@@ -137,15 +138,12 @@
 
 /* ---------- Pasos de Hito: video grande y centrado ---------- */
 .hx-steps { display: flex; flex-direction: column; gap: 150px; margin-top: 170px; }
-.hx-step { --p: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hx-step { --p: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .hx-step-top { max-width: 760px; margin-bottom: 40px; }
 .hx-num { display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter Tight', 'Inter', sans-serif; font-size: .9rem; font-weight: 500; color: #555; margin-bottom: 16px; }
 .hx-num i { width: 28px; height: 28px; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; background: var(--c); color: #222; }
 .hx-num i svg { width: 18px; height: 18px; }
-.hx-num i svg path { stroke-dasharray: 1; stroke-dashoffset: 1; }
-.hx-step.in .hx-num i svg path { animation: pjDraw 1.2s var(--ease) forwards; }
-.hx-step.in .hx-num i svg path + path { animation-delay: .3s; }
-@keyframes pjDraw { to { stroke-dashoffset: 0; } }
+
 .hx-step h3 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 600; letter-spacing: -0.045em; line-height: 1.02; color: #222; }
 .hx-figure { position: relative; width: 100%; max-width: 1120px; }
 .hx-mosaic span {
@@ -156,8 +154,6 @@
     position: relative; z-index: 1; border-radius: 12px; overflow: hidden; background: #fff;
     box-shadow: 0 0 0 1px rgba(34,34,34,.12), 0 50px 90px -30px rgba(0,0,0,.35);
     transform: scale(calc(.9 + .1 * var(--p))); transform-origin: 50% 0%;
-    clip-path: inset(calc((1 - var(--p)) * 6%) calc((1 - var(--p)) * 8%) 0 calc((1 - var(--p)) * 8%) round 12px);
-    will-change: transform, clip-path;
 }
 .hx-chrome { height: 36px; display: flex; align-items: center; gap: 10px; padding: 0 14px; background: #f7f7f7; border-bottom: 1px solid rgba(34,34,34,.1); font: 500 12.5px 'Inter Tight', 'Inter', sans-serif; color: #555; }
 .hx-chrome b { font-weight: 700; color: #222; letter-spacing: -.3px; }

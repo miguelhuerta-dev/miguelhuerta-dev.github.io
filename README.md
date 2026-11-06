@@ -22,8 +22,7 @@ assets/
     noche-portafolio.css  Modo noche de portafolio.html
   js/
     tema.js             Día / Noche (se carga en el <head> para evitar destellos)
-    hero-binario.js     Animación de la esfera binaria en canvas
-    escritura.js        Frase que se escribe sola en el hero
+    hero-binario.js     Animación de la esfera binaria en canvas (el único efecto grande del sitio)
     main.js             Navegación por sección, apariciones, Hito, Mentoring, videos y modal
     juego.js            Pestañas, expediente y brasas del videojuego
     portafolio.js       Galería de funciones de portafolio.html

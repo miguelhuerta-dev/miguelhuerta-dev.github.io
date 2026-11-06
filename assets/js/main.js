@@ -6,11 +6,11 @@
 (() => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // ---------- Aparición genérica ----------
-    const rvObs = new IntersectionObserver((es) => es.forEach((e) => {
-        if (e.isIntersecting) { e.target.classList.add('in'); rvObs.unobserve(e.target); }
-    }), { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-    document.querySelectorAll('.rv, .chap, .pt, .mosaic').forEach((el) => rvObs.observe(el));
+    // ---------- Lumina: el trazo del electrocardiograma se dibuja una vez al llegar ----------
+    const luStage = document.getElementById('luStage');
+    if (luStage) new IntersectionObserver((es, o) => es.forEach((e) => {
+        if (e.isIntersecting) { luStage.classList.add('in'); o.disconnect(); }
+    }), { threshold: 0.3 }).observe(luStage);
 
     // ---------- Navegación: sección activa con su color ----------
     const nav = document.getElementById('nv');
@@ -106,64 +106,21 @@
         const v = e.target;
         if (e.isIntersecting) {
             if (!v.src && v.dataset.src) { v.src = v.dataset.src; v.load(); }
-            v.muted = true; v.play().catch(() => {});
+            // Con movimiento reducido el video se queda en su póster
+            if (!reduce) { v.muted = true; v.play().catch(() => {}); }
         } else if (!v.paused) v.pause();
     }), { threshold: 0.25, rootMargin: '200px 0px' });
     document.querySelectorAll('video[data-src]').forEach((v) => vObs.observe(v));
 
-    // ---------- Mentoring: escribe el nombre del proyecto ----------
-    const typeEl = document.getElementById('mxType');
-    const full = typeEl.textContent;
-    if (!reduce) {
-        typeEl.textContent = '';
-        new IntersectionObserver((es, o) => es.forEach((e) => {
-            if (!e.isIntersecting) return; o.disconnect();
-            let i = 0; const t = setInterval(() => { typeEl.textContent = full.slice(0, ++i); if (i >= full.length) clearInterval(t); }, 45);
-        }), { threshold: 0.6 }).observe(typeEl);
-    }
-
-    // ---------- Animaciones ligadas al scroll ----------
-    const hx = document.getElementById('hito');
-    const steps = [...document.querySelectorAll('[data-scroll]')];
-    const track = document.getElementById('mxTrack');
-    const mxSteps = [...document.querySelectorAll('.mx-step')];
-    const clamp = (v) => Math.max(0, Math.min(1, v));
-    const stObs = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) e.target.classList.add('in'); }), { threshold: 0.2 });
-    steps.forEach((s) => stObs.observe(s));
-
+    // ---------- Navegación: marca la sección visible ----------
+    // Hito se muestra siempre en su lienzo gris de galería
+    document.getElementById('hito').style.setProperty('--hp', 1);
     let ticking = false;
-    const update = () => {
-        ticking = false;
-        const vh = innerHeight;
-        // Del negro del sitio al gris de galería de Hito
-        const r = hx.getBoundingClientRect();
-        // El sitio ya es claro: Hito se muestra siempre en su lienzo gris (sin transición desde negro)
-        hx.style.setProperty('--hp', 1);
-        // Cada video crece y se descubre al subir por la pantalla
-        steps.forEach((s) => {
-            const b = s.getBoundingClientRect();
-            if (b.bottom < -200 || b.top > vh + 200) return;
-            const fig = s.querySelector('.hx-figure, .mx-fig, .lu-fig');
-            const fb = fig.getBoundingClientRect();
-            s.style.setProperty('--p', reduce ? 1 : clamp((vh - fb.top) / (vh * 0.62)).toFixed(3));
-        });
-        // Riel de progreso de Mentoring
-        const t = track.getBoundingClientRect();
-        track.style.setProperty('--rp', clamp((vh * 0.55 - t.top) / t.height).toFixed(3));
-        mxSteps.forEach((s) => { const b = s.getBoundingClientRect(); s.classList.toggle('on', b.top < vh * 0.55); });
-        setActive(pickSection());
-    };
+    const update = () => { ticking = false; setActive(pickSection()); };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
     addEventListener('scroll', onScroll, { passive: true });
     addEventListener('resize', onScroll);
     update();
-
-    // ---------- Proyectos: brillo que sigue al cursor ----------
-    document.querySelectorAll('.pt').forEach((card) => card.addEventListener('pointermove', (e) => {
-        const b = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - b.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - b.top) + 'px');
-    }));
 
     // ---------- Modal de video compartido ----------
     const vm = document.getElementById('vm');

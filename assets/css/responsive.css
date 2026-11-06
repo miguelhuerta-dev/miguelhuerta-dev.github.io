@@ -32,7 +32,7 @@
     .pg-head h3 { font-size: 1.6rem; }
     .pg-count b { font-size: 1.8rem; }
     .chap { margin-bottom: 28px; }
-    .chap-status { font-size: .64rem; padding: 5px 9px; }
+    .chap-status { font-size: .82rem; }
     .stack-item { padding: 10px 14px; }
     .contact-link { font-size: .95rem; }
     .vm { padding: 12px; }
@@ -46,19 +46,16 @@
 /* En pantallas táctiles no hay hover: sin saltos al tocar */
 @media (hover: none) {
     .pt:hover { transform: none; box-shadow: none; }
-    .hx-btn:hover { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .rv, .hx-title span, .hm-tile, .mx-step h3 .w { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
-    .hx-step, .mx-step { --p: 1 !important; }
+    .hx-title span, .hm-tile { opacity: 1 !important; transform: none !important; transition: none !important; }
     .hm-float { animation: none !important; }
-    .chap-line { transform: none; }
 }
 
 /* Datos del hero en 2 × 2 en celular */
 @media (max-width: 600px) {
-    .hero-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; width: 100%; }
-    .hero-chips li { display: flex; }
-    .hero-chip { width: 100%; justify-content: center; padding: 8px 6px; font-size: .68rem; }
+    .hero-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 12px; width: 100%; font-size: .88rem; }
+    .hero-facts li { padding: 0 10px; }
+    .hero-facts li:nth-child(3) { border-left: 0; }
 }

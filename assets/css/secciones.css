@@ -15,10 +15,9 @@
 .stack-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
 .stack-item {
     display: flex; flex-direction: column; gap: 22px; padding: 18px; border-radius: 8px; background: #fff;
-    border: 1px solid rgba(34,34,34,.1); transition: transform .35s var(--ease), box-shadow .35s ease;
+    border: 1px solid rgba(34,34,34,.1);
 }
 .stack-item:nth-child(even) { border-radius: 4px; }
-.stack-item:hover { transform: translateY(-3px); box-shadow: 0 2px 15px rgba(0,0,0,.08); }
 .stack-item i { font-size: 1.8rem; }
 .stack-item span { font-weight: 600; font-size: 1rem; letter-spacing: -0.3px; }
 .stack-item small { display: block; font: 500 12.5px var(--font-tight); color: var(--muted); margin-top: 2px; }
@@ -40,7 +39,6 @@
 .pg-head p { font-family: var(--font-tight); color: var(--muted); font-size: .9rem; margin-top: 8px; }
 .pg-count { font-family: var(--font-tight); font-size: .9rem; color: var(--muted); white-space: nowrap; }
 .pg-count b { font-size: 2.4rem; font-weight: 600; letter-spacing: -1.5px; color: var(--ink); margin-right: 6px; font-family: var(--font); }
-.pt:hover { box-shadow: 0 30px 60px -24px rgba(0,0,0,.25) !important; }
 
 /* =====================================================================
    SOBRE MÍ · mosaico de enfoques
@@ -49,19 +47,12 @@
 .about-text p { font-size: 1.15rem; line-height: 1.7; color: var(--sub); letter-spacing: -0.15px; margin-bottom: 20px; }
 .about-text .highlight { color: var(--ink); font-weight: 600; }
 .about-text .sec-title { margin-bottom: 36px; }
-.mosaic { position: relative; height: 470px; }
-.mosaic > div {
-    position: absolute; border-radius: 8px; padding: 18px; color: var(--ink); display: flex; flex-direction: column; justify-content: space-between;
-    opacity: 0; transform: translateY(40px) rotate(var(--r, 0deg)); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s);
-}
-.mosaic.in > div { opacity: 1; transform: rotate(var(--r, 0deg)); }
-.mosaic > div:nth-child(even) { border-radius: 4px; }
-.mosaic > div > div { display: flex; flex-direction: column; gap: 2px; }
-.mosaic b { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1.1; }
-.mosaic small { font: 500 13px var(--font-tight); color: var(--sub); }
-.mosaic svg { width: 26px; height: 26px; }
-@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .mosaic { height: 420px; } }
-@media (max-width: 520px) { .mosaic { height: 380px; } .mosaic b { font-size: 1.1rem; } }
+/* Foto en blanco y negro, impresa sobre el papel gris del sitio */
+.about-photo { justify-self: center; width: min(100%, 340px); }
+.about-photo div { background: #e3e3e3; border-radius: 4px; overflow: hidden; }
+.about-photo img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.06); mix-blend-mode: multiply; }
+
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-photo { justify-self: start; width: min(100%, 280px); } }
 
 /* =====================================================================
    CONTACTO + FOOTER
@@ -87,15 +78,12 @@ footer { position: relative; z-index: 2; background: var(--ink); color: #fff; pa
 /* Juego: banda oscura de contraste (DESIGN.md permite bandas negras) */
 .gm .chap { --chap-accent: var(--gm-ember); --chap-ink: var(--gm-muted); --chap-rule: var(--gm-line); --chap-dot: var(--gm-ember); }
 
-@media (hover: none) { .btn:hover, .stack-item:hover { transform: none; box-shadow: none; } }
 @media (prefers-reduced-motion: reduce) {
-    .rv, .mosaic > div, .mx-step h3 .w, .hero-reveal > * { opacity: 1 !important; transform: none !important; filter: none !important; animation: none !important; transition: none !important; }
-    .chap-line { transform: none; }
+    .hero-reveal > * { animation: none !important; }
+    .btn:active { transform: none; }
 }
 
 /* ---------- Pulido: datos clave, stack por niveles y botones de Sobre mí ---------- */
-.hero-chips { list-style: none; }
-.hero-chip b { font-weight: 600; color: var(--ink); }
 
 .mx-meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 64px; }
 .mx-meta div { border-top: 1px solid var(--ink); padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
