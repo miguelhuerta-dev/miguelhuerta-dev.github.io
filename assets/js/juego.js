@@ -9,17 +9,32 @@
         'Sigilo en tiempo real: el ruido se ve como ondas, y los Callados oyen dentro de su círculo.',
         'Encuentro por turnos: cada opción muestra su costo antes de elegir, y el tiempo corre contra la tos.'
     ];
-    tabs.forEach((t) => t.addEventListener('click', () => {
+    const panel = document.getElementById('gmPanel');
+    const select = (t) => {
         const i = +t.dataset.shot;
-        tabs.forEach((x) => x.setAttribute('aria-selected', String(x === t)));
+        tabs.forEach((x) => { x.setAttribute('aria-selected', String(x === t)); x.tabIndex = x === t ? 0 : -1; });
         shots.forEach((im, k) => im.classList.toggle('on', k === i));
+        panel.setAttribute('aria-labelledby', t.id);
         cap.textContent = caps[i];
-    }));
+    };
+    tabs.forEach((t, n) => {
+        t.addEventListener('click', () => select(t));
+        // Patrón de pestañas: flechas, Inicio y Fin mueven y seleccionan
+        t.addEventListener('keydown', (e) => {
+            const last = tabs.length - 1;
+            const to = { ArrowRight: n === last ? 0 : n + 1, ArrowLeft: n === 0 ? last : n - 1, Home: 0, End: last }[e.key];
+            if (to === undefined) return;
+            e.preventDefault();
+            select(tabs[to]); tabs[to].focus();
+        });
+    });
 
     const more = document.getElementById('gmMore');
     const dossier = document.getElementById('gmDossier');
     more.addEventListener('click', () => {
         const open = dossier.classList.toggle('open');
+        // Cerrado, el expediente queda inerte: ni el teclado ni el lector entran en él
+        dossier.inert = !open;
         more.setAttribute('aria-expanded', String(open));
         more.firstChild.textContent = open ? 'Cerrar el expediente ' : 'Abrir el expediente ';
         if (open) setTimeout(() => dossier.scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);

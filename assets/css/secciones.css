@@ -43,16 +43,11 @@
 /* =====================================================================
    SOBRE MÍ · mosaico de enfoques
    ===================================================================== */
-.about-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 72px; align-items: center; }
+.about-grid { max-width: 760px; }
 .about-text p { font-size: 1.15rem; line-height: 1.7; color: var(--sub); letter-spacing: -0.15px; margin-bottom: 20px; }
 .about-text .highlight { color: var(--ink); font-weight: 600; }
 .about-text .sec-title { margin-bottom: 36px; }
-/* Foto en blanco y negro, impresa sobre el papel gris del sitio */
-.about-photo { justify-self: center; width: min(100%, 340px); }
-.about-photo div { background: #e3e3e3; border-radius: 4px; overflow: hidden; }
-.about-photo img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.06); mix-blend-mode: multiply; }
 
-@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-photo { justify-self: start; width: min(100%, 280px); } }
 
 /* =====================================================================
    CONTACTO + FOOTER
@@ -67,7 +62,7 @@
 footer { position: relative; z-index: 2; background: var(--ink); color: #fff; padding: 56px 40px 40px; }
 .ft { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
 .ft-brand { font-size: 1.6rem; font-weight: 700; letter-spacing: -1px; }
-.ft h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.ft h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
 .ft a { display: block; color: #f7f7f7; text-decoration: none; font-size: 1rem; line-height: 1.66; opacity: .85; }
 .ft a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 .ft-sign { display: flex; flex-direction: column; gap: 6px; margin-top: 14px; font-size: .9rem; font-weight: 600; }

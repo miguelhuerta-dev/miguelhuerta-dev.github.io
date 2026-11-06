@@ -90,7 +90,7 @@
 }
 .gm-pillar:hover { border-color: rgba(var(--gm-ember-rgb), 0.45); transform: translateY(-4px); background: linear-gradient(180deg, rgba(var(--gm-ember-rgb),0.07), transparent); }
 .gm-pillar svg { width: 30px; height: 30px; color: var(--gm-ember); margin-bottom: 16px; }
-.gm-pillar h4 { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.5px; color: var(--gm-bone); margin-bottom: 8px; }
+.gm-pillar h3 { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700; letter-spacing: 0.5px; color: var(--gm-bone); margin-bottom: 8px; }
 .gm-pillar p { font-size: 0.85rem; color: var(--gm-muted); line-height: 1.65; }
 
 /* Ficha + hoja de ruta */

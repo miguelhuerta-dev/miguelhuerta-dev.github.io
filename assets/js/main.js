@@ -24,7 +24,11 @@
         const id = sec ? '#' + sec.id : null;
         if (id === lastId) return;
         lastId = id;
-        links.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === id));
+        links.forEach((a) => {
+            const on = a.getAttribute('href') === id;
+            a.classList.toggle('on', on);
+            if (on) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+        });
         const on = links.find((a) => a.getAttribute('href') === id);
         // Cada sección pinta el indicador con su color de categoría (como en Hito)
         const accent = sec?.dataset.accent || '#222222';
@@ -102,15 +106,38 @@
     }), { threshold: 0.3 }).observe(stage);
 
     // ---------- Videos: cargan y se reproducen solo al estar en pantalla ----------
+    // Cada demo lleva un botón para pausarla; si la persona la pausa, ya no vuelve a arrancar sola.
+    const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>';
+    const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+    const paint = (btn, playing) => {
+        btn.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+        btn.setAttribute('aria-label', (playing ? 'Pausar video' : 'Reproducir video') + (btn.dataset.name ? ': ' + btn.dataset.name : ''));
+    };
     const vObs = new IntersectionObserver((es) => es.forEach((e) => {
         const v = e.target;
         if (e.isIntersecting) {
             if (!v.src && v.dataset.src) { v.src = v.dataset.src; v.load(); }
             // Con movimiento reducido el video se queda en su póster
-            if (!reduce) { v.muted = true; v.play().catch(() => {}); }
+            if (!reduce && !v.dataset.userPaused) { v.muted = true; v.play().catch(() => {}); }
         } else if (!v.paused) v.pause();
     }), { threshold: 0.25, rootMargin: '200px 0px' });
-    document.querySelectorAll('video[data-src]').forEach((v) => vObs.observe(v));
+    document.querySelectorAll('video[data-src]').forEach((v) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'vid-toggle';
+        // El nombre dice qué video controla: "Pausar video: Tu día de un vistazo."
+        btn.dataset.name = (v.getAttribute('aria-label') || '').replace('Demo en video: ', '');
+        paint(btn, !reduce);
+        v.parentElement.appendChild(btn);
+        v.addEventListener('play', () => paint(btn, true));
+        v.addEventListener('pause', () => paint(btn, false));
+        btn.addEventListener('click', () => {
+            if (!v.src && v.dataset.src) { v.src = v.dataset.src; v.load(); }
+            if (v.paused) { delete v.dataset.userPaused; v.muted = true; v.play().catch(() => {}); }
+            else { v.dataset.userPaused = '1'; v.pause(); }
+        });
+        vObs.observe(v);
+    });
 
     // ---------- Navegación: marca la sección visible ----------
     // Hito se muestra siempre en su lienzo gris de galería
@@ -126,11 +153,18 @@
     const vm = document.getElementById('vm');
     const vmVideo = document.getElementById('vmVideo');
     let lastFocus = null;
-    const closeVm = () => { vm.classList.remove('open'); vm.setAttribute('aria-hidden', 'true'); vmVideo.pause(); lastFocus?.focus(); };
+    // Mientras el modal está abierto, el resto de la página queda inerte: el foco no puede salir
+    const background = [...document.body.children].filter((el) => el !== vm && el.tagName !== 'SCRIPT');
+    const setInert = (on) => background.forEach((el) => { el.inert = on; });
+    // Si el foco intenta salir del diálogo (por ejemplo, a la barra del navegador), vuelve a "Cerrar"
+    vm.addEventListener('focusout', () => requestAnimationFrame(() => {
+        if (vm.classList.contains('open') && !vm.contains(document.activeElement)) document.getElementById('vmClose').focus();
+    }));
+    const closeVm = () => { vm.classList.remove('open'); vm.setAttribute('aria-hidden', 'true'); setInert(false); vmVideo.pause(); lastFocus?.focus(); };
     document.querySelectorAll('[data-video]').forEach((b) => b.addEventListener('click', () => {
         lastFocus = b;
         if (vmVideo.getAttribute('src') !== b.dataset.video) { vmVideo.src = b.dataset.video; vmVideo.poster = b.dataset.poster || ''; }
-        vm.classList.add('open'); vm.setAttribute('aria-hidden', 'false');
+        vm.classList.add('open'); vm.setAttribute('aria-hidden', 'false'); setInert(true);
         vmVideo.currentTime = 0; vmVideo.play().catch(() => {});
         document.getElementById('vmClose').focus();
     }));

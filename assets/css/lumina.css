@@ -8,6 +8,7 @@
     --lu-text: #1d1d1f;
     --lu-text-2: #6e6e73;
     --lu-blue: #0071e3;
+    --lu-blue-text: #0058b0; /* azul para texto pequeño: 6:1 sobre el fondo */
     --lu-teal: #30b0c7;
     --lu-glass: rgba(255, 255, 255, .68);
     --lu-glass-border: rgba(255, 255, 255, .7);
@@ -46,7 +47,7 @@
 .lu-head { text-align: center; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
 .lu-brand { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-bottom: 30px; }
 .lu-mark { width: 88px; height: 88px; filter: drop-shadow(0 18px 30px rgba(0, 113, 227, .28)); }
-.lu-word { font-size: .82rem; font-weight: 600; letter-spacing: .5em; padding-left: .5em; color: var(--lu-blue); }
+.lu-word { font-size: .82rem; font-weight: 600; letter-spacing: .5em; padding-left: .5em; color: var(--lu-blue-text); }
 .lu-title { font-size: clamp(2.6rem, 6.4vw, 5.4rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.02; color: var(--lu-text); }
 .lu-lede { margin-top: 24px; font-size: 1.2rem; line-height: 1.55; letter-spacing: -0.01em; color: var(--lu-text-2); max-width: 720px; }
 .lu-actions { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
@@ -60,7 +61,7 @@
 .lu-btn:active { transform: scale(.97); }
 .lu-btn-blue { background: var(--lu-blue); color: #fff; }
 @media (hover: hover) and (pointer: fine) { .lu-btn-blue:hover { background: #0062c4; } .lu-btn-glass:hover { background: var(--lu-elev); } }
-.lu-btn-glass { background: var(--lu-glass); color: var(--lu-blue); box-shadow: inset 0 0 0 1px var(--lu-glass-border), var(--lu-shadow-2); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); }
+.lu-btn-glass { background: var(--lu-glass); color: var(--lu-blue-text); box-shadow: inset 0 0 0 1px var(--lu-glass-border), var(--lu-shadow-2); -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%); }
 
 /* ---------- Escenario con la app flotando ---------- */
 .lu-stage { position: relative; max-width: 1080px; margin: 90px auto 0; padding: 30px 0; }
@@ -121,7 +122,7 @@
 .lu-steps { display: flex; flex-direction: column; gap: 150px; margin-top: 170px; }
 .lu-step { --p: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .lu-step-top { max-width: 800px; margin-bottom: 40px; }
-.lu-num { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 980px; margin-bottom: 18px; font-size: .92rem; font-weight: 600; color: var(--lu-blue); background: rgba(0, 113, 227, .1); }
+.lu-num { display: inline-flex; align-items: center; gap: 10px; padding: 6px 14px 6px 6px; border-radius: 980px; margin-bottom: 18px; font-size: .92rem; font-weight: 600; color: var(--lu-blue-text); background: rgba(0, 113, 227, .1); }
 .lu-num i { width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--lu-blue); color: #fff; }
 .lu-num svg { width: 16px; height: 16px; }
 .lu-step h3 { font-size: clamp(2.1rem, 4.8vw, 3.8rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.05; color: var(--lu-text); }
@@ -204,7 +205,7 @@
 /* ---------- Modo noche: el modo oscuro de Lumina ---------- */
 [data-theme="dark"] .lu {
     --lu-bg: #000000; --lu-elev: #1c1c1e; --lu-text: #f5f5f7; --lu-text-2: #a1a1a6;
-    --lu-blue: #0a84ff; --lu-teal: #40c8e0;
+    --lu-blue: #0071e3; --lu-blue-text: #4da3ff; --lu-teal: #40c8e0;
     --lu-glass: rgba(28, 28, 30, .62); --lu-glass-border: rgba(255, 255, 255, .08); --lu-hairline: rgba(255, 255, 255, .1);
     --lu-shadow-2: 0 2px 6px rgba(0, 0, 0, .3), 0 12px 36px rgba(0, 0, 0, .4);
     --lu-shadow-3: 0 24px 80px rgba(0, 0, 0, .6), 0 4px 16px rgba(0, 0, 0, .4);

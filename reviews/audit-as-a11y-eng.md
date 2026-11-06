@@ -95,3 +95,27 @@ Es un sitio estático de portafolio con un modal de video, pestañas, un panel d
 
 ### Lo que ya está bien
 Foco visible en todo el menú y los botones (`:focus-visible`). Un solo `h1`. `lang="es"`. La foto tiene `alt` y las imágenes decorativas `alt=""`. Los SVG decorativos llevan `aria-hidden`. Escape cierra el modal y el foco vuelve a su origen. `aria-expanded` funciona en el expediente. Los botones táctiles usan `touch-action: manipulation`. No hay `user-scalable=no`.
+
+---
+
+## Correcciones aplicadas (2026-11-06)
+
+Se volvió a revisar con axe-core 4.10.2 después de los cambios: **0 fallas** en `index.html` y `portafolio.html`, en modo día y noche.
+
+| Hallazgo | Estado | Cómo se resolvió |
+|---|---|---|
+| Crítico 1 · el foco salía del modal | Corregido | El resto de la página queda `inert` mientras el modal está abierto. Si el foco intenta salir, vuelve a "Cerrar video". |
+| Crítico 2 · expediente cerrado tabulable | Corregido | `#gmDossier` empieza `inert` y solo deja de serlo al abrirse. |
+| Crítico 3 · videos sin pausa | Corregido | Cada demo tiene un botón de 44 px "Pausar video: <título>" / "Reproducir video: <título>". Un video que la persona pausa ya no vuelve a arrancar solo. |
+| Crítico 4 · `aria-label` en `span` | Corregido | `role="img"` con "Texto censurado, se revela en el juego" y sin `tabindex`. |
+| Crítico 5 · contraste | Corregido | Azul de texto de Lumina #0058b0 (noche #4da3ff), botón azul en noche #0071e3, contador de Hito #666, menú con `opacity .74`. |
+| Rec. 1-2 · `main` y saltar al contenido | Corregido | `<main id="contenido">` y un enlace "Saltar al contenido" en ambas páginas. |
+| Rec. 3 · pestañas del juego | Corregido | `tabpanel` con `aria-labelledby`, tabindex móvil, flechas, Inicio y Fin. `aria-live` en el pie. |
+| Rec. 4 · orden de encabezados | Corregido | Los `h4` de los pilares del juego y del footer pasan a `h3`. |
+| Rec. 5 · videos sin nombre | Corregido | `aria-label` con el título de cada paso. El video del modal también tiene nombre. |
+| Rec. 6 · botón día/noche | Corregido | Etiqueta fija "Modo noche" y el estado en `aria-pressed`. |
+| Rec. 7 · nombres largos en tarjetas | Corregido | `aria-label="<Proyecto>: ver el proyecto"`. |
+| Rec. 8 · galería del portafolio sin teclado | Corregido | La lista es un `tablist`: cada función es una pestaña con flechas, Inicio, Fin, Enter y Espacio. |
+| Rec. 9 · enlaces pequeños en celular | Corregido | 44 px de alto en el menú móvil. |
+| Rec. 10 · sección activa | Corregido | `aria-current="location"` en el enlace del menú. |
+| Opcionales | Corregidos | Las tarjetas flotantes de Lumina llevan `aria-hidden`. `scroll-margin-top` en las secciones. `translate="no"` en las marcas. Sin desplazamiento suave con movimiento reducido. El botón de WhatsApp queda dentro de `main`. |

@@ -14,9 +14,10 @@
         if (meta) meta.content = theme === 'dark' ? '#171717' : '#e3e3e3';
         document.querySelectorAll('.theme-btn').forEach((b) => {
             const dark = theme === 'dark';
+            // Etiqueta fija; el estado lo da aria-pressed ("Modo noche, activado / desactivado")
             b.setAttribute('aria-pressed', String(dark));
-            b.setAttribute('aria-label', dark ? 'Cambiar a modo día' : 'Cambiar a modo noche');
-            b.title = dark ? 'Modo día' : 'Modo noche';
+            b.setAttribute('aria-label', 'Modo noche');
+            b.title = dark ? 'Cambiar a modo día' : 'Cambiar a modo noche';
         });
         document.dispatchEvent(new CustomEvent('temachange', { detail: theme }));
     };
