@@ -19,8 +19,8 @@
 .mx-step.on .mx-node { background: var(--cat-proy); border-color: var(--ink); box-shadow: 0 0 0 5px rgba(201,167,245,.35); }
 .mx-step { position: relative; }
 /* Las capturas nuevas son 16:10; la del mentorado es de celular */
-.mx .hx-frame video, .mx .hx-frame img { aspect-ratio: 16 / 10; }
-.mx-phone { max-width: 340px; margin: 0 auto; border-radius: 34px; padding: 10px; background: #1b1b1b; clip-path: none; transform: scale(calc(.94 + .06 * var(--p))); }
+.mx .hx-frame video, .mx .hx-frame img, .mx .hx-play img { height: auto; aspect-ratio: 16 / 10; }
+.mx .mx-phone { max-width: 340px; margin: 0 auto; border-radius: 34px; padding: 10px; background: #1b1b1b; clip-path: none; transform: scale(calc(.94 + .06 * var(--p))); }
 .mx .mx-phone video { aspect-ratio: 1 / 2; border-radius: 26px; background: #fff; }
 .mx-full { margin-top: 170px; background: #000; border-radius: 12px; color: #fff; padding: 56px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: center; }
 .mx-full small { font-family: var(--font-tight); font-size: .9rem; color: #bdbdbd; }
@@ -32,3 +32,8 @@
     .mx-steps { padding-left: 0; gap: 100px; }
     .mx-full { grid-template-columns: 1fr; padding: 28px 22px; margin-top: 110px; gap: 24px; }
 }
+/* En el teléfono el botón de pausa va debajo del marco, sin tapar la barra de la app */
+.mx .mx-phone { overflow: visible; }
+@media (max-width: 600px) { .mx .mx-phone { max-width: 300px; border-radius: 30px; } .mx .mx-phone video { border-radius: 22px; } }
+.mx-phone .vid-toggle { right: auto; left: calc(50% - 22px); bottom: -62px; }
+.mx-step-phone .hx-step-bottom { margin-top: 92px; }
