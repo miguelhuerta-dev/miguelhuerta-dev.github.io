@@ -186,3 +186,7 @@
 .hx-sign a { display: inline-flex; align-items: center; gap: 6px; color: #c9c9c9; text-decoration: none; font-weight: 500; font-family: 'Inter Tight', 'Inter', sans-serif; }
 .hx-sign a:hover { color: #fff; }
 @media (max-width: 900px) { .hx-full { grid-template-columns: 1fr; padding: 28px 22px; margin-top: 110px; gap: 24px; } }
+/* Enlaces dentro del texto de Hito (descarga y código fuente) */
+.hx-meta b a, .hx-full p a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.hx-full p a { color: #ffffff; }
+@media (hover: hover) and (pointer: fine) { .hx-meta b a:hover, .hx-full p a:hover { text-decoration-thickness: 2px; } }
