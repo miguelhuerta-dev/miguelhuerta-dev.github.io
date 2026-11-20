@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es"
+      data-title-es="Path of Building for Humans · Tu build de Path of Exile, explicada"
+      data-title-en="Path of Building for Humans · Your Path of Exile build, explained"
+      data-desc-es="App gratuita y de código abierto para Windows que convierte los números de Path of Building en respuestas claras: qué tan fuerte es tu personaje, qué lo frena y qué mejorar, paso a paso con tu guía."
+      data-desc-en="A free, open-source Windows app that turns Path of Building's numbers into plain answers: how strong your character is, what holds it back and what to upgrade next, step by step with your guide.">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'self'; script-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Path of Building for Humans · Tu build de Path of Exile, explicada</title>
+    <meta name="description" content="App gratuita y de código abierto para Windows que convierte los números de Path of Building en respuestas claras: qué tan fuerte es tu personaje, qué lo frena y qué mejorar, paso a paso con tu guía.">
+    <meta name="author" content="Miguel Ángel Huerta Vázquez">
+    <meta name="theme-color" content="#0b0907">
+    <link rel="canonical" href="https://miguelhuerta-dev.github.io/path-of-building-for-humans/">
+    <link rel="icon" type="image/png" href="assets/art/icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Path of Building for Humans">
+    <meta property="og:title" content="Path of Building for Humans">
+    <meta property="og:description" content="Las mismas builds. Una comprensión más profunda. App gratuita para Path of Exile que explica tu build y te guía paso a paso.">
+    <meta property="og:url" content="https://miguelhuerta-dev.github.io/path-of-building-for-humans/">
+    <meta property="og:image" content="https://miguelhuerta-dev.github.io/path-of-building-for-humans/assets/shots/hero.webp">
+    <meta property="og:image:alt" content="Panel del personaje en Path of Building for Humans">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preload" href="assets/fonts/cinzel-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/site.css">
+    <script src="assets/site.js" defer></script>
+</head>
+<body>
+    <a class="skip" href="#contenido"><span lang="es">Saltar al contenido</span><span lang="en">Skip to content</span></a>
+
+    <header class="nav plate">
+        <div class="wrap nav__inner">
+            <a class="nav__brand" href="#inicio">
+                <img src="assets/art/emblem-chaos-skull.webp" alt="" width="34" height="34">
+                <span>Path of Building for Humans</span>
+            </a>
+            <nav aria-label="Secciones · Sections">
+                <ul class="nav__links">
+                    <li><a href="#origen"><span lang="es">Origen</span><span lang="en">Origin</span></a></li>
+                    <li><a href="#funciones"><span lang="es">Funciones</span><span lang="en">Features</span></a></li>
+                    <li><a href="#empezar"><span lang="es">Empezar</span><span lang="en">Get started</span></a></li>
+                    <li><a href="#creditos"><span lang="es">Créditos</span><span lang="en">Credits</span></a></li>
+                    <li><a href="#preguntas"><span lang="es">Preguntas</span><span lang="en">FAQ</span></a></li>
+                </ul>
+            </nav>
+            <div class="lang" role="group" aria-label="Idioma · Language">
+                <button type="button" data-lang="es" aria-pressed="true">ES</button>
+                <button type="button" data-lang="en" aria-pressed="false">EN</button>
+            </div>
+            <a class="button nav__download" href="https://github.com/miguelhuerta-dev/PathOfBuildingForHumans/releases/latest" rel="noopener">
+                <span lang="es">Descargar</span><span lang="en">Download</span>
+            </a>
+        </div>
+    </header>
+
+    <main id="contenido">
+        <!-- ===================== HERO ===================== -->
+        <section class="hero" id="inicio">
+            <img class="hero__pillar hero__pillar--left" src="assets/art/scene-pillar-iron.webp" alt="" aria-hidden="true">
+            <img class="hero__pillar hero__pillar--right" src="assets/art/scene-pillar-iron.webp" alt="" aria-hidden="true">
+            <div class="wrap">
+                <img class="hero__emblem" src="assets/art/emblem-chaos-skull.webp" alt="Emblema de la app: un cráneo de bronce que sostiene un orbe de caos" width="168" height="168">
+                <h1 class="gold-text">Path of Building for Humans</h1>
+                <p class="hero__motto"><span lang="es">Las mismas builds. Una comprensión más profunda.</span><span lang="en">Same builds. A deeper understanding.</span></p>
+                <p class="hero__lede">
+                    <span lang="es">Un compañero para Path of Exile que convierte los números de Path of Building en respuestas claras y te acompaña paso a paso por tu guía mientras juegas.</span>
+                    <span lang="en">A Path of Exile companion that turns Path of Building's numbers into plain answers and walks you through your guide, step by step, while you play.</span>
+                </p>
+                <div class="hero__actions">
+                    <a class="button" href="https://github.com/miguelhuerta-dev/PathOfBuildingForHumans/releases/latest" rel="noopener">
+                        <span><span lang="es">Descargar para Windows</span><span lang="en">Download for Windows</span></span>
+                    </a>
+                    <a class="link-button" href="#funciones"><span lang="es">Ver funciones</span><span lang="en">See the features</span></a>
+                </div>
+                <p class="hero__facts">
+                    <span lang="es">Gratis · Código abierto (MIT) · Windows 10 y 11 · Un solo archivo, sin instalar · Español e inglés</span>
+                    <span lang="en">Free · Open source (MIT) · Windows 10 and 11 · One file, nothing to install · English and Spanish</span>
+                </p>
+                <div class="hero__shot frame rise">
+                    <button class="shot" type="button">
+                        <img src="assets/shots/hero.webp" width="1372" height="870" alt="Panel del personaje: veredicto del erudito, salud de la build y calificación del Atlas · Character dashboard: Scholar's Verdict, build health and Atlas Rating">
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <!-- ===================== ORIGIN ===================== -->
+        <section class="section" id="origen" aria-labelledby="origen-title">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="medallion" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20c4-1 7-4 9-8l3-6 2 2-6 3c-4 2-7 5-8 9z"/><path d="M13 12l-3 3"/></svg></span>
+                    <h2 class="bone" id="origen-title"><span lang="es">Cómo nació</span><span lang="en">How it began</span></h2>
+                </div>
+                <div class="story rise">
+                    <div class="story__text">
+                        <p lang="es"><a href="https://pathofbuilding.community/" rel="noopener">Path of Building</a> es una herramienta increíble: calcula cada multiplicador de daño, cada capa de defensa y cada interacción de una build. Sin ella, la comunidad de Path of Exile no podría planear sus personajes.</p>
+                        <p lang="en"><a href="https://pathofbuilding.community/" rel="noopener">Path of Building</a> is an incredible tool: it tracks every damage multiplier, every defensive layer and every interaction in a build. Without it, the Path of Exile community could not plan its characters.</p>
+                        <p lang="es">Pero habla el idioma de las hojas de cálculo. Te dice <strong>cuáles son los números</strong>, no <strong>qué significan</strong> ni <strong>qué hacer después</strong>. Un jugador nuevo, o uno que vuelve, puede abrir su build, ver cientos de estadísticas y seguir sin saber:</p>
+                        <p lang="en">But it speaks the language of spreadsheets. It tells you <strong>what the numbers are</strong>, not <strong>what they mean</strong> or <strong>what to do next</strong>. A new or returning player can open a build, see hundreds of stats and still not know:</p>
+                        <ul class="story__questions" lang="es">
+                            <li>¿Mi build es buena de verdad?</li>
+                            <li>¿Qué le pasa?</li>
+                            <li>¿Qué hago ahora, al nivel en el que voy?</li>
+                        </ul>
+                        <ul class="story__questions" lang="en">
+                            <li>Is my build actually good?</li>
+                            <li>What is wrong with it?</li>
+                            <li>What should I do next, at the level I am now?</li>
+                        </ul>
+                        <p lang="es">Para eso nació <strong>Path of Building for Humans</strong>: usa el mismo motor de Path of Building sobre tu personaje real y responde en palabras: un veredicto claro, los problemas que importan, la siguiente mejora que vale la pena y cada paso de la guía que sigues. Mis amigos fueron los primeros en probarla y en reportar sus errores.</p>
+                        <p lang="en">That is why <strong>Path of Building for Humans</strong> exists: it runs the same Path of Building engine on your real character and answers in words: a clear verdict, the problems that matter, the next upgrade worth chasing and every step of the guide you follow. My friends were the first to use it and to report its bugs.</p>
+                        <p lang="es">Su estilo es el de un <strong>archivista del Atlas</strong>: un erudito exiliado que estudia builds en códices, cartas estelares y artefactos recuperados. Los problemas son <em>amenazas</em>, las soluciones <em>remedios</em> y los objetos <em>artefactos</em>. Todo el arte de la app es original.</p>
+                        <p lang="en">Its style is that of an <strong>Atlas archivist</strong>: an exiled scholar studying builds through codices, star charts and recovered artifacts. Problems are <em>threats</em>, solutions <em>remedies</em> and items <em>artifacts</em>. All of the app's artwork is original.</p>
+                    </div>
+                    <div class="story__art">
+                        <img src="assets/art/scene-books.webp" alt="" aria-hidden="true" loading="lazy" width="640" height="640">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <!-- ===================== FEATURES ===================== -->
+        <section class="section" id="funciones" aria-labelledby="funciones-title">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="medallion" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.5 7.5H22l-6 4.5 2.3 7.5L12 17l-6.3 4.5L8 14 2 9.5h7.5z"/></svg></span>
+                    <h2 class="bone" id="funciones-title"><span lang="es">Qué hace</span><span lang="en">What it does</span></h2>
+                </div>
+                <p class="section__intro">
+                    <span lang="es">Conecta tu perfil público de pathofexile.com, elige un personaje y la app lo calcula con Path of Building. Se actualiza sola cada vez que cambias de zona en el juego.</span>
+                    <span lang="en">Connect your public pathofexile.com profile, pick a character and the app calculates it with Path of Building. It refreshes by itself every time you change zone in the game.</span>
+                </p>
+
+                <article class="feature rise">
+                    <div class="feature__media frame frame--thin">
+                        <button class="shot" type="button"><img src="assets/shots/threats.webp" loading="lazy" width="1600" height="900" alt="Registro de amenazas y artefacto recomendado · Threat Register and Recommended Artifact"></button>
+                    </div>
+                    <div class="feature__text">
+                        <p class="feature__kicker"><span lang="es">Tu personaje</span><span lang="en">Your character</span></p>
+                        <h3><span lang="es">Un veredicto, no una hoja de cálculo</span><span lang="en">A verdict, not a spreadsheet</span></h3>
+                        <ul lang="es">
+                            <li><strong>Veredicto del erudito:</strong> dónde está tu build y su principal debilidad, en una frase.</li>
+                            <li><strong>Calificación del Atlas, DPS y EHP:</strong> qué tan lista está para su etapa del juego.</li>
+                            <li><strong>Registro de amenazas:</strong> los problemas, de peor a menor, con lo que te cuestan y cómo arreglarlos.</li>
+                            <li><strong>Artefacto recomendado:</strong> el objeto de tu guía que más te ayudaría, medido por Path of Building.</li>
+                        </ul>
+                        <ul lang="en">
+                            <li><strong>Scholar's Verdict:</strong> where your build stands and its main weakness, in one sentence.</li>
+                            <li><strong>Atlas Rating, DPS and EHP:</strong> how ready it is for its stage of the game.</li>
+                            <li><strong>Threat Register:</strong> the problems, worst first, with what each costs you and how to fix it.</li>
+                            <li><strong>Recommended Artifact:</strong> the guide item that would help you most, measured by Path of Building.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="feature feature--flip rise">
+                    <div class="feature__media frame frame--thin">
+                        <button class="shot" type="button"><img src="assets/shots/equipment.webp" loading="lazy" width="1372" height="900" alt="Artefactos equipados con los modificadores coloreados por tipo · Equipped Artifacts with modifiers coloured by kind"></button>
+                    </div>
+                    <div class="feature__text">
+                        <p class="feature__kicker"><span lang="es">Tu equipo</span><span lang="en">Your gear</span></p>
+                        <h3><span lang="es">Cada modificador, de un vistazo</span><span lang="en">Every modifier at a glance</span></h3>
+                        <p lang="es">Tu equipo dispuesto como el inventario del juego. Haz clic en una pieza para leer sus modificadores, coloreados por tipo (prefijo, sufijo, crafteado, fracturado, implícito…) con su nivel y una leyenda al lado.</p>
+                        <p lang="en">Your gear laid out like the in-game inventory. Click a piece to read its modifiers, coloured by kind (prefix, suffix, crafted, fractured, implicit…) with their tier and a key beside them.</p>
+                    </div>
+                </article>
+
+                <article class="feature rise">
+                    <div class="feature__media frame frame--thin">
+                        <button class="shot" type="button"><img src="assets/shots/forge.webp" loading="lazy" width="1150" height="864" alt="La Forja: lo que puede salir en el objeto y cuánto suma cada modificador a tu personaje · The Forge: what the item can roll and what each modifier adds to your character"></button>
+                    </div>
+                    <div class="feature__text">
+                        <p class="feature__kicker"><span lang="es">La Forja</span><span lang="en">The Forge</span></p>
+                        <h3><span lang="es">Qué craftear, medido en tu personaje</span><span lang="en">What to craft, measured on your character</span></h3>
+                        <p lang="es">Abre cualquier objeto en la Forja: ve qué puede salir en su base, con sus tiers y probabilidades, y cuánto DPS y EHP te daría cada modificador, probado por Path of Building sobre tu propio personaje. En los únicos te dice de qué liga vienen, cómo conseguirlos y su precio en el mercado (poe.ninja).</p>
+                        <p lang="en">Open any item in the Forge: see what its base can roll, with tiers and odds, and how much DPS and EHP each modifier would give you, tried by Path of Building on your own character. For uniques it tells you their league, how to get them and their market price (poe.ninja).</p>
+                    </div>
+                </article>
+
+                <article class="feature feature--flip rise">
+                    <div class="feature__media frame frame--thin">
+                        <button class="shot" type="button"><img src="assets/shots/passives.webp" loading="lazy" width="1372" height="900" alt="Mejores próximas pasivas, ordenadas por lo que suman por punto · Best Next Passives, ranked by what they add per point"></button>
+                    </div>
+                    <div class="feature__text">
+                        <p class="feature__kicker"><span lang="es">El árbol</span><span lang="en">The tree</span></p>
+                        <h3><span lang="es">Tus mejores próximos puntos</span><span lang="en">Your best next points</span></h3>
+                        <p lang="es">Prueba cada notable y piedra angular a tu alcance, con el camino para llegar, y los ordena por lo que suman de daño y supervivencia por cada punto que gastas. Además guarda tu DPS, EHP y nivel durante la liga para que veas tu progreso.</p>
+                        <p lang="en">It tries every notable and keystone within reach, with the path to it, and ranks them by the damage and survival they add for each point you spend. It also records your DPS, EHP and level over the league so you can see your progress.</p>
+                    </div>
+                </article>
+
+                <article class="feature rise">
+                    <div class="feature__media frame frame--thin">
+                        <button class="shot" type="button"><img src="assets/shots/guide-stages.gif" loading="lazy" width="900" height="560" alt="Cambiar de etapa de la guía actualiza el equipo que pide · Switching guide stages updates the gear it asks for"></button>
+                    </div>
+                    <div class="feature__text">
+                        <p class="feature__kicker"><span lang="es">Tu guía</span><span lang="en">Your guide</span></p>
+                        <h3><span lang="es">Sigue una guía, etapa por etapa</span><span lang="en">Follow a guide, stage by stage</span></h3>
+                        <p lang="es">Pega un código de Path of Building o un enlace de pobb.in, Maxroll, poe.ninja, pastebin y más. La app abre la etapa que corresponde a tu nivel y compara todo con tu personaje:</p>
+                        <p lang="en">Paste a Path of Building code or a link from pobb.in, Maxroll, poe.ninja, pastebin and more. The app opens the stage that fits your level and compares everything with your character:</p>
+                        <ul lang="es">
+                            <li>El equipo de la etapa, marcando lo que ya llevas y lo que falta.</li>
+                            <li>Los enlaces de gemas y dónde consigue tu clase cada gema en la campaña.</li>
+                            <li>Tu árbol de pasivas contra el de la guía, con los iconos del propio juego.</li>
+                            <li>Camino de ascensión, bandidos y panteón.</li>
+                        </ul>
+                        <ul lang="en">
+                            <li>The stage's gear, marking what you already wear and what is missing.</li>
+                            <li>Gem links, and where your class gets each gem in the campaign.</li>
+                            <li>Your passive tree against the guide's, with the game's own icons.</li>
+                            <li>Ascension path, bandits and pantheon.</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="feature feature--flip rise">
+                    <div class="feature__media frame frame--thin">
+                        <button class="shot" type="button"><img src="assets/shots/tutorial.webp" loading="lazy" width="1372" height="870" alt="El tutorial visual al empezar · The visual tour at first launch"></button>
+                    </div>
+                    <div class="feature__text">
+                        <p class="feature__kicker"><span lang="es">Para todos</span><span lang="en">For everyone</span></p>
+                        <h3><span lang="es">En español o inglés, con tutorial</span><span lang="en">In English or Spanish, with a tour</span></h3>
+                        <p lang="es">Eliges el idioma al abrirla por primera vez y un tutorial visual te explica cómo conectar tu personaje, por qué tu perfil debe ser público, qué guarda la app, cómo cargar una guía y cómo leer tu build. Incluye un glosario con las palabras del juego explicadas en lenguaje sencillo.</p>
+                        <p lang="en">You pick the language on first launch and a visual tour explains how to connect your character, why your profile must be public, what the app keeps, how to load a guide and how to read your build. It includes a glossary of the game's words in plain language.</p>
+                    </div>
+                </article>
+
+                <div class="gallery rise">
+                    <figure>
+                        <button class="shot frame frame--thin" type="button"><img src="assets/shots/passive-tree.webp" loading="lazy" width="1600" height="900" alt="Árbol de pasivas comparado con la guía · Passive tree compared with the guide"></button>
+                        <figcaption><span lang="es">Árbol de pasivas frente a la guía</span><span lang="en">Passive tree against the guide</span></figcaption>
+                    </figure>
+                    <figure>
+                        <button class="shot frame frame--thin" type="button"><img src="assets/shots/gem-links.webp" loading="lazy" width="1600" height="900" alt="Grupos de gemas con su origen en la campaña · Gem groups with their campaign source"></button>
+                        <figcaption><span lang="es">Enlaces de gemas y de dónde salen</span><span lang="en">Gem links and where they come from</span></figcaption>
+                    </figure>
+                    <figure>
+                        <button class="shot frame frame--thin" type="button"><img src="assets/shots/bandits-pantheon.webp" loading="lazy" width="1600" height="900" alt="Bandidos y panteón de la guía · The guide's bandits and pantheon"></button>
+                        <figcaption><span lang="es">Bandidos y panteón</span><span lang="en">Bandits and pantheon</span></figcaption>
+                    </figure>
+                    <figure>
+                        <button class="shot frame frame--thin" type="button"><img src="assets/shots/atlas.webp" loading="lazy" width="1280" height="900" alt="Árbol del Atlas sobre el atlas estelar · Atlas tree over the star atlas"></button>
+                        <figcaption><span lang="es">El árbol del Atlas, por liga</span><span lang="en">The Atlas tree, per league</span></figcaption>
+                    </figure>
+                </div>
+
+                <div class="cards cards--4 rise">
+                    <div class="card">
+                        <h3><span lang="es">Motor real de PoB</span><span lang="en">The real PoB engine</span></h3>
+                        <p lang="es">Los números salen del mismo motor de Path of Building Community, sin modificarlo.</p>
+                        <p lang="en">The numbers come from Path of Building Community's own engine, unmodified.</p>
+                    </div>
+                    <div class="card">
+                        <h3><span lang="es">Se actualiza sola</span><span lang="en">Refreshes itself</span></h3>
+                        <p lang="es">Lee el registro del juego (Client.txt) y recalcula al cambiar de zona.</p>
+                        <p lang="en">It reads the game's log (Client.txt) and recalculates when you change zone.</p>
+                    </div>
+                    <div class="card">
+                        <h3><span lang="es">Arte del juego, sin copiarlo</span><span lang="en">Game art, never copied</span></h3>
+                        <p lang="es">Los iconos se leen de tu propia instalación de Path of Exile; la app no los incluye ni los descarga.</p>
+                        <p lang="en">Icons are read from your own Path of Exile installation; the app never ships nor downloads them.</p>
+                    </div>
+                    <div class="card">
+                        <h3><span lang="es">Todo en tu equipo</span><span lang="en">Everything stays local</span></h3>
+                        <p lang="es">Sin cuentas ni contraseñas ni telemetría: lo que guarda se queda en tu computadora.</p>
+                        <p lang="en">No accounts, passwords or telemetry: what it keeps stays on your computer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <!-- ===================== GET STARTED ===================== -->
+        <section class="section" id="empezar" aria-labelledby="empezar-title">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="medallion" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 19h16"/></svg></span>
+                    <h2 class="bone" id="empezar-title"><span lang="es">Empieza en tres pasos</span><span lang="en">Start in three steps</span></h2>
+                </div>
+                <div class="cards cards--3 rise">
+                    <div class="card">
+                        <p class="card__num">I</p>
+                        <h3><span lang="es">Descárgala</span><span lang="en">Download it</span></h3>
+                        <p lang="es">Baja el archivo <code>.exe</code> de la última versión en GitHub. Es un solo archivo: no hay nada que instalar.</p>
+                        <p lang="en">Get the latest version's <code>.exe</code> from GitHub. It is a single file: nothing to install.</p>
+                    </div>
+                    <div class="card">
+                        <p class="card__num">II</p>
+                        <h3><span lang="es">Haz público tu perfil</span><span lang="en">Make your profile public</span></h3>
+                        <p lang="es">En pathofexile.com, en Mi cuenta → Ajustes de privacidad, desmarca la opción que oculta tus personajes.</p>
+                        <p lang="en">On pathofexile.com, under My Account → Privacy Settings, untick the option that hides your characters.</p>
+                    </div>
+                    <div class="card">
+                        <p class="card__num">III</p>
+                        <h3><span lang="es">Conecta tu personaje</span><span lang="en">Connect your character</span></h3>
+                        <p lang="es">Escribe tu cuenta con su etiqueta (<code>Nombre#1234</code>) y elige un personaje. El tutorial te guía en lo demás.</p>
+                        <p lang="en">Type your account with its tag (<code>Name#1234</code>) and pick a character. The tour walks you through the rest.</p>
+                    </div>
+                </div>
+                <p class="note">
+                    <span lang="es">Windows puede mostrar un aviso de SmartScreen la primera vez, porque la app todavía no tiene firma digital. Elige "Más información" y luego "Ejecutar de todos modos". El código completo es público en GitHub para quien quiera revisarlo.</span>
+                    <span lang="en">Windows may show a SmartScreen warning the first time, because the app is not digitally signed yet. Choose "More info", then "Run anyway". The full source is public on GitHub for anyone who wants to review it.</span>
+                </p>
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <!-- ===================== CREDITS ===================== -->
+        <section class="section" id="creditos" aria-labelledby="creditos-title">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="medallion" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg></span>
+                    <h2 class="bone" id="creditos-title"><span lang="es">Créditos</span><span lang="en">Credits</span></h2>
+                </div>
+                <div class="frame credit-lead rise">
+                    <h3>Path of Building Community</h3>
+                    <p lang="es">Esta app no existiría sin <a href="https://pathofbuilding.community/" rel="noopener">Path of Building Community</a> y la gente que lo mantiene desde hace años. Todos los cálculos de daño y defensa los hace su motor, usado sin modificar bajo su <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding/blob/dev/LICENSE.md" rel="noopener">licencia MIT</a>. Path of Building for Humans no sustituye a Path of Building: es una forma distinta de leer lo que ya calcula. Si te sirve, apoya su proyecto.</p>
+                    <p lang="en">This app would not exist without <a href="https://pathofbuilding.community/" rel="noopener">Path of Building Community</a> and the people who have maintained it for years. Every damage and defence number is calculated by its engine, used unmodified under its <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding/blob/dev/LICENSE.md" rel="noopener">MIT licence</a>. Path of Building for Humans does not replace Path of Building: it is a different way to read what it already calculates. If it helps you, support their project.</p>
+                </div>
+                <div class="cards cards--3 rise">
+                    <div class="card">
+                        <h3>Grinding Gear Games</h3>
+                        <p lang="es">Creadores de Path of Exile. Los nombres, iconos y datos del juego les pertenecen; esta app es un proyecto de fans sin relación oficial con ellos.</p>
+                        <p lang="en">Creators of Path of Exile. The game's names, icons and data belong to them; this app is a fan project with no official relationship to them.</p>
+                    </div>
+                    <div class="card">
+                        <h3>poe.ninja</h3>
+                        <p lang="es">Precios de mercado de los objetos únicos y una de las fuentes de guías. <a href="https://poe.ninja/" rel="noopener">poe.ninja</a></p>
+                        <p lang="en">Market prices for unique items and one of the guide sources. <a href="https://poe.ninja/" rel="noopener">poe.ninja</a></p>
+                    </div>
+                    <div class="card">
+                        <h3>exile-leveling</h3>
+                        <p lang="es">De dónde sale cada gema en la campaña, por clase (licencia MIT). <a href="https://github.com/HeartofPhos/exile-leveling" rel="noopener">GitHub</a></p>
+                        <p lang="en">Where each gem comes from in the campaign, per class (MIT licence). <a href="https://github.com/HeartofPhos/exile-leveling" rel="noopener">GitHub</a></p>
+                    </div>
+                    <div class="card">
+                        <h3>LuaJIT · Tauri</h3>
+                        <p lang="es">El intérprete que ejecuta el motor de Path of Building y el marco de la app de escritorio (licencias MIT y Apache-2.0).</p>
+                        <p lang="en">The interpreter that runs the Path of Building engine and the desktop app framework (MIT and Apache-2.0 licences).</p>
+                    </div>
+                    <div class="card">
+                        <h3>Cinzel · EB Garamond</h3>
+                        <p lang="es">Las tipografías de la app y de esta página, bajo la SIL Open Font License 1.1.</p>
+                        <p lang="en">The typefaces of the app and of this page, under the SIL Open Font License 1.1.</p>
+                    </div>
+                    <div class="card">
+                        <h3><span lang="es">Los primeros testers</span><span lang="en">The first testers</span></h3>
+                        <p lang="es">Los amigos que la usaron desde las primeras versiones y reportaron cada error.</p>
+                        <p lang="en">The friends who used it from the first versions and reported every bug.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <!-- ===================== FAQ ===================== -->
+        <section class="section" id="preguntas" aria-labelledby="preguntas-title">
+            <div class="wrap">
+                <div class="section__head">
+                    <span class="medallion" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9.5 9a2.5 2.5 0 115 0c0 2-2.5 2-2.5 4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span>
+                    <h2 class="bone" id="preguntas-title"><span lang="es">Preguntas frecuentes</span><span lang="en">Questions</span></h2>
+                </div>
+                <div class="faq rise">
+                    <details>
+                        <summary><span lang="es">¿Cuánto cuesta?</span><span lang="en">How much does it cost?</span></summary>
+                        <div>
+                            <p lang="es">Nada. Es gratuita y de código abierto bajo la licencia MIT. No tiene anuncios ni compras.</p>
+                            <p lang="en">Nothing. It is free and open source under the MIT licence. No ads and no purchases.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><span lang="es">¿Puede afectar mi cuenta de Path of Exile?</span><span lang="en">Can it affect my Path of Exile account?</span></summary>
+                        <div>
+                            <p lang="es">La app no modifica el juego, no se inyecta en él, no lee su memoria ni automatiza ninguna acción. Solo lee los datos públicos de tu perfil en pathofexile.com, el archivo de registro Client.txt y, para los iconos, los archivos de tu instalación, sin cambiarlos. Aun así es una herramienta no oficial: úsala bajo tu responsabilidad y respetando los términos de Grinding Gear Games.</p>
+                            <p lang="en">The app does not modify the game, inject into it, read its memory or automate any action. It only reads your public pathofexile.com profile, the Client.txt log file and, for icons, your installation's files, without changing them. It is still an unofficial tool: use it at your own risk and within Grinding Gear Games' terms.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><span lang="es">¿Me pide mi contraseña?</span><span lang="en">Does it ask for my password?</span></summary>
+                        <div>
+                            <p lang="es">Nunca. Solo necesita el nombre de tu cuenta y que tus personajes sean públicos. Si alguien te pide tu contraseña en nombre de esta app, es un engaño.</p>
+                            <p lang="en">Never. It only needs your account name and your characters to be public. If anyone asks for your password on behalf of this app, it is a scam.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><span lang="es">¿Qué datos guarda y dónde?</span><span lang="en">What does it keep, and where?</span></summary>
+                        <div>
+                            <p lang="es">El último personaje de cada cuenta, tu historial de DPS, EHP y nivel, tus guías, tus marcas del Atlas y tu idioma, todo en tu computadora. No hay servidores propios ni telemetría. Los detalles están en el <a href="privacidad.html">aviso de privacidad</a>.</p>
+                            <p lang="en">The last character of each account, your DPS, EHP and level history, your guides, your Atlas marks and your language, all on your computer. There are no servers of its own and no telemetry. Details are in the <a href="privacidad.html">privacy notice</a>.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><span lang="es">¿Funciona con Path of Exile 2 o en Mac?</span><span lang="en">Does it work with Path of Exile 2, or on Mac?</span></summary>
+                        <div>
+                            <p lang="es">Por ahora es para Path of Exile 1 y para Windows 10 y 11.</p>
+                            <p lang="en">For now it is for Path of Exile 1, on Windows 10 and 11.</p>
+                        </div>
+                    </details>
+                    <details>
+                        <summary><span lang="es">Encontré un error, ¿cómo lo reporto?</span><span lang="en">I found a bug: how do I report it?</span></summary>
+                        <div>
+                            <p lang="es">Abre un reporte en <a href="https://github.com/miguelhuerta-dev/PathOfBuildingForHumans/issues/new" rel="noopener">GitHub</a> con tu personaje, la guía y una captura, o escríbeme a <a href="mailto:miguelhuerta.softwaredev@gmail.com">miguelhuerta.softwaredev@gmail.com</a>.</p>
+                            <p lang="en">Open an issue on <a href="https://github.com/miguelhuerta-dev/PathOfBuildingForHumans/issues/new" rel="noopener">GitHub</a> with your character, the guide and a screenshot, or email <a href="mailto:miguelhuerta.softwaredev@gmail.com">miguelhuerta.softwaredev@gmail.com</a>.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== CALL ===================== -->
+        <section class="section cta" aria-labelledby="cta-title">
+            <div class="wrap rise">
+                <h2 class="gold-text" id="cta-title"><span lang="es">Entra al archivo</span><span lang="en">Enter the archive</span></h2>
+                <p>
+                    <span lang="es">Gratis, sin cuentas y en tu idioma. Descárgala y deja que el archivo lea tu build.</span>
+                    <span lang="en">Free, with no accounts, in your language. Download it and let the archive read your build.</span>
+                </p>
+                <div class="hero__actions">
+                    <a class="button" href="https://github.com/miguelhuerta-dev/PathOfBuildingForHumans/releases/latest" rel="noopener"><span><span lang="es">Descargar para Windows</span><span lang="en">Download for Windows</span></span></a>
+                    <a class="link-button" href="https://github.com/miguelhuerta-dev/PathOfBuildingForHumans" rel="noopener"><span lang="es">Código en GitHub</span><span lang="en">Source on GitHub</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer plate">
+        <div class="wrap footer__grid">
+            <div>
+                <p><strong class="bone">Path of Building for Humans</strong> · <span lang="es">hecho por</span><span lang="en">made by</span> <a href="https://miguelhuerta-dev.github.io/" rel="author">Miguel Ángel Huerta Vázquez</a> · © <span data-year>2026</span></p>
+                <p lang="es">Proyecto de fans, no afiliado ni respaldado por Grinding Gear Games ni por Path of Building Community. Path of Exile es una marca de Grinding Gear Games Ltd. Los cálculos los realiza Path of Building Community (licencia MIT).</p>
+                <p lang="en">A fan project, not affiliated with or endorsed by Grinding Gear Games or Path of Building Community. Path of Exile is a trademark of Grinding Gear Games Ltd. Calculations by Path of Building Community (MIT licence).</p>
+            </div>
+            <nav class="footer__legal" aria-label="Legal">
+                <a href="terminos.html"><span lang="es">Términos de uso</span><span lang="en">Terms of use</span></a>
+                <a href="privacidad.html"><span lang="es">Privacidad</span><span lang="en">Privacy</span></a>
+                <a href="cookies.html">Cookies</a>
+                <a href="https://github.com/miguelhuerta-dev/PathOfBuildingForHumans/blob/main/LICENSE" rel="noopener"><span lang="es">Licencia MIT</span><span lang="en">MIT licence</span></a>
+                <a href="mailto:miguelhuerta.softwaredev@gmail.com"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+            </nav>
+        </div>
+    </footer>
+
+    <dialog class="lightbox" aria-label="Captura · Screenshot">
+        <div class="lightbox__bar">
+            <span class="lightbox__caption"></span>
+            <button class="lightbox__close" type="button"><span lang="es">Cerrar</span><span lang="en">Close</span></button>
+        </div>
+        <img src="assets/shots/hero.webp" alt="">
+    </dialog>
+</body>
+</html>

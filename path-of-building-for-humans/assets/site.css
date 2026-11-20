@@ -1,0 +1,471 @@
+/* Path of Building for Humans · project page.
+   The app's own art direction: black iron, dark vellum, worn steel and dried blood.
+   Every file is served from this folder: no fonts, scripts or trackers from other sites. */
+
+@font-face { font-family: "Cinzel"; font-weight: 400; font-display: swap; src: url("fonts/cinzel-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Cinzel"; font-weight: 500; font-display: swap; src: url("fonts/cinzel-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Cinzel"; font-weight: 600; font-display: swap; src: url("fonts/cinzel-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Cinzel"; font-weight: 700; font-display: swap; src: url("fonts/cinzel-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 400; font-display: swap; src: url("fonts/eb-garamond-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 400; font-style: italic; font-display: swap; src: url("fonts/eb-garamond-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 500; font-display: swap; src: url("fonts/eb-garamond-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 600; font-display: swap; src: url("fonts/eb-garamond-latin-600-normal.woff2") format("woff2"); }
+
+:root {
+  --ink: #0b0907;
+  --stone: #15110d;
+  --parchment: #e6d8b8;
+  --parchment-dim: #bcae8f;
+  --parchment-faint: #8c7f68;
+  --gold: #d9b36c;
+  --iron: #7f746a;
+  --verdigris: #86d6b4;
+  --ember: #e8935a;
+  --blood: #c63a2c;
+  --display: "Cinzel", "Times New Roman", serif;
+  --body: "EB Garamond", Georgia, serif;
+  --page: 1180px;
+  --gutter: 16px;
+  color-scheme: dark;
+}
+
+/* One language at a time: the other's text stays in the page for search engines. */
+:root[data-lang="es"] body [lang="en"],
+:root[data-lang="en"] body [lang="es"] { display: none !important; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--ink); scroll-behavior: smooth; scroll-padding-top: 84px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  color: var(--parchment);
+  font: 400 19px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+  background:
+    linear-gradient(rgb(11 9 7 / 0.86), rgb(11 9 7 / 0.94)),
+    url("art/tex-stone.webp") center / 420px;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--gold); text-underline-offset: 3px; }
+a:hover { color: #f2d89c; }
+:focus-visible { outline: 1px solid var(--gold); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; margin: 0; }
+p { margin: 0; }
+
+.skip { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--stone); padding: 8px 14px; }
+.skip:focus { left: 8px; }
+
+.wrap { width: min(var(--page), 100% - 2 * var(--gutter)); margin-inline: auto; }
+
+/* ---------- Materials ---------- */
+
+.gold-text {
+  background: linear-gradient(180deg, #fff0c4 0%, #e3c27e 40%, #b0843e 75%, #7a5520 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 0 rgb(0 0 0 / 0.9));
+}
+.bone { color: #d9cfc1; text-shadow: 0 2px 0 rgb(0 0 0 / 0.95), 0 0 14px rgb(120 20 14 / 0.25); }
+
+/* A plate of black forged iron, edged in dried blood. */
+.plate {
+  background:
+    linear-gradient(180deg, rgb(20 18 17 / 0.6), rgb(4 3 3 / 0.88)),
+    url("art/tex-iron.webp") center / 260px;
+  box-shadow:
+    inset 0 1px 0 rgb(170 160 150 / 0.12),
+    inset 0 -1px 0 rgb(0 0 0 / 0.9),
+    inset 0 -3px 0 rgb(110 24 18 / 0.75),
+    0 8px 18px rgb(0 0 0 / 0.75);
+}
+
+/* The app's worn iron frame around a panel. */
+.frame {
+  position: relative;
+  isolation: isolate;
+  padding: 34px 36px;
+}
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgb(140 130 120 / 0.06), transparent 70%),
+    linear-gradient(180deg, rgb(16 14 13 / 0.9), rgb(6 5 5 / 0.95)),
+    url("art/tex-stone.webp") center / 384px;
+  box-shadow: inset 0 0 0 6px rgb(0 0 0 / 0.45), inset 0 0 0 7px rgb(90 24 18 / 0.35), inset 0 0 80px rgb(0 0 0 / 0.9);
+}
+.frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 46px solid transparent;
+  border-image: url("art/frame-iron.webp") 100 stretch;
+}
+.frame--thin { padding: 22px 24px; }
+.frame--thin::before { inset: 10px; }
+.frame--thin::after { border-width: 28px; }
+
+.button {
+  display: inline-grid;
+  place-items: center;
+  min-height: 54px;
+  padding: 0 38px;
+  font: 600 15px/1 var(--display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--parchment);
+  background: url("art/ui-button-iron.webp") center / 100% 100% no-repeat;
+  transition: filter 150ms ease, transform 120ms ease;
+}
+.button:hover { color: #fff3d6; filter: brightness(1.25); }
+.button:active { transform: translateY(1px) scale(0.985); }
+.button small { display: block; margin-top: 4px; font-size: 10px; letter-spacing: 0.22em; color: var(--parchment-faint); }
+.link-button {
+  display: inline-grid;
+  place-items: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border: 1px solid rgb(127 116 106 / 0.6);
+  font: 500 13px/1 var(--display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--parchment-dim);
+  transition: color 150ms ease, border-color 150ms ease;
+}
+.link-button:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ---------- Navigation ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 64px;
+}
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 600 17px/1 var(--display);
+  letter-spacing: 0.04em;
+  color: #ead7a6;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav__brand img { width: 34px; height: 34px; }
+.nav__links { display: flex; gap: 22px; margin: 0 0 0 auto; padding: 0; list-style: none; }
+.nav__links a {
+  font: 500 13px/1 var(--display);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--parchment-dim);
+  padding: 8px 0;
+  border-bottom: 1px solid transparent;
+}
+.nav__links a:hover { color: var(--gold); border-bottom-color: rgb(198 58 44 / 0.8); }
+.lang {
+  display: flex;
+  gap: 2px;
+  font: 500 12px/1 var(--display);
+  letter-spacing: 0.16em;
+}
+.lang button {
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--parchment-faint);
+  background: none;
+  border: 0;
+  padding: 8px 6px;
+  cursor: pointer;
+}
+.lang button[aria-pressed="true"] { color: var(--gold); }
+.nav__download { font-size: 12px; min-height: 40px; padding: 0 22px; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  padding: 72px 0 40px;
+  text-align: center;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 60% 55% at 50% 30%, rgb(20 16 26 / 0) 0%, var(--ink) 78%),
+    url("art/bg-star-atlas.webp") center top / cover;
+  opacity: 0.95;
+}
+.hero__pillar {
+  position: absolute;
+  top: 40px;
+  width: 170px;
+  opacity: 0.55;
+  pointer-events: none;
+  display: none;
+}
+.hero__pillar--left { left: max(0px, 50% - 760px); }
+.hero__pillar--right { right: max(0px, 50% - 760px); transform: scaleX(-1); }
+.hero__emblem { width: 168px; margin: 0 auto; filter: drop-shadow(0 10px 22px rgb(160 30 20 / 0.45)); }
+.hero h1 { margin-top: 18px; font-size: clamp(36px, 6vw, 64px); letter-spacing: 0.03em; font-weight: 700; }
+.hero__motto { margin-top: 10px; font: 500 clamp(13px, 1.6vw, 16px)/1.4 var(--display); letter-spacing: 0.32em; text-transform: uppercase; color: var(--iron); }
+.hero__lede { max-width: 720px; margin: 22px auto 0; font-size: clamp(19px, 2.2vw, 23px); color: var(--parchment); }
+.hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 32px; }
+.hero__facts { margin-top: 18px; font-size: 16px; color: var(--parchment-faint); }
+.hero__shot { margin-top: 48px; }
+
+.shot {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  width: 100%;
+}
+.shot img { width: 100%; box-shadow: 0 18px 50px rgb(0 0 0 / 0.75); }
+
+/* ---------- Sections ---------- */
+
+.section { padding: 64px 0; }
+.section__head { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+.medallion {
+  position: relative;
+  flex: none;
+  width: 66px;
+  height: 66px;
+  display: grid;
+  place-items: center;
+  color: #e7c3b6;
+  background: url("art/ui-medallion-iron.webp") center / contain no-repeat;
+}
+.medallion svg { width: 26px; height: 26px; }
+.section__head h2 { font-size: clamp(26px, 3.6vw, 38px); }
+.section__intro { max-width: 760px; color: var(--parchment-dim); font-size: 20px; margin-bottom: 30px; }
+
+.divider {
+  height: 34px;
+  margin: 8px auto;
+  width: min(900px, 100% - 2 * var(--gutter));
+  background: url("art/chain-iron.webp") center / auto 100% repeat-x;
+  opacity: 0.85;
+}
+
+/* The story: a short chronicle beside the archive's books. */
+.story { display: grid; gap: 34px; align-items: center; }
+.story__text { display: grid; gap: 18px; font-size: 20px; }
+.story__text strong { color: var(--gold); font-weight: 500; }
+.story__questions { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.story__questions li {
+  padding-left: 22px;
+  position: relative;
+  font-style: italic;
+  color: var(--parchment);
+}
+.story__questions li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  background: var(--blood);
+  transform: rotate(45deg);
+}
+.story__art img { border-radius: 2px; mask-image: radial-gradient(closest-side, black 62%, transparent); }
+
+/* Feature rows: screenshot and words, alternating sides. */
+.feature { display: grid; gap: 26px; align-items: center; padding: 26px 0; }
+.feature__text h3 { font-size: clamp(22px, 2.8vw, 28px); color: #ead7a6; }
+.feature__kicker { font: 500 12px/1 var(--display); letter-spacing: 0.24em; text-transform: uppercase; color: var(--ember); margin-bottom: 10px; }
+.feature__text p { margin-top: 12px; color: var(--parchment-dim); }
+.feature__text ul { margin: 14px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.feature__text li { position: relative; padding-left: 20px; color: var(--parchment); font-size: 18px; }
+.feature__text li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.66em;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.cards { display: grid; gap: 16px; }
+.card {
+  padding: 20px 22px;
+  border: 1px solid #2c2622;
+  background:
+    linear-gradient(180deg, rgb(24 21 20 / 0.85), rgb(8 7 7 / 0.92)),
+    url("art/tex-iron.webp") center / 220px;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.8), inset 0 -2px 0 rgb(110 24 18 / 0.45);
+}
+.card h3 { font-size: 17px; letter-spacing: 0.06em; color: #ead7a6; }
+.card p { margin-top: 8px; font-size: 17px; color: var(--parchment-dim); line-height: 1.5; }
+.card__num { font: 700 30px/1 var(--display); color: var(--blood); margin-bottom: 10px; }
+
+.note {
+  margin-top: 22px;
+  padding: 14px 18px;
+  border-left: 2px solid var(--verdigris);
+  background: rgb(134 214 180 / 0.05);
+  color: var(--parchment-dim);
+  font-size: 17px;
+}
+
+/* Gallery of further screens. */
+.gallery { display: grid; gap: 18px; margin: 30px 0; }
+.gallery figure { margin: 0; }
+.gallery figcaption { margin-top: 8px; font-size: 16px; color: var(--parchment-faint); text-align: center; }
+
+/* Credits. */
+.credit-lead { display: grid; gap: 10px; margin-bottom: 22px; }
+.credit-lead h3 { font-size: 24px; color: #ead7a6; }
+
+/* Questions. */
+.faq { display: grid; gap: 10px; }
+.faq details { border: 1px solid #2c2622; background: rgb(10 8 8 / 0.7); }
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 16px 20px;
+  font: 500 16px/1.4 var(--display);
+  letter-spacing: 0.04em;
+  color: #ead7a6;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--blood); font-size: 20px; line-height: 1; }
+.faq details[open] summary::after { content: "−"; }
+.faq details > div { padding: 0 20px 18px; color: var(--parchment-dim); font-size: 18px; display: grid; gap: 10px; }
+
+/* Final call. */
+.cta { text-align: center; }
+.cta h2 { font-size: clamp(28px, 4vw, 44px); }
+.cta p { margin: 14px auto 0; max-width: 640px; color: var(--parchment-dim); }
+.cta .hero__actions { margin-top: 26px; }
+
+/* ---------- Footer ---------- */
+
+.footer { margin-top: 40px; padding: 34px 0 40px; font-size: 16px; color: var(--parchment-faint); }
+.footer__grid { display: grid; gap: 22px; }
+.footer__legal { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.footer__legal a { color: var(--parchment-dim); }
+.footer p + p { margin-top: 8px; }
+
+/* ---------- Lightbox ---------- */
+
+.lightbox {
+  width: min(1400px, 100vw - 24px);
+  max-height: calc(100vh - 24px);
+  padding: 0;
+  border: 1px solid rgb(127 116 106 / 0.6);
+  background: #050404;
+  color: var(--parchment);
+}
+.lightbox::backdrop { background: rgb(0 0 0 / 0.85); }
+.lightbox img { width: 100%; max-height: calc(100vh - 90px); object-fit: contain; }
+.lightbox__bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; font-size: 16px; color: var(--parchment-dim); }
+.lightbox__close {
+  font: 500 12px/1 var(--display);
+  letter-spacing: 0.2em;
+  color: var(--parchment-dim);
+  background: none;
+  border: 1px solid rgb(127 116 106 / 0.6);
+  padding: 10px 14px;
+  cursor: pointer;
+}
+.lightbox__close:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ---------- Legal pages ---------- */
+
+.legal { padding: 56px 0 24px; }
+.legal__body { max-width: 820px; }
+.legal h1 { font-size: clamp(30px, 4.4vw, 44px); }
+.legal__updated { margin-top: 10px; color: var(--parchment-faint); font-size: 16px; }
+.legal h2 { margin-top: 38px; font-size: 22px; color: #ead7a6; letter-spacing: 0.03em; }
+.legal p, .legal li { color: var(--parchment-dim); font-size: 18px; }
+.legal p { margin-top: 12px; }
+.legal ul { margin: 12px 0 0; padding-left: 22px; display: grid; gap: 6px; }
+.legal strong { color: var(--parchment); font-weight: 500; }
+.legal table { width: 100%; margin-top: 14px; border-collapse: collapse; font-size: 17px; }
+.legal th, .legal td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #2c2622; color: var(--parchment-dim); vertical-align: top; }
+.legal th { font: 500 13px/1.3 var(--display); letter-spacing: 0.14em; text-transform: uppercase; color: var(--parchment-faint); }
+.legal__toc { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.legal__back { display: inline-block; margin-bottom: 22px; font-size: 16px; }
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise { transition: opacity 600ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .rise.is-pending { opacity: 0; transform: translateY(16px); }
+}
+
+/* ---------- Wider screens ---------- */
+
+@media (min-width: 760px) {
+  .story { grid-template-columns: 1.25fr 1fr; }
+  .feature { grid-template-columns: 1.45fr 1fr; gap: 44px; }
+  .feature--flip .feature__media { order: 2; }
+  .cards--3 { grid-template-columns: repeat(3, 1fr); }
+  .cards--2 { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .footer__grid { grid-template-columns: 1.3fr 1fr; align-items: start; }
+}
+@media (min-width: 1100px) {
+  .cards--4 { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 760px) and (max-width: 1099px) {
+  .cards--4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1360px) {
+  .hero__pillar { display: block; }
+}
+
+/* ---------- Phones ---------- */
+
+@media (max-width: 1199px) {
+  .nav__links { display: none; }
+  .lang { margin-left: auto; }
+}
+@media (max-width: 520px) {
+  body { font-size: 18px; }
+  .nav__brand span { display: none; }
+  .nav__download { padding: 0 16px; letter-spacing: 0.12em; }
+  .frame { padding: 22px 20px; }
+  .frame::before { inset: 12px; }
+  .frame::after { border-width: 30px; }
+  .button { padding: 0 26px; font-size: 13px; }
+  .section { padding: 46px 0; }
+  .medallion { width: 54px; height: 54px; }
+}
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.86em;
+  color: var(--parchment);
+  background: rgb(255 255 255 / 0.05);
+  padding: 1px 5px;
+  border: 1px solid #2c2622;
+  word-break: break-word;
+}
+/* Wide tables scroll inside themselves on phones; the page never scrolls sideways. */
+.legal table { display: block; overflow-x: auto; }
